@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/11 | Sawabe Maho的个人博客</title>
+  <title>算法入门——常用排序算法 | Sawabe Maho的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Sawabe Maho的个人博客">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2019&#x2F;11&#x2F;index.html">
+  <meta name="description" content="今天来写一下算法入门篇最基础的几款排序算法首先是基础的冒泡排序及选择排序。 冒泡排序：时间复杂度:O(n^2)冒泡排序的核心是每次循环比较相邻的两个数，较大的排到后面，那么一次完整的循环导致的结果必然是最大的排到最后的位置 需要N+(N-1)+(N-2)+…+1次循环即可完成。 12345678&#x2F;*冒泡排序算法复杂度O(n^2)*&#x2F;void Bubble_Sort(int A[],int N)&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法入门——常用排序算法">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;09&#x2F;%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%B8%B8%E7%94%A8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95&#x2F;index.html">
 <meta property="og:site_name" content="Sawabe Maho的个人博客">
+<meta property="og:description" content="今天来写一下算法入门篇最基础的几款排序算法首先是基础的冒泡排序及选择排序。 冒泡排序：时间复杂度:O(n^2)冒泡排序的核心是每次循环比较相邻的两个数，较大的排到后面，那么一次完整的循环导致的结果必然是最大的排到最后的位置 需要N+(N-1)+(N-2)+…+1次循环即可完成。 12345678&#x2F;*冒泡排序算法复杂度O(n^2)*&#x2F;void Bubble_Sort(int A[],int N)&amp;#">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;gss2.bdstatic.com&#x2F;9fo3dSag_xI4khGkpoWK1HF6hhy&#x2F;baike&#x2F;c0%3Dbaike92%2C5%2C5%2C92%2C30&#x2F;sign=8f06d3ee2234349b600b66d7a8837eab&#x2F;94cad1c8a786c917d51560cdc33d70cf3bc7572b.jpg">
+<meta property="og:updated_time" content="2019-11-09T16:02:27.059Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;gss2.bdstatic.com&#x2F;9fo3dSag_xI4khGkpoWK1HF6hhy&#x2F;baike&#x2F;c0%3Dbaike92%2C5%2C5%2C92%2C30&#x2F;sign=8f06d3ee2234349b600b66d7a8837eab&#x2F;94cad1c8a786c917d51560cdc33d70cf3bc7572b.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Sawabe Maho的个人博客" type="application/atom+xml">
   
@@ -153,130 +158,169 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-算法入门——常用排序算法" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      算法入门——常用排序算法
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/09/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%B8%B8%E7%94%A8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="archive-article-date">
+
+        
+        <a href="/2019/11/09/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%B8%B8%E7%94%A8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="archive-article-date">
   	<time datetime="2019-11-09T13:28:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-09</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/09/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%B8%B8%E7%94%A8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">算法入门——常用排序算法</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天来写一下算法入门篇最基础的几款排序算法<br>首先是基础的冒泡排序及选择排序。</p>
+<h3 id="冒泡排序："><a href="#冒泡排序：" class="headerlink" title="冒泡排序："></a>冒泡排序：</h3><h4 id="时间复杂度-O-n-2"><a href="#时间复杂度-O-n-2" class="headerlink" title="时间复杂度:O(n^2)"></a>时间复杂度:O(n^2)<br></h4><p>冒泡排序的核心是每次循环比较相邻的两个数，较大的排到后面，那么一次完整的循环导致的结果必然是最大的排到最后的位置 需要N+(N-1)+(N-2)+…+1次循环即可完成。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*冒泡排序算法复杂度O(n^2)*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Bubble_Sort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> N)</span></span>&#123;<span class="comment">//N为数组长度</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;N;j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(A[j]&gt;A[j+<span class="number">1</span>]) swap(A[j],A[j+<span class="number">1</span>]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然我们可以略微优化一下，例如在循环一次之后下一次循环就不需要比较最后的数字，如果在某次内循环中一次交换都没有做说明已经有序，此时跳出循环即可。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*冒泡排序算法复杂度O(n^2)*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Bubble_Sort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> N)</span></span>&#123;<span class="comment">//N为数组长度</span></span><br><span class="line">    <span class="keyword">int</span> flag=<span class="number">0</span>;<span class="comment">//这里加一个标志位初值设为0</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;N-i;j++)&#123;<span class="comment">//这里的条件j&lt;N-i</span></span><br><span class="line">			<span class="keyword">if</span>(A[j]&gt;A[j+<span class="number">1</span>])&#123;</span><br><span class="line">			    swap(A[j],A[j+<span class="number">1</span>]);</span><br><span class="line">			    flag=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		    <span class="keyword">if</span>(flag==<span class="number">0</span>) <span class="keyword">break</span>;<span class="comment">//如果这里这里还是零说明已经有序跳出循环</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序:"></a>选择排序:</h3><h4 id="时间复杂度-O-n-2-1"><a href="#时间复杂度-O-n-2-1" class="headerlink" title="时间复杂度:O(n^2)"></a>时间复杂度:O(n^2)<br></h4><p>选择排序则是：  </p>
+<ol>
+<li>初始状态：无序区为R[1..n]，有序区为空。</li>
+<li>第1趟排序<br>在无序区R[1..n]中选出关键字最小的记录R[k]，将它与无序区的第1个记录R[1]交换， <br>使R[1..1]和R[2..n]分别变为记录个数增加1个的新有序区和记录个数减少1个的新无序区。<br>……</li>
+<li>第i趟排序<br>第i趟排序开始时，当前有序区和无序区分别为R[1..i-1]和R(i..n）。该趟排序从当前无序区中选出关键字最小的记录R[k]，将它与无序区的第1个记录R交换，使R[1..i]和R分别变为记录个数增加1个的新有序区和记录个数减少1个的新无序区。 <br><br>{0~n}<br>[0]+{1~n}<br>[0,1]+{2~n}<br>[0,1,2]+{3~n}<br>[0,1…n-2]+{n-1,n}<br><br>[0,1…n-1]+{n}<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Select_Sort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> N)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N<span class="number">-1</span>;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> temp = i; <span class="comment">//i从零开始 temp从i开始</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;N;j++)&#123;</span><br><span class="line">		    <span class="comment">//如果确实存在元素比A[temp]小，则temp指向更小的那个元素</span></span><br><span class="line">			<span class="keyword">if</span>(A[j]&lt;A[temp]) temp=j;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//如果确实存在元素比A[i]小，则交换A[i],A[temp]</span></span><br><span class="line">		<span class="comment">//即当前A[i]为&#123;i~n&#125;无序元素的最小值。</span></span><br><span class="line">		<span class="keyword">if</span>(i!=temp) swap(A[i],A[temp]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="插入排序-也叫直接插入排序"><a href="#插入排序-也叫直接插入排序" class="headerlink" title="插入排序 也叫直接插入排序"></a>插入排序 也叫直接插入排序</h3><h4 id="时间复杂度-O-n-2-2"><a href="#时间复杂度-O-n-2-2" class="headerlink" title="时间复杂度:O(n^2)"></a>时间复杂度:O(n^2)<br></h4>插入排序则是依赖于前一次循环，已经排好序的状态进行插入,起始时比较为 A[0],A[1]<br>第一次循环之后[0,1]有序然后依次把{2~n}插入合适的位置，我们注意到在插入时每次循环只能操作一个数这是算法复杂度为O(n^2)的万恶之源 按照每次只能操作一个数  遍历一次O(n)*n个元素 = O(n^2) 因此我们引入了shell排序<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert_Sort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> N)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> p=<span class="number">1</span>;p&lt;N;p++)&#123;</span><br><span class="line">		<span class="keyword">int</span> temp=A[p];</span><br><span class="line">		<span class="keyword">int</span> i;</span><br><span class="line">		<span class="keyword">for</span>(i=p;i&gt;<span class="number">0</span>&amp;&amp;A[i<span class="number">-1</span>]&gt;temp;i--)&#123;<span class="comment">//这里保证了i能够从最大到最小</span></span><br><span class="line">			A[i]=A[i<span class="number">-1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		A[i]=temp;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//不过我更喜欢下面这种写法，条件写到if里边更容易理解</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert_Sort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> N)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> p=<span class="number">1</span>;p&lt;N;p++)&#123;</span><br><span class="line">		<span class="keyword">int</span> temp = A[p];</span><br><span class="line">		<span class="keyword">int</span> i;</span><br><span class="line">		<span class="keyword">for</span>(i=p;i&gt;<span class="number">0</span><span class="comment">/*&amp;&amp;A[i-1]&gt;temp*/</span>;i--)&#123;</span><br><span class="line">			<span class="keyword">if</span>(A[i<span class="number">-1</span>]&gt;temp) </span><br><span class="line">			    A[i] = A[i<span class="number">-1</span>];<span class="comment">//很明显要依次后移一位给temp腾出位置</span></span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			    <span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		A[i]=temp;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="希尔排序-也叫缩小增量插入排序"><a href="#希尔排序-也叫缩小增量插入排序" class="headerlink" title="希尔排序 也叫缩小增量插入排序"></a>希尔排序 也叫缩小增量插入排序</h3>希尔排序使用了步长为D的插入排序,每次循环都会生成(n%D)取上限个个有序序列<br><img src="https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=8f06d3ee2234349b600b66d7a8837eab/94cad1c8a786c917d51560cdc33d70cf3bc7572b.jpg" alt="希尔排序"><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert_Sort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> N,<span class="keyword">int</span> D)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Shell_Sort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> N)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> D=N/<span class="number">2</span>;D&gt;<span class="number">0</span>;D/=<span class="number">2</span>) insert_Sort(A,N,D);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert_Sort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> N,<span class="keyword">int</span> D=<span class="number">1</span>)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> p=D;p&lt;N;p++)&#123;</span><br><span class="line">		<span class="keyword">int</span> temp = A[p];</span><br><span class="line">		<span class="keyword">int</span> i;</span><br><span class="line">		<span class="keyword">for</span>(i=p;i&gt;=D<span class="comment">/*&amp;&amp;A[i-D]&gt;temp*/</span>;i-=D)&#123;</span><br><span class="line">			<span class="keyword">if</span>(A[i-D]&gt;temp) A[i]=A[i-D];</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		A[i]=temp;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" target="_blank" rel="noopener" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/09/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%B8%B8%E7%94%A8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/09/Tensoflow%E5%AE%9E%E8%B7%B5/" class="archive-article-date">
-  	<time datetime="2019-11-09T04:46:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-09</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/09/Tensoflow%E5%AE%9E%E8%B7%B5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Tensoflow实践</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/09/Tensoflow%E5%AE%9E%E8%B7%B5/">Tensoflow实践</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/08/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%85%A8%E6%8E%92%E5%88%97%E5%8F%8A%E5%87%BA%E5%85%A5%E6%A0%88%E9%A1%BA%E5%BA%8F/" class="archive-article-date">
-  	<time datetime="2019-11-08T08:40:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/08/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%85%A8%E6%8E%92%E5%88%97%E5%8F%8A%E5%87%BA%E5%85%A5%E6%A0%88%E9%A1%BA%E5%BA%8F/">算法入门——全排列及出入栈顺序</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/07/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E6%9C%80%E7%9F%AD%E7%BC%96%E8%BE%91%E8%B7%AF%E5%BE%84%E3%80%81%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%97%E4%B8%B2%E3%80%81%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/" class="archive-article-date">
-  	<time datetime="2019-11-07T13:24:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/07/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E6%9C%80%E7%9F%AD%E7%BC%96%E8%BE%91%E8%B7%AF%E5%BE%84%E3%80%81%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%97%E4%B8%B2%E3%80%81%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/">算法入门——最短编辑路径、最长公共子串、最长公共子序列</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -299,8 +343,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
