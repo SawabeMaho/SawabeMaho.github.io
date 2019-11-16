@@ -6,16 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>C++面试总结 | Sawabe Maho的个人博客</title>
+  <title>前端入门 | Sawabe Maho的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="C++面试总结   1、浅拷贝与深拷贝的区别 在使用已有类对象对新的类对象进行定义时会调用复制构造函数，若没有写自定义的复制构造函数的话，系统会调用默认构造函数(浅拷贝)——其结果时两个对象指向同一片内存空间，更改对象值会相互影响，甚至调用析构函数时只调用一次即把对象删除。为了避免这种现象需要写自定义的复制构造函数 123456class A&amp;#123;Public:    A();&#x2F;&#x2F;构造函数">
+  <meta name="description" content="JavaScript入门 #### JS是什么  1. 脚本语言：不需编译，直接运行 2. 解释性语言：遇到一行，解释一行 3. 动态类型语言：不需要限定变量类型         1.动态类型：动态类型语言是指在运行期间才去做数据类型检查的语言。 Python 2. 静态类型：静态类型语言是指数据类型是在编译期间检查的。 &amp;nbsp;C++ 4. 面向对象语言 5. 弱类型语言         1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++面试总结">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;14&#x2F;C-%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93&#x2F;index.html">
+<meta property="og:title" content="前端入门">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;16&#x2F;%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8&#x2F;index.html">
 <meta property="og:site_name" content="Sawabe Maho的个人博客">
-<meta property="og:description" content="C++面试总结   1、浅拷贝与深拷贝的区别 在使用已有类对象对新的类对象进行定义时会调用复制构造函数，若没有写自定义的复制构造函数的话，系统会调用默认构造函数(浅拷贝)——其结果时两个对象指向同一片内存空间，更改对象值会相互影响，甚至调用析构函数时只调用一次即把对象删除。为了避免这种现象需要写自定义的复制构造函数 123456class A&amp;#123;Public:    A();&#x2F;&#x2F;构造函数">
+<meta property="og:description" content="JavaScript入门 #### JS是什么  1. 脚本语言：不需编译，直接运行 2. 解释性语言：遇到一行，解释一行 3. 动态类型语言：不需要限定变量类型         1.动态类型：动态类型语言是指在运行期间才去做数据类型检查的语言。 Python 2. 静态类型：静态类型语言是指数据类型是在编译期间检查的。 &amp;nbsp;C++ 4. 面向对象语言 5. 弱类型语言         1">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-16T08:35:46.424Z">
+<meta property="og:updated_time" content="2019-11-16T16:34:48.401Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Sawabe Maho的个人博客" type="application/atom+xml">
@@ -152,76 +152,74 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-C-面试总结" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-前端入门" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      C++面试总结
+      前端入门
     </h1>
   
 
         
-        <a href="/2019/11/14/C-%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2019-11-14T01:23:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-14</time>
+        <a href="/2019/11/16/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/" class="archive-article-date">
+  	<time datetime="2019-11-16T09:33:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 style=" text-align: center;"> C++面试总结 </h3>
-<h5> 1、浅拷贝与深拷贝的区别</h5>
-在使用已有类对象对新的类对象进行定义时会调用复制构造函数，若没有写自定义的复制构造函数的话，系统会调用默认构造函数(浅拷贝)——其结果时两个对象指向同一片内存空间，更改对象值会相互影响，甚至调用析构函数时只调用一次即把对象删除。为了避免这种现象需要写自定义的复制构造函数
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line">Public:</span><br><span class="line">    A();<span class="comment">//构造函数</span></span><br><span class="line">    A(<span class="keyword">const</span> A &amp;a1 )<span class="comment">//复制构造函数</span></span><br><span class="line">    ~A();<span class="comment">//析构函数</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h5>2、const关键字的作用</h5>
-1. 修饰变量，说明该变量不可以被改变；</br>
-2. 修饰指针，分为指向常量的指针和指针常量；</br>const 与 *谁在前面就先读谁例如 </br>int const *p=5;//常量指针，指向常量，地址可以修改但指向的值不能修改 </br>int *const p=5;//指针常量，是一个
-3. 常量引用，经常用于形参类型，即避免了拷贝，又避免了函数对值的修改；</br>
-4. 修饰成员函数，说明该成员函数内不能修改成员变量。</br>
+        <h3 style="text-align:center;">JavaScript入门</h3>
+#### JS是什么
 
-<h5>3、static关键字的作用</h5>
-1. 修饰普通变量，修改变量的存储区域和生命周期，使变量存储在静态区，在 main 函数运行前就分配了空间，如果有初始值就用初始值初始化它，如果没有初始值系统用默认值初始化它。
-2. 修饰普通函数，表明函数的作用范围，仅在定义该函数的文件内才能使用。在多人开发项目时，为了防止与他人命名空间里的函数重名，可以将函数定位为 static。
-3. 修饰成员变量，修饰成员变量使所有的对象只保存一个该变量，而且不需要生成对象就可以访问该成员。
-4. 修饰成员函数，修饰成员函数使得不需要生成对象就可以访问该函数，但是在 static 函数内不能访问非静态成员。
+<h6>1. 脚本语言：不需编译，直接运行</h4>
+<h6>2. 解释性语言：遇到一行，解释一行</h4>
+<h6>3. 动态类型语言：不需要限定变量类型</h4>
+        1.动态类型：动态类型语言是指在运行期间才去做数据类型检查的语言。 Python<br> 2. 静态类型：静态类型语言是指数据类型是在编译期间检查的。 &nbsp;C++
+<h6>4. 面向对象语言</h4>
+<h6>5. 弱类型语言</h4>
+        1. 强类型是指不允许隐式变量类型转换 java<br>
+        2. 弱类型则允许隐式类型转换 c++ js
+---
+<h6>
+Js分三个部分
+1. ECMAScript标准：Js的基本语法<br>
+2. DOM <br>
+3. BOM <br>
+</h6>
+<h5>6个基本数据类型</h5>
+<p style="color:gray">
+1. number:数字类型(整数和小数)<br>
+2. string:字符串类型<br>
+3. boolean:布尔类型<br>
+4. null:空类型,一个对象指向为空，此时可以赋值为null</p>
+<p style="color:red">
+5. undefined:未定义<br></p>
 
-<h5>4、this 指针字的作用</h5>
-1. this 指针是一个隐含于每一个非静态成员函数中的特殊指针。它指向调用该成员函数的那个对象。
-2. 编译程序先将对象的地址赋给 this 指针，然后调用成员函数，每次成员函数存取数据成员时，都隐式使用 this 指针。
-3. 当一个成员函数被调用时，自动向它传递一个隐含的参数，该参数是一个指向这个成员函数所在的对象的指针。
-4. this 指针被隐含地声明为: ClassName *const this，这意味着不能给 this 指针赋值；在 ClassName 类的 const 成员函数中，this 指针的类型为：const ClassName* const，这说明不能对 this 指针所指向的这种对象是不可修改的（即不能对这种对象的数据成员进行赋值操作）；
-5. this 并不是一个常规变量，而是个右值，所以不能取得 this 的地址（不能 &this）。
-6. 在以下场景中，经常需要显式引用 this 指针：
-    1. 为实现对象的链式引用；
-    2. 为避免对同一对象进行赋值操作；
-    3. 在实现一些数据结构时，如 list。
-    4. 
-<h5> 5、inline 内联函数的作用</h5> 
-1. 相当于把内联函数里面的内容写在调用内联函数处；
-2. 相当于不用执行进入函数的步骤，直接执行函数体；
-3. 相当于宏，却比宏多了类型检查，真正具有函数特性；
-4. 编译器一般不内联包含循环、递归、switch 等复杂操作的内联函数；
-5. 在类声明中定义的函数，除了虚函数的其他函数都会自动隐式地当成内联函数。
-6. 虚函数可以是内联函数但不能使用多态。
+<pre><code>1. 变量声明，但没有赋值就使用 
+2. 函数没有明确返回值，若接受了，则接受变量为undefined
+3. undefined+num =&gt; NAN;</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> num;</span><br><span class="line"><span class="built_in">console</span>.log(num)</span><br><span class="line"><span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
+ <p style="color:red">6. object:对象<br></p>
+</p>
 
-<h5>6、volatile关键字的作用</h5>
-volatile int i = 10; 
-1. volatile 关键字是一种类型修饰符，用它声明的类型变量表示可以被某些编译器未知的因素（操作系统、硬件、其它线程等）更改。所以使用 volatile 告诉编译器不应对这样的对象进行优化。
-2. volatile 关键字声明的变量，每次访问时都必须从内存中取出值（没有被 volatile 修饰的变量，可能由于编译器的优化，从 CPU 寄存器中取值）
-3. const 可以是 volatile （如只读的状态寄存器）
-4. 指针可以是 volatile
-<h5>6、assert()关键字的作用</h5>
-assert()
-断言，是宏，而非函数。assert 宏的原型定义在 <assert.h>（C）、<cassert>（C++）中，其作用是如果它的条件返回错误，则终止程序执行。可以通过定义 NDEBUG 来关闭 assert，但是需要在源代码的开头，include <assert.h> 之前。
+<h3 id="1-number类型"><a href="#1-number类型" class="headerlink" title="1. number类型"></a>1. number类型</h3><p style="color:gray">
+number类型只有整数与小数两个格式
+</P>
 
-<p>assert() 使用</p>
-<p>#define NDEBUG          // 加上这行，则 assert 不可用<br>#include &lt;assert.h&gt;</p>
-<p>assert( p != NULL );    // assert 不可用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="number">10</span>;      <span class="comment">//整数</span></span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">10.1</span>;    <span class="comment">//小数</span></span><br><span class="line"><span class="keyword">var</span> num3 = <span class="built_in">Number</span>.MAX_VALUE;<span class="comment">//|最大值|</span></span><br><span class="line"><span class="keyword">var</span> num4 = <span class="built_in">Number</span>.MIN_VALUE;<span class="comment">//|最小值|</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> *JS入门实践.html:14 num1: 10</span></span><br><span class="line"><span class="comment"> *JS入门实践.html:14 num2: 10.1</span></span><br><span class="line"><span class="comment"> *JS入门实践.html:15 num3: 1.7976931348623157e+308</span></span><br><span class="line"><span class="comment"> *JS入门实践.html:16 num4: 5e-324</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 
+<h3 id="2-String类型"><a href="#2-String类型" class="headerlink" title="2. String类型"></a>2. String类型</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str1 = <span class="string">"Hello World"</span></span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">"10"</span></span><br><span class="line"><span class="keyword">var</span> str3 = <span class="string">"20"</span></span><br><span class="line"><span class="built_in">console</span>.log(str1+str2)</span><br><span class="line"><span class="built_in">console</span>.log(str3+str2)</span><br><span class="line"><span class="built_in">console</span>.log(str1-str2)</span><br><span class="line"><span class="built_in">console</span>.log(str1-str2)</span><br><span class="line"><span class="comment">/*string只有+是连接符号，- * /默认是number运算会进行隐式类型转换</span></span><br><span class="line"><span class="comment"> *Hello World10</span></span><br><span class="line"><span class="comment"> *2010</span></span><br><span class="line"><span class="comment"> *NaN</span></span><br><span class="line"><span class="comment"> *10</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h4> String 与 Number相互转化</h4>
+##### 1. parseInt()
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(<span class="string">"10"</span>));        <span class="comment">//10</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(<span class="string">"10a"</span>));       <span class="comment">//10</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(<span class="string">"a10"</span>));       <span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(<span class="string">"10.05a"</span>));    <span class="comment">//10</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(<span class="string">"a10.05"</span>));    <span class="comment">//NaN</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="2-parseFloat"><a href="#2-parseFloat" class="headerlink" title="2. parseFloat()"></a>2. parseFloat()</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">console.log(parseFloat(&quot;10&quot;));      //10</span><br><span class="line">console.log(parseFloat(&quot;10a&quot;));     //10</span><br><span class="line">console.log(parseFloat(&quot;a10&quot;));     //NaN</span><br><span class="line">console.log(parseFloat(&quot;10.05a&quot;));  //10.05</span><br><span class="line">console.log(parseFloat(&quot;a10.05&quot;));  //NaN</span><br></pre></td></tr></table></figure>
+<h5 id="3-Number"><a href="#3-Number" class="headerlink" title="3. Number()"></a>3. Number()</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">console.log(Number(&quot;10&quot;));		//10</span><br><span class="line">console.log(Number(&quot;10a&quot;));		//NaN</span><br><span class="line">console.log(Number(&quot;a10&quot;));		//NaN</span><br><span class="line">console.log(Number(&quot;10.05a&quot;));	//NaN</span><br><span class="line">console.log(Number(&quot;a10.05&quot;));	//NaN</span><br></pre></td></tr></table></figure>
+<h5 id="4-null与Undefined"><a href="#4-null与Undefined" class="headerlink" title="4. null与Undefined"></a>4. null与Undefined</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var str1;</span><br><span class="line">console.log(str1);			// undefined</span><br><span class="line">console.log(String(str1));  // undefined</span><br><span class="line">// console.log(str1.toString());//未定义无实例调用函数出错</span><br><span class="line"></span><br><span class="line">var num = 10;</span><br><span class="line">console.log(num);			//10</span><br><span class="line">console.log(String(num));   //10</span><br><span class="line">console.log(num.toString());//10</span><br><span class="line"></span><br><span class="line">var test = null;</span><br><span class="line">console.log(test);				 //null</span><br><span class="line">console.log(String(test));   	 //null</span><br><span class="line">// console.log(test.toString()); //出错</span><br></pre></td></tr></table></figure>
       
 
       
@@ -300,7 +298,7 @@ assert()
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/14/C-%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/16/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -314,18 +312,9 @@ assert()
   
 <nav id="article-nav">
   
-    <a href="/2019/11/16/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          前端入门
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/11/09/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%B8%B8%E7%94%A8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">算法入门——常用排序算法</div>
+    <a href="/2019/11/14/C-%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C++面试总结</div>
       <i class="icon-circle-right"></i>
     </a>
   
