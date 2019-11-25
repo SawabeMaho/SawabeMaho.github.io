@@ -6,13 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Sawabe Maho的个人博客</title>
+  <title>C++刷题——链表 | Sawabe Maho的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Sawabe Maho的个人博客">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;index.html">
+  <meta name="description" content="过几天参加校ACM比赛，这几天开始刷题。从单链表开始，先说明一下，C++中也有结构体但不同的是C++结构体可以有自己的构造函数。 C结构体 a) C语言中的结构体不能为空，否则会报错 1&amp;gt; error C2016: C 要求一个结构或联合至少有一个成员">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++刷题——链表">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;23&#x2F;C-%E5%88%B7%E9%A2%98%E2%80%94%E2%80%94%E9%93%BE%E8%A1%A8&#x2F;index.html">
 <meta property="og:site_name" content="Sawabe Maho的个人博客">
+<meta property="og:description" content="过几天参加校ACM比赛，这几天开始刷题。从单链表开始，先说明一下，C++中也有结构体但不同的是C++结构体可以有自己的构造函数。 C结构体 a) C语言中的结构体不能为空，否则会报错 1&amp;gt; error C2016: C 要求一个结构或联合至少有一个成员">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-25T02:47:30.571Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Sawabe Maho的个人博客" type="application/atom+xml">
@@ -149,238 +152,181 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-C-刷题——链表" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      C++刷题——链表
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/23/C-%E5%88%B7%E9%A2%98%E2%80%94%E2%80%94%E9%93%BE%E8%A1%A8/" class="archive-article-date">
+
+        
+        <a href="/2019/11/23/C-%E5%88%B7%E9%A2%98%E2%80%94%E2%80%94%E9%93%BE%E8%A1%A8/" class="archive-article-date">
   	<time datetime="2019-11-23T13:09:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-23</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/23/C-%E5%88%B7%E9%A2%98%E2%80%94%E2%80%94%E9%93%BE%E8%A1%A8/">C++刷题——链表</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>过几天参加校ACM比赛，这几天开始刷题。<br>从单链表开始，先说明一下，C++中也有结构体但不同的是C++结构体可以有自己的构造函数。</p>
+<h4>C结构体</h4>
+a) C语言中的结构体不能为空，否则会报错<br>
+1> error C2016: C 要求一个结构或联合至少有一个成员<br><a id="more"></a>
+b) C语言中的结构体只涉及到数据结构，而不涉及到算法，也就是说在C中数据结构和算法是分离的。换句话说就是C语言中的结构体只能定义成员变量，但是不能定义成员函数。然而在C++中既可以定义成员变量又可以定义成员函数， C++中的结构体和类体现了数据结构和算法的结合。
+不过虽然C语言的结构体中不能定义成员函数，但是却可以定义函数指针，不过函数指针本质上不是函数而是指针，所以总的来说C语言中的结构体只是一个复杂数据类型 ，只能定义成员变量，不能定义成员函数，不能用于面向对象编程。<br>
+c)C结构体使用时要加上struct，否则会报错未声明。
+<h4>C++结构体与类</h4>
+1. 两者的相同之处： 结构体中也可以包含函数；也可以定义public、private、protected数据成员；定义了结构体之后，可以用结构体名来创建对象。也就是说在C++当中，结构体中可以有成员变量，可以有成员函数，可以从别的类继承，也可以被别的类继承，可以有虚函数。总的一句话：class和struct的语法基本相同，从声明到使用，都很相似，但是struct的约束要比class多，理论上，struct能做到的class都能做到，但class能做到的stuct却不一定做的到。
 
-        <div class="article-info info-on-right">
-          
-          
+<ol start="2">
+<li>再来说说两者的区别：对于成员访问权限以及继承方式，class中默认的是private，而struct中则是public。class还可以用于表示模板类型，struct则不行。<br>注意struct是可以继承与被继承的。</li>
+</ol>
+<h4>第1题,单链表逆序</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> val;</span><br><span class="line">	LNode* next;</span><br><span class="line">	LNode(<span class="keyword">int</span> x):val(x),next(<span class="literal">NULL</span>)&#123;&#125;;</span><br><span class="line">&#125;LNode,*LList;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function">LList <span class="title">reverseList</span><span class="params">(LList head)</span></span>&#123;</span><br><span class="line">		LList p=<span class="literal">NULL</span>,new_head=<span class="literal">NULL</span>;</span><br><span class="line">		<span class="keyword">while</span>(head)&#123;</span><br><span class="line">			p = head-&gt;next;</span><br><span class="line">			head-&gt;next = new_head;</span><br><span class="line">			new_head = head;</span><br><span class="line">			head = p;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> new_head;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
+<h4>第2题,单链表逆序扩展，从m到n逆序</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function">LList <span class="title">reverseList</span><span class="params">(LList head,<span class="keyword">int</span> m,<span class="keyword">int</span> n)</span></span>&#123;<span class="comment">//这里是我自己写的，比较繁琐</span></span><br><span class="line">		LList p=<span class="literal">NULL</span>,new_head=<span class="literal">NULL</span>,q=head,mm,permm,nn,nextnn;</span><br><span class="line"><span class="comment">//q用来存储一开始的头节点，也是我们要返回的结点</span></span><br><span class="line">		<span class="keyword">int</span> i=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(m==<span class="number">1</span>)&#123;<span class="comment">//如果从头开始就不需要前驱了。</span></span><br><span class="line">		mm=head;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(head)&#123;</span><br><span class="line">		<span class="keyword">if</span>(i==m<span class="number">-1</span>)&#123;<span class="comment">//如果不是从头开始就需要前驱记录。</span></span><br><span class="line">			mm=head-&gt;next;</span><br><span class="line">			permm=head;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(i==n)&#123;<span class="comment">//记录结点n及n的后继结点。</span></span><br><span class="line">		nn=head;</span><br><span class="line">		nextnn=head-&gt;next;</span><br><span class="line">		nn-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		head=head-&gt;next;</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(mm)&#123;</span><br><span class="line">			p = mm-&gt;next;</span><br><span class="line">			mm-&gt;next = new_head;</span><br><span class="line">			new_head = mm;</span><br><span class="line">			mm = p;</span><br><span class="line">	&#125;</span><br><span class="line">		permm-&gt;next=new_head;</span><br><span class="line">	<span class="keyword">if</span>(m==<span class="number">1</span>)&#123;</span><br><span class="line">		q=new_head;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(new_head-&gt;next!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		new_head=new_head-&gt;next;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	new_head-&gt;next=nextnn;</span><br><span class="line">	<span class="keyword">return</span> q;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">LList <span class="title">reverseBetween</span><span class="params">(LList head,<span class="keyword">int</span> m,<span class="keyword">int</span> n)</span></span>&#123;<span class="comment">//这是老师的标准写法</span></span><br><span class="line">		<span class="keyword">int</span> change_len = n-m+<span class="number">1</span>;</span><br><span class="line">		LList pre_head=<span class="literal">NULL</span>;</span><br><span class="line">		LList result=head;</span><br><span class="line">		<span class="keyword">while</span>(head&amp;&amp;--m)&#123;</span><br><span class="line">			pre_head=head;</span><br><span class="line">			head=head-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">		LList modify_list_tail=head;</span><br><span class="line">		LList new_head=<span class="literal">NULL</span>;</span><br><span class="line">		<span class="keyword">while</span>(head&amp;&amp;change_len)&#123;</span><br><span class="line">			LList next=head-&gt;next;</span><br><span class="line">			head-&gt;next=new_head;</span><br><span class="line">			new_head=head;</span><br><span class="line">			head=next;</span><br><span class="line">			change_len--;</span><br><span class="line">		&#125;</span><br><span class="line">		modify_list_tail-&gt;next=head;</span><br><span class="line">		<span class="keyword">if</span>(pre_head)&#123;</span><br><span class="line">			pre_head-&gt;next=new_head;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			result=new_head;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4>第3题,求单链表交点</h4>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>&#123;</span></span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">		<span class="function">LList <span class="title">solve2list</span><span class="params">(LList heada,LList headaa)</span></span>&#123;</span><br><span class="line">			LList pa=heada,paa=headaa;</span><br><span class="line">		<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">1</span>,num=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(heada)&#123;</span><br><span class="line">			heada=heada-&gt;next;</span><br><span class="line">			i++; </span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(headaa)&#123;</span><br><span class="line">			headaa=headaa-&gt;next;</span><br><span class="line">			j++;</span><br><span class="line">		&#125;</span><br><span class="line">		heada=pa;headaa=paa;</span><br><span class="line">		<span class="keyword">if</span>(i&gt;j)&#123;</span><br><span class="line">			num=i-j;</span><br><span class="line">			<span class="keyword">while</span>(num--)&#123;</span><br><span class="line">				heada=heada-&gt;next;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(j&gt;i)&#123;</span><br><span class="line">			num=j-i;</span><br><span class="line">			<span class="keyword">while</span>(num--)&#123;</span><br><span class="line">				headaa=headaa-&gt;next;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(heada)&#123;</span><br><span class="line">			<span class="keyword">if</span>(heada==headaa)&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			heada=heada-&gt;next;</span><br><span class="line">			headaa=headaa-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> heada;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4>第4题,求环问题</h4>
+1. 使用set,由于set不能重复插入，只要遍历单链表并插入set后find(head)!=set.end()就说明上一步没有插入，也就是说上一步的head已经在集合里了。返回head即可
+<p,style="color:red">set.find()未找到返回的迭代器为set.end()</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>&#123;</span></span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">		<span class="function">LList <span class="title">detectCycle</span><span class="params">(LList head)</span></span>&#123;</span><br><span class="line">			<span class="built_in">set</span>&lt;LList&gt; node_set;</span><br><span class="line">			<span class="keyword">while</span>(head)&#123;</span><br><span class="line">				<span class="keyword">if</span>(node_set.<span class="built_in">find</span>(head)!=node_set.<span class="built_in">end</span>())&#123;</span><br><span class="line">					<span class="keyword">return</span> head;</span><br><span class="line">				&#125;</span><br><span class="line">				node_set.insert(head);</span><br><span class="line">				head=head-&gt;next;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" target="_blank" rel="noopener" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/23/C-%E5%88%B7%E9%A2%98%E2%80%94%E2%80%94%E9%93%BE%E8%A1%A8/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/18/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8-%E4%BA%8C/" class="archive-article-date">
-  	<time datetime="2019-11-18T11:57:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-18</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/18/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8-%E4%BA%8C/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前端入门(二)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/18/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8-%E4%BA%8C/">前端入门(二)</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/16/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/" class="archive-article-date">
-  	<time datetime="2019-11-16T09:33:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/16/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/">前端入门(一)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/14/C-%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2019-11-14T01:23:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/14/C-%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/">C++面试总结</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/09/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%B8%B8%E7%94%A8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2019-11-09T13:28:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/09/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%B8%B8%E7%94%A8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">算法入门——常用排序算法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/09/Tensoflow%E5%AE%9E%E8%B7%B5/" class="archive-article-date">
-  	<time datetime="2019-11-09T04:46:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/09/Tensoflow%E5%AE%9E%E8%B7%B5/">Tensoflow实践</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/08/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%85%A8%E6%8E%92%E5%88%97%E5%8F%8A%E5%87%BA%E5%85%A5%E6%A0%88%E9%A1%BA%E5%BA%8F/" class="archive-article-date">
-  	<time datetime="2019-11-08T08:40:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/08/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%85%A8%E6%8E%92%E5%88%97%E5%8F%8A%E5%87%BA%E5%85%A5%E6%A0%88%E9%A1%BA%E5%BA%8F/">算法入门——全排列及出入栈顺序</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/07/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E6%9C%80%E7%9F%AD%E7%BC%96%E8%BE%91%E8%B7%AF%E5%BE%84%E3%80%81%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%97%E4%B8%B2%E3%80%81%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/" class="archive-article-date">
-  	<time datetime="2019-11-07T13:24:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/07/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E6%9C%80%E7%9F%AD%E7%BC%96%E8%BE%91%E8%B7%AF%E5%BE%84%E3%80%81%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%97%E4%B8%B2%E3%80%81%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/">算法入门——最短编辑路径、最长公共子串、最长公共子序列</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -403,8 +349,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
