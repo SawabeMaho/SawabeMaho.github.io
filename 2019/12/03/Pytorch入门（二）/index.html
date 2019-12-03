@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Pytorch入门（二） | Sawabe Maho的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="下面这个例子是一个神经网络从从numpy到Pytorch逐渐过度的过程，让我们来一窥Pytorch那些方便的API首先我们先来定义一个numpy下的神经网络 1234567891011121314151617181920212223242526272829303132333435363738# learn_1.pyimport numpy as np# 热身 # 用numpy实现一个神经网络# h">
+  <meta name="description" content="下面这个例子是一个神经网络从从numpy到Pytorch逐渐过度的过程，让我们来一窥Pytorch那些方便的API首先我们先来定义一个numpy下的神经网络">
 <meta name="keywords" content="Pytorch 深度学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pytorch入门（二）">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;03&#x2F;Pytorch%E5%85%A5%E9%97%A8%EF%BC%88%E4%BA%8C%EF%BC%89&#x2F;index.html">
 <meta property="og:site_name" content="Sawabe Maho的个人博客">
-<meta property="og:description" content="下面这个例子是一个神经网络从从numpy到Pytorch逐渐过度的过程，让我们来一窥Pytorch那些方便的API首先我们先来定义一个numpy下的神经网络 1234567891011121314151617181920212223242526272829303132333435363738# learn_1.pyimport numpy as np# 热身 # 用numpy实现一个神经网络# h">
+<meta property="og:description" content="下面这个例子是一个神经网络从从numpy到Pytorch逐渐过度的过程，让我们来一窥Pytorch那些方便的API首先我们先来定义一个numpy下的神经网络">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U6a426a92f9d24355a8c1b30ca67826aen.jpg">
-<meta property="og:updated_time" content="2019-12-03T05:26:46.784Z">
+<meta property="og:updated_time" content="2019-12-03T05:28:42.877Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U6a426a92f9d24355a8c1b30ca67826aen.jpg">
   
@@ -176,6 +176,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>下面这个例子是一个神经网络从从numpy到Pytorch逐渐过度的过程，让我们来一窥Pytorch那些方便的API<br><br>首先我们先来定义一个numpy下的神经网络<br></p>
+<a id="more"></a>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># learn_1.py</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment"># 热身 </span></span><br><span class="line"><span class="comment"># 用numpy实现一个神经网络</span></span><br><span class="line"><span class="comment"># h = w_1 * x + b_1</span></span><br><span class="line"><span class="comment"># a = max(0,h)</span></span><br><span class="line"><span class="comment"># y_pred = w_2 * a + b_2</span></span><br><span class="line"><span class="comment"># 输入 N=64 个，每个输入维度D_in=1000维，隐含层维度100维，输出10维</span></span><br><span class="line">N,D_in,H,D_out = <span class="number">64</span>,<span class="number">1000</span>,<span class="number">100</span>,<span class="number">10</span></span><br><span class="line">x = np.random.randn(N,D_in)</span><br><span class="line">y = np.random.randn(N,D_out)</span><br><span class="line"></span><br><span class="line">w1 = np.random.randn(D_in,H)</span><br><span class="line">w2 = np.random.randn(H,D_out)</span><br><span class="line"></span><br><span class="line">learning_rate = <span class="number">1e-6</span></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">500</span>):</span><br><span class="line">	<span class="comment">#Forward pass 前向传播</span></span><br><span class="line">	h = x.dot(w1) <span class="comment">#(N行D_in列)*(Din行H列) = N行H列</span></span><br><span class="line">	h_relu = np.maximum(h,<span class="number">0</span>)</span><br><span class="line">	y_pred = h_relu.dot(w2)</span><br><span class="line"></span><br><span class="line">	<span class="comment">#compute loss 损失函数</span></span><br><span class="line">	loss = np.square(y_pred-y).sum()</span><br><span class="line">	print(t,<span class="string">":"</span>,loss)</span><br><span class="line"></span><br><span class="line">	<span class="comment">#Backward pass 反向传播</span></span><br><span class="line">	<span class="comment">#	compute gradiet</span></span><br><span class="line">	grad_y_pred = <span class="number">2.0</span>*(y_pred-y)</span><br><span class="line">	grad_w2 = h_relu.T.dot(grad_y_pred)</span><br><span class="line">	grad_h_relu = grad_y_pred.dot(w2.T)</span><br><span class="line">	grad_h = grad_h_relu.copy()</span><br><span class="line">	grad_h[h&lt;<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	grad_w1 = x.T.dot(grad_h)</span><br><span class="line"></span><br><span class="line">	<span class="comment">#	updata weight of w1 and w2 更新权重</span></span><br><span class="line">	w1 -= learning_rate * grad_w1</span><br><span class="line">	w2 -= learning_rate * grad_w2</span><br></pre></td></tr></table></figure>
 <h6>运行结果:</h6>
 <img src="https://ae01.alicdn.com/kf/U6a426a92f9d24355a8c1b30ca67826aen.jpg" alt="learn_1.py" title="learn_1.py运行结果">
@@ -415,11 +416,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">Pytorch 深度学习</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">Pytorch</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">Pytorch</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">Pytorch 深度学习</a>
               </li>
             
             <div class="clearfix"></div>
