@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Sawabe Maho的个人博客</title>
+  <title>Pytorch入门 | Sawabe Maho的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Sawabe Maho的个人博客">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;index.html">
+  <meta name="description" content="毕业设计选了深度学习方向，虽然一开始有TensorFlow学习经验，但没有深入，这次老师土建Pytorch进行深度学习的入门，所以从头开始了Pytorch学习，学习过程会记录下来形成一个系列。首先Pytorch的安装，官网最低支持CUDA9.2，而由于我的TensorFlow安装较早使用的是CUDA9.0系列，所以一开始安装了CPU版本，但CPU版太慢了，就在网上搜了下找了whl文件进行安装。等学">
+<meta name="keywords" content="Pytorch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pytorch入门">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;02&#x2F;Pytorch%E5%85%A5%E9%97%A8&#x2F;index.html">
 <meta property="og:site_name" content="Sawabe Maho的个人博客">
+<meta property="og:description" content="毕业设计选了深度学习方向，虽然一开始有TensorFlow学习经验，但没有深入，这次老师土建Pytorch进行深度学习的入门，所以从头开始了Pytorch学习，学习过程会记录下来形成一个系列。首先Pytorch的安装，官网最低支持CUDA9.2，而由于我的TensorFlow安装较早使用的是CUDA9.0系列，所以一开始安装了CPU版本，但CPU版太慢了，就在网上搜了下找了whl文件进行安装。等学">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-03T04:40:59.219Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Sawabe Maho的个人博客" type="application/atom+xml">
@@ -149,74 +153,63 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Pytorch入门" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/03/Pytorch%E5%85%A5%E9%97%A8%EF%BC%88%E4%BA%8C%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2019-12-03T04:41:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/03/Pytorch%E5%85%A5%E9%97%A8%EF%BC%88%E4%BA%8C%EF%BC%89/">Pytorch入门（二）</a>
+    <h1 class="article-title" itemprop="name">
+      Pytorch入门
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">Pytorch 深度学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/02/Pytorch%E5%85%A5%E9%97%A8/" class="archive-article-date">
+        
+        <a href="/2019/12/02/Pytorch%E5%85%A5%E9%97%A8/" class="archive-article-date">
   	<time datetime="2019-12-02T11:43:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-02</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/02/Pytorch%E5%85%A5%E9%97%A8/">Pytorch入门</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>毕业设计选了深度学习方向，虽然一开始有TensorFlow学习经验，但没有深入，这次老师土建Pytorch进行深度学习的入门，所以从头开始了Pytorch学习，学习过程会记录下来形成一个系列。</br><br>首先Pytorch的安装，官网最低支持CUDA9.2，而由于我的TensorFlow安装较早使用的是CUDA9.0系列，所以一开始安装了CPU版本，但CPU版太慢了，就在网上搜了下找了whl文件进行安装。</br><br>等学期结束重装系统在写一下如何安装CUDA。</br><a id="more"></a><br>CUDA9.0：</br><br>在cmd下<br>输入：<br> pip install <a href="https://download.pytorch.org/whl/cu90/torch-1.1.0-cp36-cp36m-win_amd64.whl" target="_blank" rel="noopener">https://download.pytorch.org/whl/cu90/torch-1.1.0-cp36-cp36m-win_amd64.whl</a><br>输入：<br> pip install <a href="https://download.pytorch.org/whl/cu90/torchvision-0.3.0-cp36-cp36m-win_amd64.whl" target="_blank" rel="noopener">https://download.pytorch.org/whl/cu90/torchvision-0.3.0-cp36-cp36m-win_amd64.whl</a><br>建议迅雷下载后直接pip install xxx.whl文件防止网速问题安装失败<br>CUDA9.2：</br><br>pip install torch==1.3.1+cu92 torchvision==0.4.2+cu92 -f <a href="https://download.pytorch.org/whl/torch_stable.html" target="_blank" rel="noopener">https://download.pytorch.org/whl/torch_stable.html</a><br>安装完成后测试一下,在CMD进入PYthon环境。</br></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="keyword">import</span> torch</span><br><span class="line">&gt;&gt;&gt;print(torch.__version__) <span class="comment">#安装成功</span></span><br><span class="line"><span class="number">1.1</span><span class="number">.0</span></span><br><span class="line">&gt;&gt;&gt;print(th.cuda.is_available()) <span class="comment">#可以使用GPU,CPU版返回False</span></span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<p>安装完成，开始学习，个人是安装B站的一个系列视频入门的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">print(torch.__version__)</span><br><span class="line"></span><br><span class="line"><span class="comment">#初始化一个矩阵，矩阵值为随即在</span></span><br><span class="line">x = torch.empty(<span class="number">5</span>,<span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">print(x.dtype)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">tensor([[0., 0., 0.],</span></span><br><span class="line"><span class="string">        [0., 0., 0.],</span></span><br><span class="line"><span class="string">        [0., 0., 0.],</span></span><br><span class="line"><span class="string">        [0., 0., 0.],</span></span><br><span class="line"><span class="string">        [0., 0., 0.]])</span></span><br><span class="line"><span class="string">torch.float32</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment">#初始化一个矩阵，矩阵值为全0</span></span><br><span class="line">x = torch.zeros(<span class="number">5</span>,<span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">print(x.dtype)</span><br><span class="line">print(x.size())</span><br><span class="line">print(x.shape)</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">tensor([[0., 0., 0.],</span></span><br><span class="line"><span class="string">        [0., 0., 0.],</span></span><br><span class="line"><span class="string">        [0., 0., 0.],</span></span><br><span class="line"><span class="string">        [0., 0., 0.],</span></span><br><span class="line"><span class="string">        [0., 0., 0.]])</span></span><br><span class="line"><span class="string">torch.float32</span></span><br><span class="line"><span class="string">torch.Size([5, 3])</span></span><br><span class="line"><span class="string">torch.Size([5, 3])</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">x = torch.ones(<span class="number">4</span>,<span class="number">4</span>)</span><br><span class="line">y = torch.ones(<span class="number">4</span>,<span class="number">4</span>)</span><br><span class="line">print(x+y)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">tensor([[2., 2., 2., 2.],</span></span><br><span class="line"><span class="string">        [2., 2., 2., 2.],</span></span><br><span class="line"><span class="string">        [2., 2., 2., 2.],</span></span><br><span class="line"><span class="string">        [2., 2., 2., 2.]])</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">x = torch.rand(<span class="number">4</span>,<span class="number">4</span>)<span class="comment">#0~1之间的随机数</span></span><br><span class="line">print(x)</span><br><span class="line"></span><br><span class="line">x = torch.randn(<span class="number">4</span>,<span class="number">4</span>)<span class="comment">#不太清楚是什么随机数</span></span><br><span class="line">print(x)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">tensor([[0.1878, 0.3177, 0.0996, 0.8130],</span></span><br><span class="line"><span class="string">        [0.4990, 0.9609, 0.1993, 0.1353],</span></span><br><span class="line"><span class="string">        [0.0321, 0.6768, 0.6564, 0.8669],</span></span><br><span class="line"><span class="string">        [0.8732, 0.5818, 0.0147, 0.3794]])</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">tensor([[-1.0331, -0.7468,  0.4159, -0.7736],</span></span><br><span class="line"><span class="string">        [-0.0991,  0.1022,  0.7733, -0.3612],</span></span><br><span class="line"><span class="string">        [ 0.1564, -1.5807, -2.9923,  1.4132],</span></span><br><span class="line"><span class="string">        [-0.9494, -0.3343,  0.8848,  1.4371]])</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">print(x.view(<span class="number">2</span>,<span class="number">8</span>))<span class="comment">#类似于resize，reshape</span></span><br><span class="line">print(x[<span class="number">3</span>,<span class="number">3</span>])<span class="comment">#tensor(-0.2745) 这是一个tensor</span></span><br><span class="line">print(x[<span class="number">3</span>,<span class="number">3</span>].item())<span class="comment">#-0.27454930543899536 这是一个数</span></span><br></pre></td></tr></table></figure>
+<p>numpy与torch数据类型相互转化</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch <span class="keyword">as</span> th</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment">#从torch到numpy tensor===&gt;array</span></span><br><span class="line">a = th.ones(<span class="number">5</span>)</span><br><span class="line">e = th.ones(<span class="number">5</span>)</span><br><span class="line">b = a.numpy()</span><br><span class="line">print(a,a.dtype)</span><br><span class="line">print(b,b.dtype)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">tensor([1., 1., 1., 1., 1.]) torch.float32</span></span><br><span class="line"><span class="string">[1. 1. 1. 1. 1.] float32</span></span><br><span class="line"><span class="string">此时a与b指向同一块内存，一改全改</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment">#从numpy到torch array===&gt;tensor</span></span><br><span class="line">c = np.ones(<span class="number">5</span>)</span><br><span class="line">d = th.from_numpy(c)</span><br><span class="line">print(c,c.dtype)</span><br><span class="line">print(d,d.dtype)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">[1. 1. 1. 1. 1.] float64</span></span><br><span class="line"><span class="string">tensor([1., 1., 1., 1., 1.], dtype=torch.float64) torch.float64</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<p>使用GPU进行加速</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if(th.cuda.is_available()):</span><br><span class="line">	device = th.device(&quot;cuda&quot;)</span><br><span class="line">	a = a.to(device)</span><br><span class="line">	e = e.to(device)</span><br><span class="line">	z = a + e</span><br><span class="line">	print(z)</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" target="_blank" rel="noopener" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -228,262 +221,115 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/02/Pytorch%E5%85%A5%E9%97%A8/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/26/C-%E5%88%B7%E9%A2%98%E2%80%94%E2%80%94%E8%B4%AA%E5%BF%83/" class="archive-article-date">
-  	<time datetime="2019-11-26T11:11:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-26</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/12/03/Pytorch%E5%85%A5%E9%97%A8%EF%BC%88%E4%BA%8C%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Pytorch入门（二）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/26/C-%E5%88%B7%E9%A2%98%E2%80%94%E2%80%94%E8%B4%AA%E5%BF%83/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C++刷题——贪心</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/26/C-%E5%88%B7%E9%A2%98%E2%80%94%E2%80%94%E8%B4%AA%E5%BF%83/">C++刷题——贪心</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/23/C-%E5%88%B7%E9%A2%98%E2%80%94%E2%80%94%E9%93%BE%E8%A1%A8/" class="archive-article-date">
-  	<time datetime="2019-11-23T13:09:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/23/C-%E5%88%B7%E9%A2%98%E2%80%94%E2%80%94%E9%93%BE%E8%A1%A8/">C++刷题——链表</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/18/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8-%E4%BA%8C/" class="archive-article-date">
-  	<time datetime="2019-11-18T11:57:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/18/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8-%E4%BA%8C/">前端入门(二)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/16/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/" class="archive-article-date">
-  	<time datetime="2019-11-16T09:33:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/16/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/">前端入门(一)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/14/C-%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2019-11-14T01:23:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/14/C-%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/">C++面试总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/09/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%B8%B8%E7%94%A8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2019-11-09T13:28:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/09/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%B8%B8%E7%94%A8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">算法入门——常用排序算法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/09/Tensoflow%E5%AE%9E%E8%B7%B5/" class="archive-article-date">
-  	<time datetime="2019-11-09T04:46:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/09/Tensoflow%E5%AE%9E%E8%B7%B5/">Tensoflow实践</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/08/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%85%A8%E6%8E%92%E5%88%97%E5%8F%8A%E5%87%BA%E5%85%A5%E6%A0%88%E9%A1%BA%E5%BA%8F/" class="archive-article-date">
-  	<time datetime="2019-11-08T08:40:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/08/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%85%A8%E6%8E%92%E5%88%97%E5%8F%8A%E5%87%BA%E5%85%A5%E6%A0%88%E9%A1%BA%E5%BA%8F/">算法入门——全排列及出入栈顺序</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/07/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E6%9C%80%E7%9F%AD%E7%BC%96%E8%BE%91%E8%B7%AF%E5%BE%84%E3%80%81%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%97%E4%B8%B2%E3%80%81%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/" class="archive-article-date">
-  	<time datetime="2019-11-07T13:24:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/07/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E6%9C%80%E7%9F%AD%E7%BC%96%E8%BE%91%E8%B7%AF%E5%BE%84%E3%80%81%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%97%E4%B8%B2%E3%80%81%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/">算法入门——最短编辑路径、最长公共子串、最长公共子序列</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -506,8 +352,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

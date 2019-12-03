@@ -16,7 +16,7 @@
 <meta property="og:description" content="过几天参加校ACM比赛，这几天开始刷题。从单链表开始，先说明一下，C++中也有结构体但不同的是C++结构体可以有自己的构造函数。 C结构体 a) C语言中的结构体不能为空，否则会报错 1&amp;gt; error C2016: C 要求一个结构或联合至少有一个成员">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;23&#x2F;C-%E5%88%B7%E9%A2%98%E2%80%94%E2%80%94%E9%93%BE%E8%A1%A8&#x2F;%E5%8D%95%E9%93%BE%E8%A1%A8%E6%B1%82%E7%8E%AF.jpg">
-<meta property="og:updated_time" content="2019-11-26T06:50:17.766Z">
+<meta property="og:updated_time" content="2019-11-27T00:01:43.959Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;23&#x2F;C-%E5%88%B7%E9%A2%98%E2%80%94%E2%80%94%E9%93%BE%E8%A1%A8&#x2F;%E5%8D%95%E9%93%BE%E8%A1%A8%E6%B1%82%E7%8E%AF.jpg">
   
@@ -203,7 +203,7 @@ c)C结构体使用时要加上struct，否则会报错未声明。
 <li>使用set,由于set不能重复插入，只要遍历单链表并插入set后find(head)!=set.end()就说明上一步没有插入，也就是说上一步的head已经在集合里了。返回head即可<p style="color:green">set.find()未找到返回的迭代器为set.end()</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function">LList <span class="title">detectCycle</span><span class="params">(LList head)</span></span>&#123;</span><br><span class="line">		<span class="built_in">set</span>&lt;LList&gt; node_set;</span><br><span class="line">		<span class="keyword">while</span>(head)&#123;</span><br><span class="line">			<span class="keyword">if</span>(node_set.<span class="built_in">find</span>(head)!=node_set.<span class="built_in">end</span>())&#123;</span><br><span class="line">				<span class="keyword">return</span> head;<span class="comment">//如果找到了第一次找到既是环的起始</span></span><br><span class="line">			&#125;</span><br><span class="line">			node_set.insert(head);</span><br><span class="line">			head=head-&gt;next;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
 <li>快慢指针赛跑，如果快慢指针相遇且不是末结点，则说明有环，记录当前结点为meet，两个指针同时从head和meet出发，相遇则为起始结点<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">LList <span class="title">detectCycle2</span><span class="params">(LList head)</span></span>&#123;</span><br><span class="line">	LList h=head,meet=<span class="literal">NULL</span>;</span><br><span class="line">	LList h2=head;</span><br><span class="line">	<span class="keyword">while</span>(head)&#123;</span><br><span class="line">		head = head-&gt;next;</span><br><span class="line">		h2 = h2-&gt;next-&gt;next;</span><br><span class="line">		<span class="keyword">if</span>(head==h2)&#123;</span><br><span class="line">			meet = head;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(meet==h) <span class="keyword">break</span>;</span><br><span class="line">			meet = meet-&gt;next;</span><br><span class="line">			h = h-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">return</span> meet;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src="/2019/11/23/C-%E5%88%B7%E9%A2%98%E2%80%94%E2%80%94%E9%93%BE%E8%A1%A8/%E5%8D%95%E9%93%BE%E8%A1%A8%E6%B1%82%E7%8E%AF.jpg" class="" title="“单链表求环”}&lt;&#x2F;li&gt; &lt;&#x2F;ol&gt; &lt;p&gt;&lt;img src=%E5%8D%95%E9%93%BE%E8%A1%A8%E6%B1%82%E7%8E%AF.jpg alt=&gt;&lt;&#x2F;p&gt;">
+<img src="/2019/11/23/C-%E5%88%B7%E9%A2%98%E2%80%94%E2%80%94%E9%93%BE%E8%A1%A8/%E5%8D%95%E9%93%BE%E8%A1%A8%E6%B1%82%E7%8E%AF.jpg" class="" title="“单链表求环”}&lt;&#x2F;li&gt; &lt;&#x2F;ol&gt;">
       
 
       
@@ -295,6 +295,15 @@ c)C结构体使用时要加上struct，否则会报错未声明。
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/11/26/C-%E5%88%B7%E9%A2%98%E2%80%94%E2%80%94%E8%B4%AA%E5%BF%83/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          C++刷题——贪心
+        
+      </div>
+    </a>
   
   
     <a href="/2019/11/18/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8-%E4%BA%8C/" id="article-nav-older" class="article-nav-link-wrap">
@@ -422,6 +431,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">Pytorch 深度学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">Pytorch</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>

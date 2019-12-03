@@ -151,6 +151,249 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Pytorch入门（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/03/Pytorch%E5%85%A5%E9%97%A8%EF%BC%88%E4%BA%8C%EF%BC%89/">Pytorch入门（二）</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/03/Pytorch%E5%85%A5%E9%97%A8%EF%BC%88%E4%BA%8C%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2019-12-03T04:41:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>下面这个例子是一个神经网络从从numpy到Pytorch逐渐过度的过程，让我们来一窥Pytorch那些方便的API<br><br>首先我们先来定义一个numpy下的神经网络<br></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># learn_1.py</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment"># 热身 </span></span><br><span class="line"><span class="comment"># 用numpy实现一个神经网络</span></span><br><span class="line"><span class="comment"># h = w_1 * x + b_1</span></span><br><span class="line"><span class="comment"># a = max(0,h)</span></span><br><span class="line"><span class="comment"># y_pred = w_2 * a + b_2</span></span><br><span class="line"><span class="comment"># 输入 N=64 个，每个输入维度D_in=1000维，隐含层维度100维，输出10维</span></span><br><span class="line">N,D_in,H,D_out = <span class="number">64</span>,<span class="number">1000</span>,<span class="number">100</span>,<span class="number">10</span></span><br><span class="line">x = np.random.randn(N,D_in)</span><br><span class="line">y = np.random.randn(N,D_out)</span><br><span class="line"></span><br><span class="line">w1 = np.random.randn(D_in,H)</span><br><span class="line">w2 = np.random.randn(H,D_out)</span><br><span class="line"></span><br><span class="line">learning_rate = <span class="number">1e-6</span></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">500</span>):</span><br><span class="line">	<span class="comment">#Forward pass 前向传播</span></span><br><span class="line">	h = x.dot(w1) <span class="comment">#(N行D_in列)*(Din行H列) = N行H列</span></span><br><span class="line">	h_relu = np.maximum(h,<span class="number">0</span>)</span><br><span class="line">	y_pred = h_relu.dot(w2)</span><br><span class="line"></span><br><span class="line">	<span class="comment">#compute loss 损失函数</span></span><br><span class="line">	loss = np.square(y_pred-y).sum()</span><br><span class="line">	print(t,<span class="string">":"</span>,loss)</span><br><span class="line"></span><br><span class="line">	<span class="comment">#Backward pass 反向传播</span></span><br><span class="line">	<span class="comment">#	compute gradiet</span></span><br><span class="line">	grad_y_pred = <span class="number">2.0</span>*(y_pred-y)</span><br><span class="line">	grad_w2 = h_relu.T.dot(grad_y_pred)</span><br><span class="line">	grad_h_relu = grad_y_pred.dot(w2.T)</span><br><span class="line">	grad_h = grad_h_relu.copy()</span><br><span class="line">	grad_h[h&lt;<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	grad_w1 = x.T.dot(grad_h)</span><br><span class="line"></span><br><span class="line">	<span class="comment">#	updata weight of w1 and w2 更新权重</span></span><br><span class="line">	w1 -= learning_rate * grad_w1</span><br><span class="line">	w2 -= learning_rate * grad_w2</span><br></pre></td></tr></table></figure>
+<h6>运行结果:</h6>
+<img src="https://ae01.alicdn.com/kf/U6a426a92f9d24355a8c1b30ca67826aen.jpg" alt="learn_1.py" title="learn_1.py运行结果">
+用Pytorch实现一个网络非常简单，定义模型后调用就可以了。
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> torch <span class="keyword">as</span> th</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="comment"># 用Torch实现一个神经网络</span></span><br><span class="line"><span class="comment"># h = w_1 * x + b_1</span></span><br><span class="line"><span class="comment"># a = max(0,h)</span></span><br><span class="line"><span class="comment"># y_pred = w_2 * a + b_2</span></span><br><span class="line"><span class="comment"># 输入 N=64 个，每个输入维度D_in=1000维，隐含层维度100维，输出10维</span></span><br><span class="line">N,D_in,H,D_out = <span class="number">64</span>,<span class="number">1000</span>,<span class="number">100</span>,<span class="number">10</span></span><br><span class="line">x = th.randn(N,D_in,requires_grad=<span class="literal">True</span>)</span><br><span class="line">y = th.randn(N,D_out,requires_grad=<span class="literal">True</span>)</span><br><span class="line"><span class="comment">#直接定义模型及损失函数</span></span><br><span class="line">model = th.nn.Sequential(</span><br><span class="line">	th.nn.Linear(D_in,H,bias=<span class="literal">False</span>),</span><br><span class="line">	th.nn.ReLU(),</span><br><span class="line">	th.nn.Linear(H,D_out,bias=<span class="literal">False</span>),</span><br><span class="line">	)</span><br><span class="line">loss_fn = nn.MSELoss(reduction=<span class="string">'sum'</span>)</span><br><span class="line">learning_rate = <span class="number">1e-3</span></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">500</span>):</span><br><span class="line">	<span class="comment">#Forward pass</span></span><br><span class="line">	<span class="comment"># h = x.mm(w1) #(N行D_in列)*(Din行H列) = N行H列</span></span><br><span class="line">	<span class="comment"># h_relu = h.clamp(min=0)</span></span><br><span class="line">	<span class="comment"># y_pred = h_relu.mm(w2)</span></span><br><span class="line"></span><br><span class="line">	y_pred = model(x)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">#======compute loss=======</span></span><br><span class="line">	loss = loss_fn(y_pred,y)</span><br><span class="line">	print(t,<span class="string">":"</span>,loss.item())</span><br><span class="line">	model.zero_grad()</span><br><span class="line">	<span class="comment">#Backward pass</span></span><br><span class="line">	<span class="comment">#	compute gradiet</span></span><br><span class="line">	loss.backward()</span><br><span class="line"></span><br><span class="line">	<span class="comment">#	updata weight of w1 and w2</span></span><br><span class="line">	<span class="keyword">with</span> th.no_grad():</span><br><span class="line">		<span class="keyword">for</span> param <span class="keyword">in</span> model.parameters():</span><br><span class="line">			param-=learning_rate * param.grad</span><br></pre></td></tr></table></figure>
+也可以定义自己的model
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> torch <span class="keyword">as</span> th</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="comment"># 热身</span></span><br><span class="line"><span class="comment"># 用numpy实现一个神经网络</span></span><br><span class="line"><span class="comment"># h = w_1 * x + b_1</span></span><br><span class="line"><span class="comment"># a = max(0,h)</span></span><br><span class="line"><span class="comment"># y_pred = w_2 * a + b_2</span></span><br><span class="line"><span class="comment"># 输入 N 个，1000维，隐含层100维，输出10维</span></span><br><span class="line">N,D_in,H,D_out = <span class="number">64</span>,<span class="number">1000</span>,<span class="number">100</span>,<span class="number">10</span></span><br><span class="line">x = th.randn(N,D_in,requires_grad=<span class="literal">True</span>)</span><br><span class="line">y = th.randn(N,D_out,requires_grad=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyModel</span><span class="params">(th.nn.Module)</span>:</span><span class="comment"># 只有这里使用了一下面向对象思想，定义了继承自tf.nn.Module的自建类</span></span><br><span class="line">	<span class="string">"""docstring for MyModel"""</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, D_in,H,D_out)</span>:</span></span><br><span class="line">		super(MyModel, self).__init__()</span><br><span class="line">		self.linear1 = th.nn.Linear(D_in,H)</span><br><span class="line">		self.linear2 = th.nn.Linear(H,D_out)</span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self,x)</span>:</span></span><br><span class="line">		y_pred = self.linear2(self.linear1(x).clamp(min=<span class="number">0</span>))</span><br><span class="line">		<span class="keyword">return</span> y_pred</span><br><span class="line"></span><br><span class="line">model = MyModel(D_in,H,D_out)</span><br><span class="line">loss_fn = nn.MSELoss(reduction=<span class="string">'sum'</span>)</span><br><span class="line">learning_rate = <span class="number">1e-3</span></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">500</span>):</span><br><span class="line">	<span class="comment">#Forward pass</span></span><br><span class="line">	<span class="comment"># h = x.mm(w1) #(N行D_in列)*(Din行H列) = N行H列</span></span><br><span class="line">	<span class="comment"># h_relu = h.clamp(min=0)</span></span><br><span class="line">	<span class="comment"># y_pred = h_relu.mm(w2)</span></span><br><span class="line">	y_pred = model(x)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">#======compute loss=======</span></span><br><span class="line">	loss = loss_fn(y_pred,y)</span><br><span class="line">	print(t,<span class="string">":"</span>,loss.item())</span><br><span class="line">	model.zero_grad()</span><br><span class="line">	<span class="comment">#Backward pass</span></span><br><span class="line">	<span class="comment">#	compute gradiet</span></span><br><span class="line">	loss.backward()</span><br><span class="line"></span><br><span class="line">	<span class="comment">#	updata weight of w1 and w2</span></span><br><span class="line">	<span class="keyword">with</span> th.no_grad():</span><br><span class="line">		<span class="keyword">for</span> param <span class="keyword">in</span> model.parameters():<span class="comment">#param 参数</span></span><br><span class="line">			param-=learning_rate * param.grad</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">Pytorch 深度学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/03/Pytorch%E5%85%A5%E9%97%A8%EF%BC%88%E4%BA%8C%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Pytorch入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/02/Pytorch%E5%85%A5%E9%97%A8/">Pytorch入门</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/02/Pytorch%E5%85%A5%E9%97%A8/" class="archive-article-date">
+  	<time datetime="2019-12-02T11:43:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>毕业设计选了深度学习方向，虽然一开始有TensorFlow学习经验，但没有深入，这次老师土建Pytorch进行深度学习的入门，所以从头开始了Pytorch学习，学习过程会记录下来形成一个系列。</br><br>首先Pytorch的安装，官网最低支持CUDA9.2，而由于我的TensorFlow安装较早使用的是CUDA9.0系列，所以一开始安装了CPU版本，但CPU版太慢了，就在网上搜了下找了whl文件进行安装。</br><br>等学期结束重装系统在写一下如何安装CUDA。</br>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">Pytorch</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/02/Pytorch%E5%85%A5%E9%97%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-C-刷题——贪心" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/26/C-%E5%88%B7%E9%A2%98%E2%80%94%E2%80%94%E8%B4%AA%E5%BF%83/">C++刷题——贪心</a>
+    </h1>
+  
+
+        
+        <a href="/2019/11/26/C-%E5%88%B7%E9%A2%98%E2%80%94%E2%80%94%E8%B4%AA%E5%BF%83/" class="archive-article-date">
+  	<time datetime="2019-11-26T11:11:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3>第1题，分糖果</h3>
+有两个数组分别代表糖果所含能量以及孩子需要能量，一个糖果仅能供一个孩子，一个孩子最多能拿一个糖果。求最多几个孩子被满足。<br>
+算法分析：<br>
+糖果排序--->从小到大<br>
+孩子排序--->从小到大<br>
+排序后入队<br>
+从第一个元素开始<br>
+糖果能够满足孩子：<br>
+1. 糖果能够满足孩子：同时出队，num++<br>
+2. 糖果不能满足队首孩子：糖果出队<br>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iterator&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> g[]=&#123;<span class="number">5</span>,<span class="number">10</span>,<span class="number">2</span>,<span class="number">9</span>,<span class="number">15</span>,<span class="number">9</span>&#125;;<span class="comment">//孩子</span></span><br><span class="line">	<span class="keyword">int</span> s[]=&#123;<span class="number">6</span>,<span class="number">1</span>,<span class="number">20</span>,<span class="number">3</span>,<span class="number">8</span>&#125;;<span class="comment">//糖果</span></span><br><span class="line">	<span class="keyword">int</span> len1 = <span class="keyword">sizeof</span>(g)/<span class="keyword">sizeof</span>(g[<span class="number">0</span>]);</span><br><span class="line">	<span class="keyword">int</span> len2 = <span class="keyword">sizeof</span>(s)/<span class="keyword">sizeof</span>(s[<span class="number">0</span>]);</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v1,v2;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q1,q2;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len1;i++) v1.push_back(g[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len2;i++) v2.push_back(s[i]);</span><br><span class="line">	sort(v1.<span class="built_in">begin</span>(), v1.<span class="built_in">end</span>());</span><br><span class="line">	sort(v2.<span class="built_in">begin</span>(), v2.<span class="built_in">end</span>());</span><br><span class="line">	<span class="comment">// for_each(v1.begin(), v1.end(),[](int val)&#123;cout&lt;&lt;val&lt;&lt;" ";&#125;);</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it=v1.<span class="built_in">begin</span>();it!=v1.<span class="built_in">end</span>();it++)&#123;</span><br><span class="line">		q1.push(*it);</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;*it&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="comment">// for_each(v2.begin(), v2.end(),[](int val)&#123;cout&lt;&lt;val&lt;&lt;" ";&#125;);</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it=v2.<span class="built_in">begin</span>();it!=v2.<span class="built_in">end</span>();it++)&#123;</span><br><span class="line">		q2.push(*it);</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;*it&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="comment">// for(int i=0;i&lt;len1;i++) q1.push(v1[i]);</span></span><br><span class="line">	<span class="comment">// for(int i=0;i&lt;len2;i++) q2.push(v2[i]);</span></span><br><span class="line">	<span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;<span class="comment">//用来存储满足条件的糖果</span></span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">"\n"</span>&lt;&lt;q2.front()&lt;&lt;<span class="string">" "</span>&lt;&lt;q1.front()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">while</span>(!q2.empty())&#123;</span><br><span class="line">		<span class="keyword">if</span>(q2.front() &lt; q1.front())&#123;</span><br><span class="line">			q2.pop();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			v.push_back(q2.front());</span><br><span class="line">			q2.pop();</span><br><span class="line">			q1.pop();</span><br><span class="line">			sum++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;sum&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		for_each(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(),[](<span class="keyword">int</span> val)&#123;<span class="built_in">cout</span>&lt;&lt;val&lt;&lt;<span class="string">" "</span>;&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3>第2题，摇摆序列</h3>
+<p>
+一个数组的差序列为正负交替则此数组为摇摆序列，例如<br>
+数组：【1，5，2，6，4，7】<br>
+差序列：【-4，3，-4，2，-3】<br>
+求一个数组的最长摇摆子序列<br>
+
+
+<p>子序列最短长度为2，否则无法摇摆，则先求出一开始的摇摆状态，sun=2<br><br>如果为up，则now为a[1],flag为1<br><br>如果为down，则now为a[1],flag为-1<br><br>遍历数组：<br>flag==1则为上升态，<br><br>now&gt;a[i] (下降态)====&gt;sum++,now=a[i],flag=-1;<br>now&lt;a[i] (上升态)====》 now=a[i]<br><br>flag==-1则为下降态，<br><br>now&gt;a[i] (下降态)====&gt;now=a[i];<br><br>now&lt;a[i] (上升态)====》sum++,now=a[i],flag=1<br></p>
+</p>
+<img src="https://wx4.sinaimg.cn/mw690/006cHaz9gy1g9bpvnpb80j30bp061mx7.jpg">
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[]=&#123;<span class="number">1</span>,<span class="number">17</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">13</span>,<span class="number">15</span>,<span class="number">10</span>,<span class="number">5</span>,<span class="number">16</span>,<span class="number">8</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> sum=<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">int</span> flag=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(a[<span class="number">0</span>]&lt;a[<span class="number">1</span>])&#123;</span><br><span class="line">		flag=<span class="number">1</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		flag=<span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> now=a[<span class="number">1</span>];</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;now&lt;&lt;<span class="string">"\t"</span>&lt;&lt;sum&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">int</span> n = <span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(a[<span class="number">0</span>]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;n;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(flag==<span class="number">1</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(now&gt;a[i])&#123;<span class="comment">//up======&gt;down;</span></span><br><span class="line">				now=a[i];</span><br><span class="line">				sum++;</span><br><span class="line">				flag=<span class="number">-1</span>;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				now=a[i];<span class="comment">//up====&gt;up;</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(flag==<span class="number">-1</span>)&#123;<span class="comment">//down====&gt;up;</span></span><br><span class="line">				<span class="keyword">if</span>(now&lt;a[i])&#123;</span><br><span class="line">					now=a[i];</span><br><span class="line">					sum++;</span><br><span class="line">					flag=<span class="number">1</span>;</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					now=a[i];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;now&lt;&lt;<span class="string">"\t"</span>&lt;&lt;sum&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;sum&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">17      2</span></span><br><span class="line"><span class="comment">5       3</span></span><br><span class="line"><span class="comment">10      4</span></span><br><span class="line"><span class="comment">13      4</span></span><br><span class="line"><span class="comment">15      4</span></span><br><span class="line"><span class="comment">10      5</span></span><br><span class="line"><span class="comment">5       5</span></span><br><span class="line"><span class="comment">16      6</span></span><br><span class="line"><span class="comment">8       7</span></span><br><span class="line"><span class="comment">7</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h3>第3题，string去掉k个字符得到最小数字</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">string</span> s1 = <span class="string">"145611"</span>;</span><br><span class="line">	<span class="built_in">string</span> result=<span class="string">""</span>;</span><br><span class="line">	<span class="keyword">int</span> k =<span class="number">3</span>;</span><br><span class="line">	<span class="keyword">int</span> n = s1.length();</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> number = s1[i]-<span class="string">'0'</span>;</span><br><span class="line">		<span class="keyword">while</span>(v.<span class="built_in">size</span>()!=<span class="number">0</span>&amp;&amp;v[v.<span class="built_in">size</span>()<span class="number">-1</span>]&gt;number&amp;&amp;k&gt;<span class="number">0</span>)&#123;</span><br><span class="line">			v.pop_back();</span><br><span class="line">			k--;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(number!=<span class="number">0</span>||v.<span class="built_in">size</span>()!=<span class="number">0</span>)&#123;</span><br><span class="line">			v.push_back(number);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(v.<span class="built_in">size</span>()!=<span class="number">0</span>&amp;&amp;k&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		v.pop_back();</span><br><span class="line">		k--;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;v.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">		result.append(<span class="number">1</span>,<span class="string">'0'</span>+v[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(result==<span class="string">""</span>) result=<span class="string">"0"</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;result&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/26/C-%E5%88%B7%E9%A2%98%E2%80%94%E2%80%94%E8%B4%AA%E5%BF%83/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-C-刷题——链表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -607,69 +850,10 @@ a) C语言中的结构体不能为空，否则会报错<br>
 
 
   
-    <article id="post-算法入门——最短编辑路径、最长公共字串、最长公共子序列" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/07/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E6%9C%80%E7%9F%AD%E7%BC%96%E8%BE%91%E8%B7%AF%E5%BE%84%E3%80%81%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%97%E4%B8%B2%E3%80%81%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/">算法入门——最短编辑路径、最长公共子串、最长公共子序列</a>
-    </h1>
-  
-
-        
-        <a href="/2019/11/07/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E6%9C%80%E7%9F%AD%E7%BC%96%E8%BE%91%E8%B7%AF%E5%BE%84%E3%80%81%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%97%E4%B8%B2%E3%80%81%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/" class="archive-article-date">
-  	<time datetime="2019-11-07T13:24:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="算法入门-一-最短编辑路径、最长公共子串、最长公共子序列"><a href="#算法入门-一-最短编辑路径、最长公共子串、最长公共子序列" class="headerlink" title="算法入门(一)  最短编辑路径、最长公共子串、最长公共子序列"></a>算法入门(一)  最短编辑路径、最长公共子串、最长公共子序列</h1><h4 id="最近开始找工作，刷了很多算法，有很多算法已经很多次遇到了，就先写下来以防忘记。"><a href="#最近开始找工作，刷了很多算法，有很多算法已经很多次遇到了，就先写下来以防忘记。" class="headerlink" title="最近开始找工作，刷了很多算法，有很多算法已经很多次遇到了，就先写下来以防忘记。"></a>最近开始找工作，刷了很多算法，有很多算法已经很多次遇到了，就先写下来以防忘记。</h4><h4 id="这三个都属于典型的动态规划问题，算法原理基本类似，只要记住基本计算过程以及状态方程就可以了，一开始刷题遇到过最长公共字串虽然算法记住了，但是当时没有归类，几天后笔试遇到最短编辑路径一脸懵逼，看完算法发现两者十分类似，最后才发现这三类属于同一种问题。"><a href="#这三个都属于典型的动态规划问题，算法原理基本类似，只要记住基本计算过程以及状态方程就可以了，一开始刷题遇到过最长公共字串虽然算法记住了，但是当时没有归类，几天后笔试遇到最短编辑路径一脸懵逼，看完算法发现两者十分类似，最后才发现这三类属于同一种问题。" class="headerlink" title="这三个都属于典型的动态规划问题，算法原理基本类似，只要记住基本计算过程以及状态方程就可以了，一开始刷题遇到过最长公共字串虽然算法记住了，但是当时没有归类，几天后笔试遇到最短编辑路径一脸懵逼，看完算法发现两者十分类似，最后才发现这三类属于同一种问题。"></a>这三个都属于典型的动态规划问题，算法原理基本类似，只要记住基本计算过程以及状态方程就可以了，一开始刷题遇到过最长公共字串虽然算法记住了，但是当时没有归类，几天后笔试遇到最短编辑路径一脸懵逼，看完算法发现两者十分类似，最后才发现这三类属于同一种问题。</h4><h4 id="以下代码中状态方程已经给定，条件按互斥处理"><a href="#以下代码中状态方程已经给定，条件按互斥处理" class="headerlink" title="以下代码中状态方程已经给定，条件按互斥处理"></a>以下代码中状态方程已经给定，条件按互斥处理</h4>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/07/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E6%9C%80%E7%9F%AD%E7%BC%96%E8%BE%91%E8%B7%AF%E5%BE%84%E3%80%81%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%97%E4%B8%B2%E3%80%81%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
   
 
 
@@ -761,6 +945,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">Pytorch 深度学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">Pytorch</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
