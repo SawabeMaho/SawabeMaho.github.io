@@ -1250,7 +1250,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #962133;
+  background: #45ff5b;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2761,12 +2761,12 @@ padding-left
 /* webkit, opera, IE9 */
 ::selection {
   background: #00c4b6;
-  color: #f7f7f7;
+  color: #fcebcd;
 }
 /* firefox */
 ::-moz-selection {
   background: #00c4b6;
-  color: #f7f7f7;
+  color: #fcebcd;
 }
 .site-author-name {
   font-family: 'Comic Sans MS', sans-serif;
