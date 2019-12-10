@@ -1250,7 +1250,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #44e96c;
+  background: #962133;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2712,9 +2712,80 @@ ul.breadcrumb li + li:last-child {
     margin: 8px 0 0;
   }
 }
+.header-inner {
+  border-radius: 1em;
+}
+.sidebar-inner {
+  border-radius: 1em;
+}
+.sidebar {
+  border-radius: 1em;
+}
 body {
   background: url("https://ae01.alicdn.com/kf/Ue408f2904d964b98897d75b57fdaa07b3.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: 50% 50%;
+  background-position: 100% 100%;
+}
+.post {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 25px;
+  -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
+  -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
+}
+.menu {
+  margin-top: 2em;
+padding-left
+  text-align: center;
+  background: rgba(0,0,0,0);
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 1em;
+}
+.main-inner {
+  background: #fff;
+  opacity: 0.9;
+  border-radius: 1em;
+}
+.post-body p a {
+  color: #1c86ee;
+  border-bottom: none;
+  border-bottom: 1px solid #1c86ee;
+}
+.post-body p a:hover {
+  color: #fc6423;
+  border-bottom: none;
+  border-bottom: 1px solid #fc6423;
+}
+/* webkit, opera, IE9 */
+::selection {
+  background: #00c4b6;
+  color: #f7f7f7;
+}
+/* firefox */
+::-moz-selection {
+  background: #00c4b6;
+  color: #f7f7f7;
+}
+.site-author-name {
+  font-family: 'Comic Sans MS', sans-serif;
+  font-size: 1.5em;
+}
+.site-description {
+  font-family: 'Comic Sans MS', sans-serif;
+  font-size: 1em;
+}
+.site-meta {
+  background-color: #e1ffff;
+}
+.site-title {
+  font-family: 'STXingkai', sans-serif;
+  color: #808080;
+  font-size: 2em;
+}
+.site-subtitle {
+  font-family: 'STXingkai', sans-serif;
+  color: #808080;
+  font-size: 1em;
 }
