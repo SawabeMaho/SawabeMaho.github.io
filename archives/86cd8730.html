@@ -47,28 +47,31 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="真帆酱的个人博客">
-<meta property="og:url" content="http:&#x2F;&#x2F;maho.xyz&#x2F;page&#x2F;2&#x2F;index.html">
+  <meta name="description" content="C++面试总结   1、浅拷贝与深拷贝的区别 在使用已有类对象对新的类对象进行定义时会调用复制构造函数，若没有写自定义的复制构造函数的话，系统会调用默认构造函数(浅拷贝)——其结果时两个对象指向同一片内存空间，更改对象值会相互影响，甚至调用析构函数时只调用一次即把对象删除。为了避免这种现象需要写自定义的复制构造函数 123456class A&amp;#123;Public:    A();&#x2F;&#x2F;构造函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++面试总结">
+<meta property="og:url" content="http:&#x2F;&#x2F;maho.xyz&#x2F;archives&#x2F;86cd8730.html">
 <meta property="og:site_name" content="真帆酱的个人博客">
+<meta property="og:description" content="C++面试总结   1、浅拷贝与深拷贝的区别 在使用已有类对象对新的类对象进行定义时会调用复制构造函数，若没有写自定义的复制构造函数的话，系统会调用默认构造函数(浅拷贝)——其结果时两个对象指向同一片内存空间，更改对象值会相互影响，甚至调用析构函数时只调用一次即把对象删除。为了避免这种现象需要写自定义的复制构造函数 123456class A&amp;#123;Public:    A();&#x2F;&#x2F;构造函数">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-10T06:45:52.574Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://maho.xyz/page/2/">
+<link rel="canonical" href="http://maho.xyz/archives/86cd8730.html">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false,
+    isHome: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>真帆酱的个人博客</title>
+  <title>C++面试总结 | 真帆酱的个人博客</title>
   
 
 
@@ -176,11 +179,11 @@
             
 
   <div class="posts-expand">
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/e6638b8.html">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/86cd8730.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -193,8 +196,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/archives/e6638b8.html" class="post-title-link" itemprop="url">算法入门——全排列及出入栈顺序</a>
+          C++面试总结
         </h1>
 
         <div class="post-meta">
@@ -204,7 +206,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-11-08 16:40:23" itemprop="dateCreated datePublished" datetime="2019-11-08T16:40:23Z">2019-11-08</time>
+              <time title="创建时间：2019-11-14 09:23:52" itemprop="dateCreated datePublished" datetime="2019-11-14T09:23:52Z">2019-11-14</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -225,108 +227,103 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>今天来介绍一下笔试中常出的全排列算法</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/archives/e6638b8.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
+        <h3 style=" text-align: center;"> C++面试总结 </h3>
+<h5> 1、浅拷贝与深拷贝的区别</h5>
+在使用已有类对象对新的类对象进行定义时会调用复制构造函数，若没有写自定义的复制构造函数的话，系统会调用默认构造函数(浅拷贝)——其结果时两个对象指向同一片内存空间，更改对象值会相互影响，甚至调用析构函数时只调用一次即把对象删除。为了避免这种现象需要写自定义的复制构造函数
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line">Public:</span><br><span class="line">    A();<span class="comment">//构造函数</span></span><br><span class="line">    A(<span class="keyword">const</span> A &amp;a1 )<span class="comment">//复制构造函数</span></span><br><span class="line">    ~A();<span class="comment">//析构函数</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h5>2、const关键字的作用</h5>
+1. 修饰变量，说明该变量不可以被改变；</br>
+2. 修饰指针，分为指向常量的指针和指针常量；</br>const 与 *谁在前面就先读谁例如 </br>int const *p=5;//常量指针，指向常量，地址可以修改但指向的值不能修改 </br>int *const p=5;//指针常量，是一个
+3. 常量引用，经常用于形参类型，即避免了拷贝，又避免了函数对值的修改；</br>
+4. 修饰成员函数，说明该成员函数内不能修改成员变量。</br>
+
+<h5>3、static关键字的作用</h5>
+1. 修饰普通变量，修改变量的存储区域和生命周期，使变量存储在静态区，在 main 函数运行前就分配了空间，如果有初始值就用初始值初始化它，如果没有初始值系统用默认值初始化它。
+2. 修饰普通函数，表明函数的作用范围，仅在定义该函数的文件内才能使用。在多人开发项目时，为了防止与他人命名空间里的函数重名，可以将函数定位为 static。
+3. 修饰成员变量，修饰成员变量使所有的对象只保存一个该变量，而且不需要生成对象就可以访问该成员。
+4. 修饰成员函数，修饰成员函数使得不需要生成对象就可以访问该函数，但是在 static 函数内不能访问非静态成员。
+
+<h5>4、this 指针字的作用</h5>
+1. this 指针是一个隐含于每一个非静态成员函数中的特殊指针。它指向调用该成员函数的那个对象。
+2. 编译程序先将对象的地址赋给 this 指针，然后调用成员函数，每次成员函数存取数据成员时，都隐式使用 this 指针。
+3. 当一个成员函数被调用时，自动向它传递一个隐含的参数，该参数是一个指向这个成员函数所在的对象的指针。
+4. this 指针被隐含地声明为: ClassName *const this，这意味着不能给 this 指针赋值；在 ClassName 类的 const 成员函数中，this 指针的类型为：const ClassName* const，这说明不能对 this 指针所指向的这种对象是不可修改的（即不能对这种对象的数据成员进行赋值操作）；
+5. this 并不是一个常规变量，而是个右值，所以不能取得 this 的地址（不能 &this）。
+6. 在以下场景中，经常需要显式引用 this 指针：
+    1. 为实现对象的链式引用；
+    2. 为避免对同一对象进行赋值操作；
+    3. 在实现一些数据结构时，如 list。
+    4. 
+<h5> 5、inline 内联函数的作用</h5> 
+1. 相当于把内联函数里面的内容写在调用内联函数处；
+2. 相当于不用执行进入函数的步骤，直接执行函数体；
+3. 相当于宏，却比宏多了类型检查，真正具有函数特性；
+4. 编译器一般不内联包含循环、递归、switch 等复杂操作的内联函数；
+5. 在类声明中定义的函数，除了虚函数的其他函数都会自动隐式地当成内联函数。
+6. 虚函数可以是内联函数但不能使用多态。
+
+<h5>6、volatile关键字的作用</h5>
+volatile int i = 10; 
+1. volatile 关键字是一种类型修饰符，用它声明的类型变量表示可以被某些编译器未知的因素（操作系统、硬件、其它线程等）更改。所以使用 volatile 告诉编译器不应对这样的对象进行优化。
+2. volatile 关键字声明的变量，每次访问时都必须从内存中取出值（没有被 volatile 修饰的变量，可能由于编译器的优化，从 CPU 寄存器中取值）
+3. const 可以是 volatile （如只读的状态寄存器）
+4. 指针可以是 volatile
+<h5>6、assert()关键字的作用</h5>
+assert()
+断言，是宏，而非函数。assert 宏的原型定义在 <assert.h>（C）、<cassert>（C++）中，其作用是如果它的条件返回错误，则终止程序执行。可以通过定义 NDEBUG 来关闭 assert，但是需要在源代码的开头，include <assert.h> 之前。
+
+<p>assert() 使用</p>
+<p>#define NDEBUG          // 加上这行，则 assert 不可用<br>#include &lt;assert.h&gt;</p>
+<p>assert( p != NULL );    // assert 不可用</p>
+
     </div>
 
     
     
     
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Sawabe Maho
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://maho.xyz/archives/86cd8730.html" title="C++面试总结">http://maho.xyz/archives/86cd8730.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
         
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/cd0dbbaf.html">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Sawabe Maho">
-      <meta itemprop="description" content="">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="真帆酱的个人博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/archives/cd0dbbaf.html" class="post-title-link" itemprop="url">算法入门——最短编辑路径、最长公共子串、最长公共子序列</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-11-07 21:24:42" itemprop="dateCreated datePublished" datetime="2019-11-07T21:24:42Z">2019-11-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-10 06:45:52" itemprop="dateModified" datetime="2019-12-10T06:45:52Z">2019-12-10</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="算法入门-一-最短编辑路径、最长公共子串、最长公共子序列"><a href="#算法入门-一-最短编辑路径、最长公共子串、最长公共子序列" class="headerlink" title="算法入门(一)  最短编辑路径、最长公共子串、最长公共子序列"></a>算法入门(一)  最短编辑路径、最长公共子串、最长公共子序列</h1><h4 id="最近开始找工作，刷了很多算法，有很多算法已经很多次遇到了，就先写下来以防忘记。"><a href="#最近开始找工作，刷了很多算法，有很多算法已经很多次遇到了，就先写下来以防忘记。" class="headerlink" title="最近开始找工作，刷了很多算法，有很多算法已经很多次遇到了，就先写下来以防忘记。"></a>最近开始找工作，刷了很多算法，有很多算法已经很多次遇到了，就先写下来以防忘记。</h4><h4 id="这三个都属于典型的动态规划问题，算法原理基本类似，只要记住基本计算过程以及状态方程就可以了，一开始刷题遇到过最长公共字串虽然算法记住了，但是当时没有归类，几天后笔试遇到最短编辑路径一脸懵逼，看完算法发现两者十分类似，最后才发现这三类属于同一种问题。"><a href="#这三个都属于典型的动态规划问题，算法原理基本类似，只要记住基本计算过程以及状态方程就可以了，一开始刷题遇到过最长公共字串虽然算法记住了，但是当时没有归类，几天后笔试遇到最短编辑路径一脸懵逼，看完算法发现两者十分类似，最后才发现这三类属于同一种问题。" class="headerlink" title="这三个都属于典型的动态规划问题，算法原理基本类似，只要记住基本计算过程以及状态方程就可以了，一开始刷题遇到过最长公共字串虽然算法记住了，但是当时没有归类，几天后笔试遇到最短编辑路径一脸懵逼，看完算法发现两者十分类似，最后才发现这三类属于同一种问题。"></a>这三个都属于典型的动态规划问题，算法原理基本类似，只要记住基本计算过程以及状态方程就可以了，一开始刷题遇到过最长公共字串虽然算法记住了，但是当时没有归类，几天后笔试遇到最短编辑路径一脸懵逼，看完算法发现两者十分类似，最后才发现这三类属于同一种问题。</h4><h4 id="以下代码中状态方程已经给定，条件按互斥处理"><a href="#以下代码中状态方程已经给定，条件按互斥处理" class="headerlink" title="以下代码中状态方程已经给定，条件按互斥处理"></a>以下代码中状态方程已经给定，条件按互斥处理</h4>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/archives/cd0dbbaf.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/archives/1f200071.html" rel="prev" title="算法入门——常用排序算法">
+      <i class="fa fa-chevron-left"></i> 算法入门——常用排序算法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/archives/f2e92234.html" rel="next" title="前端入门(一)">
+      前端入门(一) <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
   
 
   </div>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-  </nav>
-
 
 
           </div>
@@ -355,6 +352,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text"> C++面试总结 </span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">1.0.1.</span> <span class="nav-text"> 1、浅拷贝与深拷贝的区别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">1.0.2.</span> <span class="nav-text">2、const关键字的作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">1.0.3.</span> <span class="nav-text">3、static关键字的作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">1.0.4.</span> <span class="nav-text">4、this 指针字的作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">1.0.5.</span> <span class="nav-text"> 5、inline 内联函数的作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">1.0.6.</span> <span class="nav-text">6、volatile关键字的作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">1.0.7.</span> <span class="nav-text">6、assert()关键字的作用</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
