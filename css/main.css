@@ -1250,7 +1250,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #b31ba8;
+  background: #1d3b9c;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2720,6 +2720,36 @@ ul.breadcrumb li + li:last-child {
 }
 .sidebar {
   border-radius: 1em;
+}
+.post-block {
+  border-radius: 1em;
+}
+.posts-expand {
+  border-radius: 1em;
+}
+.post-block.home {
+  border-radius: 1em;
+  margin: 5em;
+}
+.comments.v {
+  border-radius: 1em;
+}
+.pagination {
+  border-radius: 1em;
+  background-color: rgba(0,0,0,0);
+  margin: 0em;
+}
+.page-number {
+  border-radius: 1em;
+  background: #fff;
+}
+.page-number.current {
+  border-radius: 1em;
+  background: #dc143c;
+}
+.extend {
+  border-radius: 1em;
+  background: #fff;
 }
 body {
   background: url("https://ae01.alicdn.com/kf/Ue408f2904d964b98897d75b57fdaa07b3.jpg");
