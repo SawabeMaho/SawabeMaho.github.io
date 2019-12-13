@@ -1250,7 +1250,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #7e137f;
+  background: #c4cf4f;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2729,7 +2729,7 @@ ul.breadcrumb li + li:last-child {
 }
 .post-block.home {
   border-radius: 1em;
-  margin: 5em;
+  margin: 1px 1px 4em 1px;
 }
 .comments.v {
   border-radius: 1em;
@@ -2737,7 +2737,7 @@ ul.breadcrumb li + li:last-child {
 .pagination {
   border-radius: 1em;
   background-color: rgba(0,0,0,0);
-  margin: 15px 1px 1px 1px;
+  margin: 0em;
 }
 .page-number {
   border-radius: 1em;
