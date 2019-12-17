@@ -1250,7 +1250,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #fff;
+  background: #ffff2a;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2752,7 +2752,7 @@ ul.breadcrumb li + li:last-child {
   background: #fff;
 }
 body {
-  background: url("https://ae01.alicdn.com/kf/U2a07d0cc4bc4460896dd45c5b0e21f70e.jpg");
+  background: url("https://ae01.alicdn.com/kf/Ue408f2904d964b98897d75b57fdaa07b3.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 51% 40%;
@@ -2764,6 +2764,13 @@ body {
 }
 body #footer > div > div {
   color: #000;
+}
+.main-inner {
+  margin-top: 60px;
+  padding: 0px 0px 0px 0px;
+  background-color: rgba(0,0,0,0);
+  opacity: 0.9;
+  min-height: 500px;
 }
 .post {
   margin-top: 60px;
