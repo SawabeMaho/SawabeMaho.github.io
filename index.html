@@ -205,10 +205,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-02-14 13:47:49 / 修改时间：06:10:28" itemprop="dateCreated datePublished" datetime="2020-02-14T13:47:49Z">2020-02-14</time>
+              <time title="创建时间：2020-02-14 13:47:49" itemprop="dateCreated datePublished" datetime="2020-02-14T13:47:49Z">2020-02-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-16 02:19:41" itemprop="dateModified" datetime="2020-02-16T02:19:41Z">2020-02-16</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -247,7 +253,7 @@
 
       
           <p>由于我的毕业设计选择了AI生成卡通表情，基本都是使用GAN模型，所以测试了很多基于Pytorch的GAN模型。也修改了一些模型使他们结构更加类似。<br>以下是一些测试效果。<br>首先是GAN：生成效果如下,GAN生成效果还算不错，基本可以看出人形，但比较模糊。<br><img src="https://ae01.alicdn.com/kf/Uf7d8fb79235447df8b82da9cf9be8d21a.png" title="GAN" width="300px" height="300px"/></p>
-<p>然后DCGAN生成效果如下，相比于GAN清晰了很多，但是有点扭曲崩坏<br><img src="https://ae01.alicdn.com/kf/U52be10353c6b4e8f98dc0c3c24e20da6R.png" title="DCGAN" width="300px" height="300px"/><br><img src="https://ae01.alicdn.com/kf/U28f5919adfad400489e85b1cb1e7067by.png" title="DCGAN" width="500px" height="500px"/><br>WGAN生成如下，这算是比较好的一款GAN，但是效果仍然不是很好。<br><img src="https://ae01.alicdn.com/kf/U5b2343a092004b228cbfa2b8ca138aa9O.png" title="WGAN" width="300px" height="300px"/>以上都属于随机生成GAN模型。<br><br>在GAN的基础上添加限制条件，就是CGAN了，由于带标签的动漫标签图像就不做实验了。<br>相关代码见[Github]:<a href="https://github.com/SawabeMaho/Pytorch" target="_blank" rel="noopener">https://github.com/SawabeMaho/Pytorch</a></p>
+<p>然后DCGAN生成效果如下，相比于GAN清晰了很多，但是有点扭曲崩坏<br><img src="https://ae01.alicdn.com/kf/U52be10353c6b4e8f98dc0c3c24e20da6R.png" title="DCGAN" width="300px" height="300px"/><br><img src="https://ae01.alicdn.com/kf/U28f5919adfad400489e85b1cb1e7067by.png" title="DCGAN" width="500px" height="500px"/><br>WGAN生成如下，这算是比较好的一款GAN，但是效果仍然不是很好。<br><img src="https://ae01.alicdn.com/kf/U5b2343a092004b228cbfa2b8ca138aa9O.png" title="WGAN" width="300px" height="300px"/>以上都属于随机生成GAN模型。<br><br>在GAN的基础上添加限制条件，就是CGAN了，由于带标签的动漫标签图像就不做实验了。<br>相关代码见[Github]:<a href="https://github.com/SawabeMaho/Pytorch" target="_blank" rel="noopener">https://github.com/SawabeMaho/Pytorch</a><br>使用的数据集是基于danbooru2018做了人脸切割[danbooru2018]:<a href="https://www.gwern.net/Danbooru2019#danbooru2018" target="_blank" rel="noopener">https://www.gwern.net/Danbooru2019#danbooru2018</a><br>也可以下载一下我个人使用的数据集<br>链接：<a href="https://share.weiyun.com/50I7Y9l" target="_blank" rel="noopener">https://share.weiyun.com/50I7Y9l</a> 密码：cdbgxx<br>需要注意的是Pytorch下ImageFolder读取位置是路径下的文件夹，所以需要这样放置<br><img src="https://ae01.alicdn.com/kf/Ub92a03e0e9d54c30a8209ebc5562afabC.png"/></p>
 
       
     </div>
