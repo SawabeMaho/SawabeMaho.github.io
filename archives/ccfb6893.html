@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/title.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/title.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="泽部真帆" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://maho.xyz').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;由于平时喜欢看漫画，而大多数漫画网站提供的都是黑白漫画，加上当时想做点有趣的东西，所以看了很多github跌跌撞撞的用tensorflow实现了，但是当时仅仅会用，而不理解，现在从基本的gan开始看起来，做了pix2pix的分析模型。">
+<meta name="keywords" content="GAN,Anime,动漫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于GAN的黑白漫画自动上色">
+<meta property="og:url" content="http:&#x2F;&#x2F;maho.xyz&#x2F;archives&#x2F;ccfb6893.html">
+<meta property="og:site_name" content="泽部真帆">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;由于平时喜欢看漫画，而大多数漫画网站提供的都是黑白漫画，加上当时想做点有趣的东西，所以看了很多github跌跌撞撞的用tensorflow实现了，但是当时仅仅会用，而不理解，现在从基本的gan开始看起来，做了pix2pix的分析模型。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U4e1603c2a442412a99cf5c4ed262f710q.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U2ef8e9047b404cf5863ac3dbc48b2c41G.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U9d483aaf125f4e1cb75ec4d1bf2304fcn.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Uc2c69c19d5ad4a52996bf74ce2e12097m.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U0f97a0ff4d3f4cf2ba3a841181810fb1P.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U0b5b0e79e73d4321aca9bb9ee6d3cb39B.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U0634457ed8b94d64ac13422e5e13a9b0t.png">
+<meta property="og:updated_time" content="2020-02-18T07:29:45.955Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U4e1603c2a442412a99cf5c4ed262f710q.png">
+
+<link rel="canonical" href="http://maho.xyz/archives/ccfb6893.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>基于GAN的黑白漫画自动上色 | 泽部真帆</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">泽部真帆</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">萌之上,即为荡漾</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/SawabeMaho" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/ccfb6893.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Sawabe Maho">
+      <meta itemprop="description" content="欢迎光临">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽部真帆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基于GAN的黑白漫画自动上色
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-18 14:32:49" itemprop="dateCreated datePublished" datetime="2020-01-18T14:32:49Z">2020-01-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-18 07:29:45" itemprop="dateModified" datetime="2020-02-18T07:29:45Z">2020-02-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI/" itemprop="url" rel="index">
+                    <span itemprop="name">AI</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/archives/ccfb6893.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/archives/ccfb6893.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>&nbsp;&nbsp;&nbsp;由于平时喜欢看漫画，而大多数漫画网站提供的都是黑白漫画，加上当时想做点有趣的东西，所以看了很多github跌跌撞撞的用tensorflow实现了，但是当时仅仅会用，而不理解，现在从基本的gan开始看起来，做了pix2pix的分析模型。<a id="more"></a><br>首先看一下pix2pix的生成器。<br><img src="https://ae01.alicdn.com/kf/U4e1603c2a442412a99cf5c4ed262f710q.png"><br>生成器使用了UNET网络结构,相比于普通网络在上采样时会保留原始信息。<br><img src="https://ae01.alicdn.com/kf/U2ef8e9047b404cf5863ac3dbc48b2c41G.png"><br>判别器相比于普通GAN模型使用了patchGAN，即判别器不是仅仅输出待判别的图片的真假，而是输出一个矩阵，最终结果求平均，相当于经“投票”后再判断是真是假。<br><br>完整代码见<a href="https://github.com/SawabeMaho/pix2pix" target="_blank" rel="noopener">github</a> <br><br>最终结果如下：<br>5000轮训练后：</p>
+<img src="https://ae01.alicdn.com/kf/U9d483aaf125f4e1cb75ec4d1bf2304fcn.png"  title="5000轮"/>
+20000轮训练后<br>
+
+<p><img src="https://ae01.alicdn.com/kf/Uc2c69c19d5ad4a52996bf74ce2e12097m.png"  title="20000轮"/><br><br>100000轮训练后<br></p>
+<img src="https://ae01.alicdn.com/kf/U0f97a0ff4d3f4cf2ba3a841181810fb1P.png"  title="100000轮"/>
+
+<p>使用的数据集是基于<a href="https://www.gwern.net/Danbooru2019#danbooru2018" target="_blank" rel="noopener">danbooru2018</a>做了灰度转换拼接。 <br></p>
+<p>原始数据集类型如下：<br><img src="https://ae01.alicdn.com/kf/U0b5b0e79e73d4321aca9bb9ee6d3cb39B.png"><br>做过灰度拼接之后：<br><img src="https://ae01.alicdn.com/kf/U0634457ed8b94d64ac13422e5e13a9b0t.png"><br>数据集拼接代码 data.py：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_dir_not_exist</span><span class="params">(path)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(path):</span><br><span class="line">        os.mkdir(path)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">	i=<span class="number">0</span></span><br><span class="line">	File_path = <span class="string">r"G:\Dataset\danbooru2018\512px\0003"</span></span><br><span class="line">	<span class="keyword">for</span> root, dirs, files <span class="keyword">in</span> os.walk(File_path):</span><br><span class="line">		<span class="keyword">for</span> d <span class="keyword">in</span> dirs:</span><br><span class="line">			print(<span class="string">"dirs:\n"</span>+d) <span class="comment">#打印子资料夹的个数</span></span><br><span class="line">		lens=str(len(files))</span><br><span class="line">		<span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">			print(<span class="string">"files:\n"</span>+file)</span><br><span class="line">			<span class="comment">#讀入圖像</span></span><br><span class="line">			img_path = root+<span class="string">'/'</span>+file</span><br><span class="line">			img_size = <span class="number">256</span></span><br><span class="line">			img = cv2.imread(img_path,<span class="number">1</span>) <span class="comment">#读入彩色图片 </span></span><br><span class="line">			img = cv2.resize(img,(img_size,img_size))</span><br><span class="line">			img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) <span class="comment">#转为灰度图片</span></span><br><span class="line">			img_gray_RGB = cv2.cvtColor(img_gray, cv2.COLOR_GRAY2BGR)</span><br><span class="line">			save_path = <span class="string">'./val/'</span></span><br><span class="line">			create_dir_not_exist(save_path) <span class="comment">#在当前文件夹内创建保存位置</span></span><br><span class="line">			img_name = <span class="string">"out_"</span>+file </span><br><span class="line">			img_save = cv2.resize(img_gray_RGB,(<span class="number">2</span>*img_size,img_size))</span><br><span class="line">			img_save[<span class="number">0</span>:img_size,<span class="number">0</span>:img_size]=img</span><br><span class="line">			img_save[<span class="number">0</span>:img_size,img_size:<span class="number">2</span>*img_size]=img_gray_RGB</span><br><span class="line">			cv2.imwrite(save_path+img_name,img_save)</span><br><span class="line">			i+=<span class="number">1</span></span><br><span class="line">			<span class="comment"># 测试一下</span></span><br><span class="line">			<span class="comment"># if(i&gt;5):</span></span><br><span class="line">			<span class="comment"># 	break</span></span><br><span class="line">			print(str(i)+<span class="string">"/"</span>+lens)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	main()</span><br></pre></td></tr></table></figure>
+<p>生成器&amp;&amp;判别器</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">weights_init_normal</span><span class="params">(m)</span>:</span></span><br><span class="line">    classname = m.__class__.__name__</span><br><span class="line">    <span class="keyword">if</span> classname.find(<span class="string">"Conv"</span>) != <span class="number">-1</span>:</span><br><span class="line">        torch.nn.init.normal_(m.weight.data, <span class="number">0.0</span>, <span class="number">0.02</span>)</span><br><span class="line">    <span class="keyword">elif</span> classname.find(<span class="string">"BatchNorm2d"</span>) != <span class="number">-1</span>:</span><br><span class="line">        torch.nn.init.normal_(m.weight.data, <span class="number">1.0</span>, <span class="number">0.02</span>)</span><br><span class="line">        torch.nn.init.constant_(m.bias.data, <span class="number">0.0</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">##############################</span></span><br><span class="line"><span class="comment">#           U-NET</span></span><br><span class="line"><span class="comment">##############################</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UNetDown</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, in_size, out_size, normalize=True, dropout=<span class="number">0.0</span>)</span>:</span></span><br><span class="line">        super(UNetDown, self).__init__()</span><br><span class="line">        layers = [nn.Conv2d(in_size, out_size, <span class="number">4</span>, <span class="number">2</span>, <span class="number">1</span>, bias=<span class="literal">False</span>)]</span><br><span class="line">        <span class="keyword">if</span> normalize:</span><br><span class="line">            layers.append(nn.InstanceNorm2d(out_size))</span><br><span class="line">        layers.append(nn.LeakyReLU(<span class="number">0.2</span>))</span><br><span class="line">        <span class="keyword">if</span> dropout:</span><br><span class="line">            layers.append(nn.Dropout(dropout))</span><br><span class="line">        self.model = nn.Sequential(*layers)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.model(x)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UNetUp</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, in_size, out_size, dropout=<span class="number">0.0</span>)</span>:</span></span><br><span class="line">        super(UNetUp, self).__init__()</span><br><span class="line">        layers = [</span><br><span class="line">            nn.ConvTranspose2d(in_size, out_size, <span class="number">4</span>, <span class="number">2</span>, <span class="number">1</span>, bias=<span class="literal">False</span>),</span><br><span class="line">            nn.InstanceNorm2d(out_size),</span><br><span class="line">            nn.ReLU(inplace=<span class="literal">True</span>),</span><br><span class="line">        ]</span><br><span class="line">        <span class="keyword">if</span> dropout:</span><br><span class="line">            layers.append(nn.Dropout(dropout))</span><br><span class="line"></span><br><span class="line">        self.model = nn.Sequential(*layers)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x, skip_input)</span>:</span></span><br><span class="line">        x = self.model(x)</span><br><span class="line">        x = torch.cat((x, skip_input), <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成器</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GeneratorUNet</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, in_channels=<span class="number">3</span>, out_channels=<span class="number">3</span>)</span>:</span></span><br><span class="line">        super(GeneratorUNet, self).__init__()</span><br><span class="line"></span><br><span class="line">        self.down1 = UNetDown(in_channels, <span class="number">64</span>, normalize=<span class="literal">False</span>)</span><br><span class="line">        self.down2 = UNetDown(<span class="number">64</span>, <span class="number">128</span>)</span><br><span class="line">        self.down3 = UNetDown(<span class="number">128</span>, <span class="number">256</span>)</span><br><span class="line">        self.down4 = UNetDown(<span class="number">256</span>, <span class="number">512</span>, dropout=<span class="number">0.5</span>)</span><br><span class="line">        self.down5 = UNetDown(<span class="number">512</span>, <span class="number">512</span>, dropout=<span class="number">0.5</span>)</span><br><span class="line">        self.down6 = UNetDown(<span class="number">512</span>, <span class="number">512</span>, dropout=<span class="number">0.5</span>)</span><br><span class="line">        self.down7 = UNetDown(<span class="number">512</span>, <span class="number">512</span>, dropout=<span class="number">0.5</span>)</span><br><span class="line">        self.down8 = UNetDown(<span class="number">512</span>, <span class="number">512</span>, normalize=<span class="literal">False</span>, dropout=<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line">        self.up1 = UNetUp(<span class="number">512</span>, <span class="number">512</span>, dropout=<span class="number">0.5</span>)</span><br><span class="line">        self.up2 = UNetUp(<span class="number">1024</span>, <span class="number">512</span>, dropout=<span class="number">0.5</span>)</span><br><span class="line">        self.up3 = UNetUp(<span class="number">1024</span>, <span class="number">512</span>, dropout=<span class="number">0.5</span>)</span><br><span class="line">        self.up4 = UNetUp(<span class="number">1024</span>, <span class="number">512</span>, dropout=<span class="number">0.5</span>)</span><br><span class="line">        self.up5 = UNetUp(<span class="number">1024</span>, <span class="number">256</span>)</span><br><span class="line">        self.up6 = UNetUp(<span class="number">512</span>, <span class="number">128</span>)</span><br><span class="line">        self.up7 = UNetUp(<span class="number">256</span>, <span class="number">64</span>)</span><br><span class="line"></span><br><span class="line">        self.final = nn.Sequential(</span><br><span class="line">            nn.Upsample(scale_factor=<span class="number">2</span>),</span><br><span class="line">            nn.ZeroPad2d((<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>)),</span><br><span class="line">            nn.Conv2d(<span class="number">128</span>, out_channels, <span class="number">4</span>, padding=<span class="number">1</span>),</span><br><span class="line">            nn.Tanh(),</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="comment"># U-Net generator with skip connections from encoder to decoder</span></span><br><span class="line">        d1 = self.down1(x)</span><br><span class="line">        d2 = self.down2(d1)</span><br><span class="line">        d3 = self.down3(d2)</span><br><span class="line">        d4 = self.down4(d3)</span><br><span class="line">        d5 = self.down5(d4)</span><br><span class="line">        d6 = self.down6(d5)</span><br><span class="line">        d7 = self.down7(d6)</span><br><span class="line">        d8 = self.down8(d7)</span><br><span class="line">        u1 = self.up1(d8, d7)</span><br><span class="line">        u2 = self.up2(u1, d6)</span><br><span class="line">        u3 = self.up3(u2, d5)</span><br><span class="line">        u4 = self.up4(u3, d4)</span><br><span class="line">        u5 = self.up5(u4, d3)</span><br><span class="line">        u6 = self.up6(u5, d2)</span><br><span class="line">        u7 = self.up7(u6, d1)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> self.final(u7)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">##############################</span></span><br><span class="line"><span class="comment">#        Discriminator</span></span><br><span class="line"><span class="comment">##############################</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 判别器</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Discriminator</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, in_channels=<span class="number">3</span>)</span>:</span></span><br><span class="line">        super(Discriminator, self).__init__()</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">discriminator_block</span><span class="params">(in_filters, out_filters, normalization=True)</span>:</span></span><br><span class="line">            <span class="string">"""Returns downsampling layers of each discriminator block"""</span></span><br><span class="line">            layers = [nn.Conv2d(in_filters, out_filters, <span class="number">4</span>, stride=<span class="number">2</span>, padding=<span class="number">1</span>)]</span><br><span class="line">            <span class="keyword">if</span> normalization:</span><br><span class="line">                layers.append(nn.InstanceNorm2d(out_filters))</span><br><span class="line">            layers.append(nn.LeakyReLU(<span class="number">0.2</span>, inplace=<span class="literal">True</span>))</span><br><span class="line">            <span class="keyword">return</span> layers</span><br><span class="line"></span><br><span class="line">        self.model = nn.Sequential(</span><br><span class="line">            *discriminator_block(in_channels * <span class="number">2</span>, <span class="number">64</span>, normalization=<span class="literal">False</span>),</span><br><span class="line">            *discriminator_block(<span class="number">64</span>, <span class="number">128</span>),</span><br><span class="line">            *discriminator_block(<span class="number">128</span>, <span class="number">256</span>),</span><br><span class="line">            *discriminator_block(<span class="number">256</span>, <span class="number">512</span>),</span><br><span class="line">            nn.ZeroPad2d((<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>)),</span><br><span class="line">            nn.Conv2d(<span class="number">512</span>, <span class="number">1</span>, <span class="number">4</span>, padding=<span class="number">1</span>, bias=<span class="literal">False</span>)</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, img_A, img_B)</span>:</span></span><br><span class="line">        <span class="comment"># Concatenate image and condition image by channels to produce input</span></span><br><span class="line">        img_input = torch.cat((img_A, img_B), <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> self.model(img_input) <span class="comment"># 返回的是矩阵</span></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Sawabe Maho
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://maho.xyz/archives/ccfb6893.html" title="基于GAN的黑白漫画自动上色">http://maho.xyz/archives/ccfb6893.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/GAN/" rel="tag"># GAN</a>
+              <a href="/tags/Anime/" rel="tag"># Anime</a>
+              <a href="/tags/%E5%8A%A8%E6%BC%AB/" rel="tag"># 动漫</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/archives/47d2b3bf.html" rel="prev" title="C++刷题——二叉树、图">
+      <i class="fa fa-chevron-left"></i> C++刷题——二叉树、图
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/archives/e5fe4527.html" rel="next" title="AI生成动漫头像">
+      AI生成动漫头像 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="comments"></div>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Sawabe Maho"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Sawabe Maho</p>
+  <div class="site-description" itemprop="description">欢迎光临</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/SawabeMaho" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;SawabeMaho" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/5684401747" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;5684401747" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/75828259" title="BiliBili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;75828259" rel="noopener" target="_blank"><i class="fa fa-fw fa-bilibili"></i>BiliBili</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sawabe Maho</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.includes(item);
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'CSxPOCT4khq3GK3zfMoi7Uud-gzGzoHsz',
+    appKey: 'WxXi1BhXmIOGctgD8OCP2Sop',
+    placeholder: "O(∩_∩)O，说两句吧！！！",
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname,
+    recordIP: false,
+    serverURLs: ''
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>

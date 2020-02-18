@@ -1250,7 +1250,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #f98838;
+  background: #c9ff55;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2766,7 +2766,7 @@ body #footer > div > div {
   color: #000;
 }
 .main-inner {
-  opacity: 0.95;
+  opacity: 0.91;
 }
 .post {
   margin-top: 60px;
@@ -2843,7 +2843,7 @@ ner {
 }
 .site-nav-toggle {
   top: 0;
-  transform: translateY(78%);
+  transform: translateY(0.78);
 }
 ::selection {
   background: #e6e6fa;
