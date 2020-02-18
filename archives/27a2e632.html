@@ -47,15 +47,15 @@
   };
 </script>
 
-  <meta name="description" content="1: 2n皇后问题作者:Turbo &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; 时间限制: 1S &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; 章节: 深度优先搜索 问题描述 :给定一个n*n的棋盘，棋盘中有一些位置不能放皇后。现在要向棋盘中放入n个黑皇后和n个白皇后，使任意的两个黑皇后都不在同一行、同一列或同一条对角线上，">
+  <meta name="description" content="1: 2n皇后问题作者:Turbo &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; 时间限制: 1S &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; 章节: 深度优先搜索 问题描述 :给定一个nn的棋盘，棋盘中有一些位置不能放皇后。现在要向棋盘中放入n个黑皇后和n个白皇后，使任意的两个黑皇后都不在同一行、同一列或同一条对角线上，任">
 <meta name="keywords" content="递归,回溯">
 <meta property="og:type" content="article">
 <meta property="og:title" content="蓝桥杯训练赛——2n皇后">
 <meta property="og:url" content="http:&#x2F;&#x2F;maho.xyz&#x2F;archives&#x2F;27a2e632.html">
 <meta property="og:site_name" content="泽部真帆">
-<meta property="og:description" content="1: 2n皇后问题作者:Turbo &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; 时间限制: 1S &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; 章节: 深度优先搜索 问题描述 :给定一个n*n的棋盘，棋盘中有一些位置不能放皇后。现在要向棋盘中放入n个黑皇后和n个白皇后，使任意的两个黑皇后都不在同一行、同一列或同一条对角线上，">
+<meta property="og:description" content="1: 2n皇后问题作者:Turbo &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; 时间限制: 1S &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; 章节: 深度优先搜索 问题描述 :给定一个nn的棋盘，棋盘中有一些位置不能放皇后。现在要向棋盘中放入n个黑皇后和n个白皇后，使任意的两个黑皇后都不在同一行、同一列或同一条对角线上，任">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-18T13:50:10.104Z">
+<meta property="og:updated_time" content="2020-02-18T13:55:55.258Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://maho.xyz/archives/27a2e632.html">
@@ -214,7 +214,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-18 13:50:10" itemprop="dateModified" datetime="2020-02-18T13:50:10Z">2020-02-18</time>
+                <time title="修改时间：2020-02-18 13:55:55" itemprop="dateModified" datetime="2020-02-18T13:55:55Z">2020-02-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -254,13 +254,7 @@
 
       
         <h2 id="1-2n皇后问题"><a href="#1-2n皇后问题" class="headerlink" title="1: 2n皇后问题"></a>1: 2n皇后问题</h2><p>作者:Turbo &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; 时间限制: 1S &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; 章节: 深度优先搜索</p>
-<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述 :"></a>问题描述 :</h3><p>给定一个n*n的棋盘，棋盘中有一些位置不能放皇后。现在要向棋盘中放入n个黑皇后和n个白皇后，使任意的两个黑皇后都不在同一行、同一列或同一条对角线上，任意的两个白皇后都不在同一行、同一列或同一条对角线上。</p>
-<p>问总共有多少种放法？</p>
-<p>n小于等于8。<br>说明：同一条对角线是指包括两条主对角线的所有对角线，n=5时的棋盘从左上往右下有9条对角线，从右上往左下也有9条对角线。</p>
-<p>比如，棋盘为：</p>
-<p>1 1 1 1<br>1 1 1 1<br>1 1 1 1<br>1 1 1 1</p>
-<p>表示一个4*4的棋盘，所有位置都可放皇后。</p>
-<p>则可知有2种放法。</p>
+<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述 :"></a>问题描述 :</h3><p>给定一个n<em>n的棋盘，棋盘中有一些位置不能放皇后。现在要向棋盘中放入n个黑皇后和n个白皇后，使任意的两个黑皇后都不在同一行、同一列或同一条对角线上，任意的两个白皇后都不在同一行、同一列或同一条对角线上。<br>问总共有多少种放法？<br>n小于等于8。<br>说明：同一条对角线是指包括两条主对角线的所有对角线，n=5时的棋盘从左上往右下有9条对角线，从右上往左下也有9条对角线。<br>比如，棋盘为：<br>1 1 1 1<br>1 1 1 1<br>1 1 1 1<br>1 1 1 1<br>表示一个4</em>4的棋盘，所有位置都可放皇后。<br>则可知有2种放法。</p>
 <h3 id="输入说明"><a href="#输入说明" class="headerlink" title="输入说明 :"></a>输入说明 :</h3><p>输入的第一行为一个整数n，表示棋盘的大小。<br>接下来n行，每行n个0或1的整数，如果一个整数为1，表示对应的位置可以放皇后，如果一个整数为0，表示对应的位置不可以放皇后。</p>
 <h3 id="输出说明"><a href="#输出说明" class="headerlink" title="输出说明 :"></a>输出说明 :</h3><p>输出一个整数，表示总共有多少种放法。</p>
 <h3 id="输入范例"><a href="#输入范例" class="headerlink" title="输入范例 :"></a>输入范例 :</h3><p>4<br>1 0 1 1<br>1 1 1 1<br>1 1 1 1<br>1 1 1 1 </p>
