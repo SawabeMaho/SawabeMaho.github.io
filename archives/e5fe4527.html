@@ -47,22 +47,28 @@
   };
 </script>
 
-  <meta name="description" content="由于我的毕业设计选择了AI生成卡通表情，基本都是使用GAN模型，所以测试了很多基于Pytorch的GAN模型。也修改了一些模型使他们结构更加类似。以下是一些测试效果。首先是GAN：生成效果如下,GAN生成效果还算不错，基本可以看出人形，但比较模糊。">
+  <meta name="description" content="由于我的毕业设计选择了AI生成卡通表情，基本都是使用GAN模型，所以测试了很多基于Pytorch的GAN模型。也修改了一些模型使他们结构更加类似。以下是一些测试效果及模型简化分析图。传统GAN模型非常简单:生成器输入100维随机向量，经过全连接后输出32x32图片。判别器输入32x32图片，输出判决结果。">
 <meta name="keywords" content="GAN,Anime,动漫">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AI生成动漫头像">
 <meta property="og:url" content="http:&#x2F;&#x2F;maho.xyz&#x2F;archives&#x2F;e5fe4527.html">
 <meta property="og:site_name" content="泽部真帆">
-<meta property="og:description" content="由于我的毕业设计选择了AI生成卡通表情，基本都是使用GAN模型，所以测试了很多基于Pytorch的GAN模型。也修改了一些模型使他们结构更加类似。以下是一些测试效果。首先是GAN：生成效果如下,GAN生成效果还算不错，基本可以看出人形，但比较模糊。">
+<meta property="og:description" content="由于我的毕业设计选择了AI生成卡通表情，基本都是使用GAN模型，所以测试了很多基于Pytorch的GAN模型。也修改了一些模型使他们结构更加类似。以下是一些测试效果及模型简化分析图。传统GAN模型非常简单:生成器输入100维随机向量，经过全连接后输出32x32图片。判别器输入32x32图片，输出判决结果。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U4d4f5b87aec74af49119748ed2aa9f419.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Uf7d8fb79235447df8b82da9cf9be8d21a.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Ue2dacf728aa84b10ac76fa0377d8129f1.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U52be10353c6b4e8f98dc0c3c24e20da6R.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U28f5919adfad400489e85b1cb1e7067by.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U5b2343a092004b228cbfa2b8ca138aa9O.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Ue6402b25442240aaa558ab1c52014d88r.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U16cae737bfb5459aa6949e92c06f3d5ea.gif">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Uf4cb6a40cdb94acdaede8897ce8c9ca2P.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Ue3d839db28b74c01a454aa1e9d8e7d4cR.gif">
 <meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Ub92a03e0e9d54c30a8209ebc5562afabC.png">
-<meta property="og:updated_time" content="2020-02-16T02:31:50.629Z">
+<meta property="og:updated_time" content="2020-02-18T08:17:55.808Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Uf7d8fb79235447df8b82da9cf9be8d21a.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U4d4f5b87aec74af49119748ed2aa9f419.png">
 
 <link rel="canonical" href="http://maho.xyz/archives/e5fe4527.html">
 
@@ -220,7 +226,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-16 02:31:50" itemprop="dateModified" datetime="2020-02-16T02:31:50Z">2020-02-16</time>
+                <time title="修改时间：2020-02-18 08:17:55" itemprop="dateModified" datetime="2020-02-18T08:17:55Z">2020-02-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -259,8 +265,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>由于我的毕业设计选择了AI生成卡通表情，基本都是使用GAN模型，所以测试了很多基于Pytorch的GAN模型。也修改了一些模型使他们结构更加类似。<br>以下是一些测试效果。<br>首先是GAN：生成效果如下,GAN生成效果还算不错，基本可以看出人形，但比较模糊。<a id="more"></a><br><img src="https://ae01.alicdn.com/kf/Uf7d8fb79235447df8b82da9cf9be8d21a.png" title="GAN" width="300px" height="300px"/></p>
-<p>然后DCGAN生成效果如下，相比于GAN清晰了很多，但是有点扭曲崩坏.<br><img src="https://ae01.alicdn.com/kf/U52be10353c6b4e8f98dc0c3c24e20da6R.png" title="DCGAN" width="300px" height="300px"/><br><img src="https://ae01.alicdn.com/kf/U28f5919adfad400489e85b1cb1e7067by.png" title="DCGAN" width="500px" height="500px"/><br>WGAN生成如下，这算是比较好的一款GAN，但是效果仍然不是很好。<br><img src="https://ae01.alicdn.com/kf/U5b2343a092004b228cbfa2b8ca138aa9O.png" title="WGAN" width="300px" height="300px"/>以上都属于随机生成GAN模型。<br><br>在GAN的基础上添加限制条件，就是CGAN了，由于带标签的动漫标签图像目前没有，就不做实验了。<br>相关代码见我的<a href="https://github.com/SawabeMaho/Pytorch" target="_blank" rel="noopener">Github</a>。<br>使用的数据集是基于<a href="https://www.gwern.net/Danbooru2019#danbooru2018" target="_blank" rel="noopener">danbooru2018</a>做了人脸切割。<br>也可以下载一下我个人使用的数据集<a href="https://share.weiyun.com/50I7Y9l" target="_blank" rel="noopener">微云分享</a>。<br>需要注意的是Pytorch下ImageFolder读取位置是路径下的文件夹，所以需要这样解压文件。<br>filepath = “./data/faces”。<br>文件解压到 “./data/faces/faces”文件夹下。<br><img src="https://ae01.alicdn.com/kf/Ub92a03e0e9d54c30a8209ebc5562afabC.png"/></p>
+        <p>由于我的毕业设计选择了AI生成卡通表情，基本都是使用GAN模型，所以测试了很多基于Pytorch的GAN模型。也修改了一些模型使他们结构更加类似。<br>以下是一些测试效果及模型简化分析图。<br>传统GAN模型非常简单:生成器输入100维随机向量，经过全连接后输出32x32图片。判别器输入32x32图片，输出判决结果。<a id="more"></a><br><img src="https://ae01.alicdn.com/kf/U4d4f5b87aec74af49119748ed2aa9f419.png" title="GAN模型"/><br>GAN生成效果如下,粗略看来生成效果还算不错，基本可以看出人形，但比较模糊。<br><img src="https://ae01.alicdn.com/kf/Uf7d8fb79235447df8b82da9cf9be8d21a.png" title="GAN" width="300px" height="300px"/><br>DCGAN模型引入了卷积与逆卷积：生成器输入100维随机向量，经过上采样(逆卷积)输出32x32图片。判别器输入32x32图片，经过(卷积)输出判决结果.<br><img src="https://ae01.alicdn.com/kf/Ue2dacf728aa84b10ac76fa0377d8129f1.png" title="DCGAN模型"/><br>DCGAN生成效果如下，相比于GAN清晰了很多，但是有点扭曲崩坏.<br><img src="https://ae01.alicdn.com/kf/U52be10353c6b4e8f98dc0c3c24e20da6R.png" title="DCGAN" width="300px" height="300px"/><br><img src="https://ae01.alicdn.com/kf/U28f5919adfad400489e85b1cb1e7067by.png" title="DCGAN" width="400px" height="400px"/><br>WGAN的生成器与判别器与传统GAN类似，只不过提出了一种受限的损失函数。<br>WGAN生成如下，这算是比较好的一款GAN，但是效果仍然不是很好。<br><img src="https://ae01.alicdn.com/kf/U5b2343a092004b228cbfa2b8ca138aa9O.png" title="WGAN" width="300px" height="300px"/><br>以上都属于随机生成GAN模型,输入是随机向量，输出无法控制<br><br>在GAN的基础上添加限制条件，就是CGAN了，由于带标签的动漫标签图像目前基本没有，就使用MNIST数据集做了实验。<br><img src="https://ae01.alicdn.com/kf/Ue6402b25442240aaa558ab1c52014d88r.png" title="CGAN模型"/><br>CGAN生成如下，作为受限GAN模型，效果还算可以。<br><img src="https://ae01.alicdn.com/kf/U16cae737bfb5459aa6949e92c06f3d5ea.gif" title="CGAN" width="300px" height="300px"/><br>ACGAN在CGAN的基础上继续改进。<br><img src="https://ae01.alicdn.com/kf/Uf4cb6a40cdb94acdaede8897ce8c9ca2P.png" title="CGAN模型"/><br>ACG生成效果进一步优化<br><img src="https://ae01.alicdn.com/kf/Ue3d839db28b74c01a454aa1e9d8e7d4cR.gif" title="ACGAN" width="300px" height="300px"/></p>
+<p>相关代码见我的<a href="https://github.com/SawabeMaho/Pytorch" target="_blank" rel="noopener">Github</a>。<br>使用的数据集是基于<a href="https://www.gwern.net/Danbooru2019#danbooru2018" target="_blank" rel="noopener">danbooru2018</a>做了人脸切割。<br>也可以下载一下我个人使用的数据集<a href="https://share.weiyun.com/50I7Y9l" target="_blank" rel="noopener">微云分享</a>。<br>需要注意的是Pytorch下ImageFolder读取位置是路径下的文件夹，所以需要这样解压文件。<br>filepath = “./data/faces”。<br>文件解压到 “./data/faces/faces”文件夹下。<br><img src="https://ae01.alicdn.com/kf/Ub92a03e0e9d54c30a8209ebc5562afabC.png"/></p>
 
     </div>
 
