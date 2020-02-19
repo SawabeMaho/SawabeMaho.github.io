@@ -47,13 +47,13 @@
   };
 </script>
 
-  <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;由于平时喜欢看漫画，而大多数漫画网站提供的都是黑白漫画，加上当时想做点有趣的东西，所以看了很多github跌跌撞撞的用tensorflow实现了上色，但是当时仅仅会用，而不理解，现在由于要做毕业设计，所以从基本的gan开始看起来，做了pix2pix的分析模型，用Pytorch实现了pix2pix模型，并且在电脑运行了一下，效果还行。">
+  <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;这个项目是很久之前的项目了，由于平时喜欢看漫画，而大多数漫画网站提供的都是黑白漫画，加上当时想做点有趣的东西，所以看了很多github跌跌撞撞的用tensorflow实现了上色，但是当时仅仅会用，而不理解，现在由于要做毕业设计，所以从基本的gan开始看起来，做了pix2pix的分析模型，用Pytorch实现了pix2pix模型，并且在电脑运行了一下，效果还行。">
 <meta name="keywords" content="GAN,Anime,动漫">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于GAN的黑白漫画自动上色">
 <meta property="og:url" content="http:&#x2F;&#x2F;maho.xyz&#x2F;archives&#x2F;ccfb6893.html">
 <meta property="og:site_name" content="泽部真帆">
-<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;由于平时喜欢看漫画，而大多数漫画网站提供的都是黑白漫画，加上当时想做点有趣的东西，所以看了很多github跌跌撞撞的用tensorflow实现了上色，但是当时仅仅会用，而不理解，现在由于要做毕业设计，所以从基本的gan开始看起来，做了pix2pix的分析模型，用Pytorch实现了pix2pix模型，并且在电脑运行了一下，效果还行。">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;这个项目是很久之前的项目了，由于平时喜欢看漫画，而大多数漫画网站提供的都是黑白漫画，加上当时想做点有趣的东西，所以看了很多github跌跌撞撞的用tensorflow实现了上色，但是当时仅仅会用，而不理解，现在由于要做毕业设计，所以从基本的gan开始看起来，做了pix2pix的分析模型，用Pytorch实现了pix2pix模型，并且在电脑运行了一下，效果还行。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U4e1603c2a442412a99cf5c4ed262f710q.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U2ef8e9047b404cf5863ac3dbc48b2c41G.png">
@@ -62,7 +62,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U0f97a0ff4d3f4cf2ba3a841181810fb1P.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U0b5b0e79e73d4321aca9bb9ee6d3cb39B.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U0634457ed8b94d64ac13422e5e13a9b0t.png">
-<meta property="og:updated_time" content="2020-02-18T07:34:31.649Z">
+<meta property="og:updated_time" content="2020-02-19T01:25:57.198Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U4e1603c2a442412a99cf5c4ed262f710q.png">
 
@@ -222,7 +222,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-18 07:34:31" itemprop="dateModified" datetime="2020-02-18T07:34:31Z">2020-02-18</time>
+                <time title="修改时间：2020-02-19 01:25:57" itemprop="dateModified" datetime="2020-02-19T01:25:57Z">2020-02-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -261,7 +261,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>&nbsp;&nbsp;&nbsp;由于平时喜欢看漫画，而大多数漫画网站提供的都是黑白漫画，加上当时想做点有趣的东西，所以看了很多github跌跌撞撞的用tensorflow实现了上色，但是当时仅仅会用，而不理解，现在由于要做毕业设计，所以从基本的gan开始看起来，做了pix2pix的分析模型，用Pytorch实现了pix2pix模型，并且在电脑运行了一下，效果还行。<a id="more"></a><br>首先看一下pix2pix的生成器。<br><img src="https://ae01.alicdn.com/kf/U4e1603c2a442412a99cf5c4ed262f710q.png"><br>生成器使用了UNET网络结构,相比于普通网络在上采样时会保留原始信息。<br><img src="https://ae01.alicdn.com/kf/U2ef8e9047b404cf5863ac3dbc48b2c41G.png"><br>判别器相比于普通GAN模型使用了patchGAN，即判别器不是仅仅输出待判别的图片的真假，而是输出一个矩阵，最终结果求平均，相当于经“投票”后再判断是真是假。<br><br>完整代码见<a href="https://github.com/SawabeMaho/pix2pix" target="_blank" rel="noopener">github</a> <br><br>最终结果如下：<br>5000轮训练后：</p>
+        <p>&nbsp;&nbsp;&nbsp;这个项目是很久之前的项目了，由于平时喜欢看漫画，而大多数漫画网站提供的都是黑白漫画，加上当时想做点有趣的东西，所以看了很多github跌跌撞撞的用tensorflow实现了上色，但是当时仅仅会用，而不理解，现在由于要做毕业设计，所以从基本的gan开始看起来，做了pix2pix的分析模型，用Pytorch实现了pix2pix模型，并且在电脑运行了一下，效果还行。<a id="more"></a><br>首先看一下pix2pix的生成器。<br><img src="https://ae01.alicdn.com/kf/U4e1603c2a442412a99cf5c4ed262f710q.png"><br>生成器使用了UNET网络结构,相比于普通网络在上采样时会保留原始信息。<br><img src="https://ae01.alicdn.com/kf/U2ef8e9047b404cf5863ac3dbc48b2c41G.png"><br>判别器相比于普通GAN模型使用了patchGAN，即判别器不是仅仅输出待判别的图片的真假，而是输出一个矩阵，最终结果求平均，相当于经“投票”后再判断是真是假。<br><br>完整代码见<a href="https://github.com/SawabeMaho/pix2pix" target="_blank" rel="noopener">github</a> <br><br>最终结果如下：<br>5000轮训练后：</p>
 <img src="https://ae01.alicdn.com/kf/U9d483aaf125f4e1cb75ec4d1bf2304fcn.png"  title="5000轮"/>
 20000轮训练后<br>
 
@@ -369,7 +369,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
