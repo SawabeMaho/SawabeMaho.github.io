@@ -182,6 +182,272 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/abfc2d.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Sawabe Maho">
+      <meta itemprop="description" content="欢迎光临">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽部真帆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/archives/abfc2d.html" class="post-title-link" itemprop="url">Linux复习2</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-02-24 15:30:43 / 修改时间：10:03:19" itemprop="dateCreated datePublished" datetime="2020-02-24T15:30:43Z">2020-02-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/archives/abfc2d.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/archives/abfc2d.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="linux的运行级别"><a href="#linux的运行级别" class="headerlink" title="linux的运行级别"></a>linux的运行级别</h4><ol start="0">
+<li>关机</li>
+<li>单用户 常用来找回root密码</li>
+<li>多用户无网络</li>
+<li><font color=red>多用户有网络</font></li>
+<li>保留级别</li>
+<li><font color=red>图形界面</font></li>
+<li>系统重启<h5 id="切换运行级别"><a href="#切换运行级别" class="headerlink" title="切换运行级别"></a>切换运行级别</h5>init [num] 切换到num运行级别<br>好像现在centos使用 systemctl set-default runlevel5.target。<h5 id="帮助指令"><a href="#帮助指令" class="headerlink" title="帮助指令"></a>帮助指令</h5>man 指令<br>例如 man ls 查看ls用法<br>以下是一些比较常用指令<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> pwd		显示当前目录的绝对路径</span><br><span class="line"><span class="number">2.</span> ls		显示当前目录下的文件</span><br><span class="line">	ls -a		显示当前目录下所有文件，包括隐藏文件</span><br><span class="line">	ls -l		显示当前目录下文件详细信息</span><br><span class="line"><span class="number">3.</span> cd 目录	切换目录</span><br><span class="line">	cd ~		回到自己家目录</span><br><span class="line">	cd ..		回到上一级</span><br><span class="line"><span class="number">4.</span> <span class="built_in">mkdir</span> [] 目录	创建目录</span><br><span class="line">	<span class="built_in">mkdir</span> -p 	目录 创建多级目录</span><br><span class="line"><span class="number">5.</span> <span class="built_in">rmdir</span> 目录	删除目录</span><br><span class="line">	rm -rf 目录	删除非空目录</span><br><span class="line"><span class="number">6.</span> touch a.txt 创建一个空文件</span><br><span class="line"><span class="number">7.</span> cp [] 源文件 目标</span><br><span class="line">	cp -r 源 目标 复制文件夹</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/a4965d14.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Sawabe Maho">
+      <meta itemprop="description" content="欢迎光临">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽部真帆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/archives/a4965d14.html" class="post-title-link" itemprop="url">Linux复习1</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-23 12:44:10" itemprop="dateCreated datePublished" datetime="2020-02-23T12:44:10Z">2020-02-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-24 07:38:08" itemprop="dateModified" datetime="2020-02-24T07:38:08Z">2020-02-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/archives/a4965d14.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/archives/a4965d14.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="Linux目录结构"><a href="#Linux目录结构" class="headerlink" title="Linux目录结构"></a>Linux目录结构</h4><p>linux的核心思想：万物皆文件。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/	根目录，所有目录挂载在根目录下</span><br><span class="line">/bin	常用指令</span><br><span class="line">/boot	引导文件。</span><br><span class="line">/dev	管理设备</span><br><span class="line">/media	挂载DVD,USB设备</span><br><span class="line">/etc	配置文件</span><br><span class="line">/<span class="built_in">home</span>	普通用户文件</span><br><span class="line">/lib	其他程序动态链接库</span><br><span class="line">/opt	安装额外软件目录</span><br><span class="line">/root	root用户文件</span><br><span class="line">/tmp	临时交换区</span><br><span class="line">/usr	类似与programfiles</span><br><span class="line">/mnt	类似于百度云挂载在我的电脑</span><br><span class="line">/var	不断变化的文件——日志</span><br></pre></td></tr></table></figure>
+<p>vi/vim使用指南。
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/archives/a4965d14.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/bd138a95.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Sawabe Maho">
+      <meta itemprop="description" content="欢迎光临">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽部真帆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/archives/bd138a95.html" class="post-title-link" itemprop="url">Web——CSS快速入门</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-02-23 10:37:25 / 修改时间：06:48:48" itemprop="dateCreated datePublished" datetime="2020-02-23T10:37:25Z">2020-02-23</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/archives/bd138a95.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/archives/bd138a95.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/238c784e.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -205,10 +471,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-02-22 19:40:16 / 修改时间：12:31:31" itemprop="dateCreated datePublished" datetime="2020-02-22T19:40:16Z">2020-02-22</time>
+              <time title="创建时间：2020-02-22 19:40:16" itemprop="dateCreated datePublished" datetime="2020-02-22T19:40:16Z">2020-02-22</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-24 07:37:49" itemprop="dateModified" datetime="2020-02-24T07:37:49Z">2020-02-24</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -249,11 +521,15 @@
           <p>通过HTML书写内容，通过CSS进行美化，通过JS进行交互。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HTML由标签组成&lt;&gt;与&lt;/&gt;称为一对标签，也有仅自己的标签像&lt;img /&gt;、&lt;br/&gt;,两个标签内的信息称为内容，</span><br><span class="line">例如&lt;html&gt;wasd&lt;html/&gt;称为html标签的内容为wasd。</span><br><span class="line">标签尖括号内的信息称为属性，例如&lt;img src=<span class="string">"url"</span>,<span class="built_in">width</span>=<span class="string">"10"</span>,<span class="built_in">height</span>=<span class="string">"100"</span>&gt;</span><br></pre></td></tr></table></figure>
 
-<p>一个网页骨架最少有三个标签。html,head,body。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;!--其他--&gt;</span><br><span class="line">		&lt;!--其他--&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">	&lt;body&gt;</span><br><span class="line">   		&lt;!--其他--&gt;</span><br><span class="line">		&lt;!--其他--&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;我的HTML测试&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;h1&lt;/h1&gt;</span><br><span class="line">    &lt;h2&gt;h2&lt;/h2&gt;</span><br><span class="line">    &lt;h3&gt;h3&lt;/h3&gt;</span><br><span class="line">    &lt;h4&gt;h4&lt;/h4&gt;</span><br><span class="line">    &lt;h5&gt;h5&lt;/h5&gt;</span><br><span class="line">    &lt;h6&gt;h6&lt;/h6&gt;</span><br><span class="line">    &lt;p&gt;这里是p，just p。&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;&lt;strong&gt;strong 加粗 &lt;/strong&gt;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;&lt;em&gt;em 斜体&lt;/em&gt;&lt;/p&gt;</span><br><span class="line">    &lt;button&gt;button 按钮&lt;/button&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;li 前面有一个黑点，如果被ul包着就成了无序列表&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;li 前面有一个黑点，如果被ul包着就成了无序列表&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;li 前面有一个黑点，如果被ul包着就成了无序列表&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;li 前面有一个黑点，如果被ul包着就成了无序列表&lt;/li&gt;     </span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">    &lt;ol&gt;</span><br><span class="line">        &lt;li&gt;li 前面有一个黑点，如果被ol包着就成了有序列表&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;li 前面有一个黑点，如果被ol包着就成了有序列表&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;li 前面有一个黑点，如果被ol包着就成了有序列表&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;li 前面有一个黑点，如果被ol包着就成了有序列表&lt;/li&gt;     </span><br><span class="line">    &lt;/ol&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<img src="https://ae01.alicdn.com/kf/U8ca28f4b6f7949e5945c648a9d1672bfe.png">
+<p>一个网页骨架最少有三个标签。html,head,body。
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/archives/238c784e.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -840,302 +1116,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/27a2e632.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Sawabe Maho">
-      <meta itemprop="description" content="欢迎光临">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泽部真帆">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/archives/27a2e632.html" class="post-title-link" itemprop="url">蓝桥杯训练赛——2n皇后</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-02-14 13:47:49" itemprop="dateCreated datePublished" datetime="2020-02-14T13:47:49Z">2020-02-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-19 02:54:48" itemprop="dateModified" datetime="2020-02-19T02:54:48Z">2020-02-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM/" itemprop="url" rel="index">
-                    <span itemprop="name">ACM</span>
-                  </a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/archives/27a2e632.html#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/archives/27a2e632.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="1-2n皇后问题"><a href="#1-2n皇后问题" class="headerlink" title="1: 2n皇后问题"></a>1: 2n皇后问题</h2><p>作者:Turbo &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; 时间限制: 1S &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; 章节: 深度优先搜索</p>
-<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述 :"></a>问题描述 :</h3><p>给定一个n<em>n的棋盘，棋盘中有一些位置不能放皇后。现在要向棋盘中放入n个黑皇后和n个白皇后，使任意的两个黑皇后都不在同一行、同一列或同一条对角线上，任意的两个白皇后都不在同一行、同一列或同一条对角线上。<br>问总共有多少种放法？
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/archives/27a2e632.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/ccfb6893.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Sawabe Maho">
-      <meta itemprop="description" content="欢迎光临">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泽部真帆">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/archives/ccfb6893.html" class="post-title-link" itemprop="url">基于GAN的黑白漫画自动上色</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-01-18 14:32:49" itemprop="dateCreated datePublished" datetime="2020-01-18T14:32:49Z">2020-01-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-19 01:25:57" itemprop="dateModified" datetime="2020-02-19T01:25:57Z">2020-02-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AI/" itemprop="url" rel="index">
-                    <span itemprop="name">AI</span>
-                  </a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/archives/ccfb6893.html#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/archives/ccfb6893.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>&nbsp;&nbsp;&nbsp;这个项目是很久之前的项目了，由于平时喜欢看漫画，而大多数漫画网站提供的都是黑白漫画，加上当时想做点有趣的东西，所以看了很多github跌跌撞撞的用tensorflow实现了上色，但是当时仅仅会用，而不理解，现在由于要做毕业设计，所以从基本的gan开始看起来，做了pix2pix的分析模型，用Pytorch实现了pix2pix模型，并且在电脑运行了一下，效果还行。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/archives/ccfb6893.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/47d2b3bf.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Sawabe Maho">
-      <meta itemprop="description" content="欢迎光临">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泽部真帆">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/archives/47d2b3bf.html" class="post-title-link" itemprop="url">C++刷题——二叉树、图</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-12-22 13:10:10" itemprop="dateCreated datePublished" datetime="2019-12-22T13:10:10Z">2019-12-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-23 04:19:52" itemprop="dateModified" datetime="2019-12-23T04:19:52Z">2019-12-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM/" itemprop="url" rel="index">
-                    <span itemprop="name">ACM</span>
-                  </a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/archives/47d2b3bf.html#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/archives/47d2b3bf.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3> 二叉树结构与遍历方式</h3>
-
-<p>二叉树:二叉树是每个结点最多有两个子树的树结构。通常子树被称作“左子树”（left subtree）和“右子树”（right subtree）。二叉树常被用于实现二叉查找树和二叉堆。
-</p>
-<h6>二叉树的C++实现:</h6>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/archives/47d2b3bf.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1186,20 +1166,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
