@@ -182,6 +182,221 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/74add858.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Sawabe Maho">
+      <meta itemprop="description" content="欢迎光临">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽部真帆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/archives/74add858.html" class="post-title-link" itemprop="url">Git使用学习指南</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-02-29 08:49:47 / 修改时间：11:09:43" itemprop="dateCreated datePublished" datetime="2020-02-29T08:49:47Z">2020-02-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/archives/74add858.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/archives/74add858.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="什么是git？"><a href="#什么是git？" class="headerlink" title="什么是git？"></a>什么是git？</h4><blockquote>
+<p>git是一个分布式版本控制系统，用于敏捷高效的处理项目。</p>
+</blockquote>
+<h4 id="Git-安装配置"><a href="#Git-安装配置" class="headerlink" title="Git 安装配置"></a>Git 安装配置</h4><p>Git 目前支持 Linux/Unix、Solaris、Mac和 Windows 平台上运行。<br>Git 各平台安装包下载地址为：<a href="http://git-scm.com/downloads" target="_blank" rel="noopener">http://git-scm.com/downloads</a><br>安装什么的比较简单，windows下载安装文件一路next就好。linux根据安装工具不同还有不同的安装方式。<br>且 Git 的工作需要调用 curl，zlib，openssl，expat，libiconv 等库的代码，所以需要先安装这些依赖工具。</p>
+<p><font color=red>Debian/Ubuntu </font></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ apt-<span class="built_in">get</span> install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev</span><br><span class="line"></span><br><span class="line">$ apt-<span class="built_in">get</span> install git</span><br><span class="line"></span><br><span class="line">$ git --version</span><br><span class="line">git version <span class="number">1.8</span><span class="number">.1</span><span class="number">.2</span></span><br></pre></td></tr></table></figure>
+<p><font color=red>Centos/RedHat </font></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel</span><br><span class="line"></span><br><span class="line">$ yum -y install git-core</span><br><span class="line"></span><br><span class="line">$ git --version</span><br><span class="line">git version <span class="number">1.7</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
+<p>安装完成后配置自己GitHub信息。</p>
+<blockquote>
+<p>$ git config –global user.name “Your Name”<br>$ git config –global user.email “<a href="mailto:email@example.com" target="_blank" rel="noopener">email@example.com</a>“</p>
+</blockquote>
+<h4 id="gitHub-的使用"><a href="#gitHub-的使用" class="headerlink" title="gitHub 的使用"></a>gitHub 的使用</h4><p>在绑定GitHub账号后可以在本机使用git。</p>
+<h6 id="生成ssh"><a href="#生成ssh" class="headerlink" title="生成ssh"></a>生成ssh</h6><blockquote>
+<p>$ ssh-keygen -t rsa -C “<a href="mailto:email@example.com" target="_blank" rel="noopener">email@example.com</a>“<br>连续按三次回车<br>cd ~/.ssh 打开id_rsa.pub 复制信息到Github粘贴。<br><img src="https://ae01.alicdn.com/kf/U1f477c76cd984ed3a0f70f636d07716e1.png"></p>
+</blockquote>
+<p>进入需要上传的目录</p>
+<blockquote>
+<p>git init<br>git add “Filename”<br>git commit “Str”<br><img src="https://ae01.alicdn.com/kf/Ud865546e0a144258b5d029bde6b12335R.png"/></p>
+</blockquote>
+<h6 id="上传到Github"><a href="#上传到Github" class="headerlink" title="上传到Github"></a>上传到Github</h6><p>到GitHub复制仓库地址<br>执行指令关联仓库</p>
+<blockquote>
+<p>git remote add origin <a href="https://github.com/XXXXX/XXXXX.git" target="_blank" rel="noopener">https://github.com/XXXXX/XXXXX.git</a><br>git pull –rebase origin master<br>git push -u origin master<br>上传代码</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；</span><br><span class="line"></span><br><span class="line">关联后，使用命令git push -u origin master第一次推送master分支的所有内容；</span><br><span class="line"></span><br><span class="line">此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；</span><br><span class="line"></span><br><span class="line">分布式版本系统的最大好处之一是在本地工作完全不需要考虑远程库的存在，也就是有没有联网都可以正常工作，而SVN在没有联网的时候是拒绝干活的！当有网络的时候，再把本地提交推送一下就完成了同步，真是太方便了！</span><br></pre></td></tr></table></figure>
+<h4 id="git查看信息"><a href="#git查看信息" class="headerlink" title="git查看信息"></a>git查看信息</h4><blockquote>
+<p>git status 显示有哪些文件被修改<br>git diff 显示都改了些什么<br><img src="https://ae01.alicdn.com/kf/U6cec011d413e4410ac705fc5e1b8ed1en.png"/></p>
+</blockquote>
+<h4 id="文件回退"><a href="#文件回退" class="headerlink" title="文件回退"></a>文件回退</h4><blockquote>
+<p>git log 倒序显示提交信息<br>git reset –hard HEAD^ 文件回退到上一次commit前<br>git reset –hard HEAD~100 文件回退到100次commit前<br>git reset HEAD a.txt 将放到暂存区的修改撤销并恢复源文件为暂存区修改。<br>git checkout – a.txt 将源文件修改恢复到目前master版本。<br>以上两条连起来就是放到暂存区又不想要如何修改。</p>
+</blockquote>
+<img src="https://ae01.alicdn.com/kf/U6e3122e5f0564135b885687a46335d8bC.png"/>
+
+<p>如果回退后再次后悔而此时的HEAD已经不再指向”最新”的版本怎么办？<br>如果终端没有关闭找到要恢复的版本号，就是那一串超级长的数字，输入前几位就可以了。<br>如果终端关闭了需要根据commitstr 先找到版本号。<br><img src="https://ae01.alicdn.com/kf/U8273fe96b89946b4a8cb9b52bd7e69e8U.png"/><br><img src="https://ae01.alicdn.com/kf/U4ab2f65875f84b6d9cb903f990a7bdf3y.png"/></p>
+<h4 id="工作区-版本库-暂存区"><a href="#工作区-版本库-暂存区" class="headerlink" title="工作区 版本库 暂存区"></a>工作区 版本库 暂存区</h4><blockquote>
+<p>工作区：工作目录<br>版本库：.git/ 目录<br>暂存区:.git/stage或.git/index<br>master：这是我们最终的目标区 其中HEAD指向的就是这里</p>
+</blockquote>
+<p>git add 文件A //把文件A从工作目录暂存至暂存区<br>git commit //把文件从暂存区上传至master。<br><img src="https://ae01.alicdn.com/kf/Uf6eb53a7ada54f12802984e32a52776cs.png"/><br>更详细的信息可以查看：<a href="https://www.liaoxuefeng.com/wiki/896043488029600/897271968352576" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/896043488029600/897271968352576</a></p>
+<h4 id="如何撤销"><a href="#如何撤销" class="headerlink" title="如何撤销"></a>如何撤销</h4><blockquote>
+<p>git checkout – a.txt  </p>
+<blockquote>
+<ol>
+<li>如果还没有git add(暂存区为空)即已经commit但还没有add，把工作区文件修改全部撤销，恢复到版本库</li>
+<li>1 如果已经git add还没有commit（暂存区非空）把工作区文件恢复为暂存区内容。</li>
+<li>2 恢复为暂存区后可以重新操作也可以git reset –hard HEAD 恢复到版本号。</li>
+<li>git reset HEAD <file> 在git add 后与2.1的行为相同都是将源文件恢复到暂存区，不同的是3.会撤销git add 行为即清空暂存区——仅仅针对源文件，其他文件暂存区不变。<img src="https://ae01.alicdn.com/kf/U19b5dc05e75a43d28aa63052d2fa7636y.png"/>
+</li>
+</ol>
+</blockquote>
+</blockquote>
+<h4 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h4><blockquote>
+<p>删除后如果反悔 git checkout – filename<br>确定删除且需要删除版本库内文件 git rm filename,git commit -m “remove file”<br><img src="https://ae01.alicdn.com/kf/U138f046b4bc241aba511b2e0a7ebe048B.png"/></p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/77acccbb.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Sawabe Maho">
+      <meta itemprop="description" content="欢迎光临">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽部真帆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/archives/77acccbb.html" class="post-title-link" itemprop="url">Linux复习3</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-28 20:55:15" itemprop="dateCreated datePublished" datetime="2020-02-28T20:55:15Z">2020-02-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-29 00:53:43" itemprop="dateModified" datetime="2020-02-29T00:53:43Z">2020-02-29</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/archives/77acccbb.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/archives/77acccbb.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> data </span><br><span class="line">	data <span class="string">"+%Y-%m-%d"</span></span><br></pre></td></tr></table></figure>
+<img src="https://ae01.alicdn.com/kf/Ubc987854a7ec4407a89aef2e1f19a31dd.png"/>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/abfc2d.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -196,7 +411,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/archives/abfc2d.html" class="post-title-link" itemprop="url">Linux复习2</a>
+            <a href="/archives/abfc2d.html" class="post-title-link" itemprop="url">Linux复习2——文件目录类指令</a>
         </h1>
 
         <div class="post-meta">
@@ -213,7 +428,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-28 12:51:09" itemprop="dateModified" datetime="2020-02-28T12:51:09Z">2020-02-28</time>
+                <time title="修改时间：2020-02-28 12:52:26" itemprop="dateModified" datetime="2020-02-28T12:52:26Z">2020-02-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -263,6 +478,105 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/archives/abfc2d.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/a4965d14.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Sawabe Maho">
+      <meta itemprop="description" content="欢迎光临">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽部真帆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/archives/a4965d14.html" class="post-title-link" itemprop="url">Linux复习1</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-23 12:44:10" itemprop="dateCreated datePublished" datetime="2020-02-23T12:44:10Z">2020-02-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-28 12:55:38" itemprop="dateModified" datetime="2020-02-28T12:55:38Z">2020-02-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/archives/a4965d14.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/archives/a4965d14.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="Linux目录结构"><a href="#Linux目录结构" class="headerlink" title="Linux目录结构"></a>Linux目录结构</h4><p>linux的核心思想：万物皆文件。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/	根目录，所有目录挂载在根目录下</span><br><span class="line">/bin	常用指令</span><br><span class="line">/boot	引导文件。</span><br><span class="line">/dev	管理设备</span><br><span class="line">/media	挂载DVD,USB设备</span><br><span class="line">/etc	配置文件</span><br><span class="line">/<span class="built_in">home</span>	普通用户文件</span><br><span class="line">/lib	其他程序动态链接库</span><br><span class="line">/opt	安装额外软件目录</span><br><span class="line">/root	root用户文件</span><br><span class="line">/tmp	临时交换区</span><br><span class="line">/usr	类似与programfiles</span><br><span class="line">/mnt	类似于百度云挂载在我的电脑</span><br><span class="line">/var	不断变化的文件——日志</span><br></pre></td></tr></table></figure>
+<p>vi/vim使用指南。
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/archives/a4965d14.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -832,299 +1146,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/12079356.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Sawabe Maho">
-      <meta itemprop="description" content="欢迎光临">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泽部真帆">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/archives/12079356.html" class="post-title-link" itemprop="url">蓝桥杯训练赛——字母图形</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-02-19 09:30:05" itemprop="dateCreated datePublished" datetime="2020-02-19T09:30:05Z">2020-02-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-21 00:51:13" itemprop="dateModified" datetime="2020-02-21T00:51:13Z">2020-02-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM/" itemprop="url" rel="index">
-                    <span itemprop="name">ACM</span>
-                  </a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/archives/12079356.html#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/archives/12079356.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h6 id="蓝桥杯训练赛——字母图形"><a href="#蓝桥杯训练赛——字母图形" class="headerlink" title="蓝桥杯训练赛——字母图形"></a>蓝桥杯训练赛——字母图形</h6><p>利用字母可以组成一些美丽的图形，下面给出了一个例子：</p>
-<p>ABCDEFG<br>BABCDEF<br>CBABCDE<br>DCBABCD<br>EDCBABC</p>
-<p>这是一个5行7列的图形，请找出这个图形的规律，并输出一个n行m列的图形。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/archives/12079356.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/268b9f39.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Sawabe Maho">
-      <meta itemprop="description" content="欢迎光临">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泽部真帆">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/archives/268b9f39.html" class="post-title-link" itemprop="url">蓝桥杯训练赛——回文数</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-02-19 09:11:40" itemprop="dateCreated datePublished" datetime="2020-02-19T09:11:40Z">2020-02-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-21 00:49:18" itemprop="dateModified" datetime="2020-02-21T00:49:18Z">2020-02-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM/" itemprop="url" rel="index">
-                    <span itemprop="name">ACM</span>
-                  </a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/archives/268b9f39.html#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/archives/268b9f39.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h6 id="蓝桥杯训练赛——回文数"><a href="#蓝桥杯训练赛——回文数" class="headerlink" title="蓝桥杯训练赛——回文数"></a>蓝桥杯训练赛——回文数</h6><p>1221是一个非常特殊的数，它从左边读和从右边读是一样的，编程求大于等于n的所有这样的四位十进制数。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/archives/268b9f39.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/e5fe4527.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Sawabe Maho">
-      <meta itemprop="description" content="欢迎光临">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泽部真帆">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/archives/e5fe4527.html" class="post-title-link" itemprop="url">AI生成动漫头像</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-02-14 13:47:49" itemprop="dateCreated datePublished" datetime="2020-02-14T13:47:49Z">2020-02-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-18 08:17:55" itemprop="dateModified" datetime="2020-02-18T08:17:55Z">2020-02-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AI/" itemprop="url" rel="index">
-                    <span itemprop="name">AI</span>
-                  </a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/archives/e5fe4527.html#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/archives/e5fe4527.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>由于我的毕业设计选择了AI生成卡通表情，基本都是使用GAN模型，所以测试了很多基于Pytorch的GAN模型。也修改了一些模型使他们结构更加类似。<br>以下是一些测试效果及模型简化分析图。<br>传统GAN模型非常简单:生成器输入100维随机向量，经过全连接后输出32x32图片。判别器输入32x32图片，输出判决结果。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/archives/e5fe4527.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1175,20 +1196,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
