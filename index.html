@@ -207,7 +207,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-01 09:18:58 / 修改时间：08:26:16" itemprop="dateCreated datePublished" datetime="2020-03-01T09:18:58Z">2020-03-01</time>
+              <time title="创建时间：2020-03-01 09:18:58 / 修改时间：08:32:29" itemprop="dateCreated datePublished" datetime="2020-03-01T09:18:58Z">2020-03-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -246,47 +246,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="什么是分支"><a href="#什么是分支" class="headerlink" title="什么是分支"></a>什么是分支</h4><p>在git中每次commit都是把信息保存到分支中，例如前面提到的master分支。<br>一开始，master是一条直线，git使用master指向最新的提交，再用HEAD指向master确定当前分支，以及当前分支的提交点，每次提交，master都会前进一步。如下图(示意图均来自<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">廖雪峰git教程</a>)<br><img src="https://ae01.alicdn.com/kf/Ue9cf49f331134c1f9fd408024369edfep.png" title="图自廖雪峰git教程"/><br>当我们创建新的分支时，例如dev分支，git后新建一个指针dev，指向master的相同提交，如果切换到dev分支，再把HEAD指向dev。<br><img src="https://ae01.alicdn.com/kf/Ua744cc9dcfdc445fbfbf99e233284723f.png"/><br>从现在开始，在dev分支的提交不在对master做修改，而是dev每次前进一步，同时HEAD指向dev。<br><img src="https://ae01.alicdn.com/kf/Ue9333b67e5524fd7a97a7b6cfac7fb78b.png"/><br>如果要把master合并，只需要把master指向dev就可以了。<br><img src="https://ae01.alicdn.com/kf/U51495e63ad0944118db2a6e40d2d40281.png"/><br>此时删除分支也没有什么影响了。<br><img src="https://ae01.alicdn.com/kf/U17e1b55ddffc469d808689a961ace8beb.png"/></p>
-<blockquote>
-<p>创建分支</p>
-<blockquote>
-<p><font color="blue"> git branch dev</font>  创建dev分支<br><font color="blue">git checkout dev</font> 切换到dev分支<br><font color="Green">git switch dev</font> 切换到dev分支<br><font color="blue">git checkout -b dev</font> 创建并切换到dev分支<br><font color="blue">git switch -c dev</font> 创建并切换到dev分支<br>尽量使用switch。</p>
-</blockquote>
-<p>然后按照正常使用方式使用就可以了。<br>如何合并分支呢？</p>
-<blockquote>
-<p><font color="blue">git checkout maste</font>r 切换回master分支<br><font color="blue">git merge dev</font> 把dev分支合并到master<br><font color="blue">git branch -d dev</font> 删除dev分支</p>
-</blockquote>
-</blockquote>
-<img src="https://ae01.alicdn.com/kf/U245093b3821f42a8953117f5d74d93191.png"/>
-##### 总结
-<img src="https://ae01.alicdn.com/kf/Ufe51713c5ce34b8184bc436ba2af6f76f.png"/>
-#### 解决冲突
-如果在f1分支修改后提交，且master也修改后提交，此时会发生冲突。
-<img src="https://ae01.alicdn.com/kf/Ucdfd1ea89a5d43f9a711e1c570b90ce1r.png"/>
-解决冲突的办法时修改冲突内容为需要的内容，然后再次commit，此时master会超前一步，也就是说分支已经没有用了，可以把master合并到f1,再在f1修改，也可以直接删除f1，重建分支。
-<img src="https://ae01.alicdn.com/kf/U21597ac11f9b4c09868bc3cd1de5bf80h.png"/>
-<font color="purple">用git log --graph命令可以看到分支合并图。</font>
-##### 分支管理策略
-在合并分支时，默认使用快速合并，在历史中看不出来怎么合并的
-如果禁止快速合并，git会保存合并历史
-使用git merge --no-ff -m "str" dev
-这样在git log graph 查看历史时会看到合并轨迹，否则不显示合并轨迹。
-##### 保护现场
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">如果在dev分支工作到一半要改一个master分支的bug，首先需要保护现场。</span><br><span class="line"><span class="number">1.</span> 保护现场 git stash</span><br><span class="line"><span class="number">2.</span> 回到master git checkout master</span><br><span class="line"><span class="number">3.</span> 新建一个分支 git checkout -b debug<span class="number">-001</span></span><br><span class="line"><span class="number">4.</span> 修复bug 然后提交</span><br><span class="line"><span class="number">5.</span> 回到master合并debug分支 git merge debug<span class="number">-001</span></span><br><span class="line"><span class="number">6.</span> 删除debug<span class="number">-001</span> git branch -d debug<span class="number">-001</span></span><br><span class="line"><span class="number">7.</span> 回到dev git checkout dev</span><br><span class="line"><span class="number">8.</span> <span class="number">1.1</span>  恢复现场 git stash apply</span><br><span class="line"><span class="number">8.</span> <span class="number">1.2</span>  删除现场 git stash drop</span><br><span class="line"><span class="number">8.</span> <span class="number">2.</span> 直接恢复并删除现场 git stash pop</span><br><span class="line"><span class="number">9.</span> 如果多次保存现场可以先使用git stash <span class="built_in">list</span> 查看现场</span><br><span class="line"><span class="number">10.</span> 然后恢复 git stash applay stash@&#123;<span class="number">0</span>&#125;</span><br><span class="line"><span class="number">11.</span> 注意到dev也是从master修复bug前复制的，肯定也需要修改，但不能使用merge来修复，我们要使用git cheer-pick <span class="number">4</span>的commit版本号来将bug的提交复制过来</span><br></pre></td></tr></table></figure>
-##### 删除分支
-如果分支已经合并 git branch -d dev 删除分支
-如果分支没有合并 git branch -D dev 强制删除分支
-##### 添加标签
-由于commit id太难记，我们可以给版本起一个别名，就是标签。
-git tag v1.0 给当前HEAD最近一次commit 加标签为v1.0
-git tag v0.9 "fjjf55" 给commitid 为fjjf55的版本加标签为v0.9
-git tag -a v0.7 -m "说明" 给标签添加说明
-git tag 可以查看所有标签
-git tag -d v0.7 删除标签
-git push origin <tagname> 推送本地标签
-git push origin --tags 推送所有未推送过的本地标签
-git push origin :refs/tags/<tagname> 删除远程标签
-
+          <h4 id="什么是分支"><a href="#什么是分支" class="headerlink" title="什么是分支"></a>什么是分支</h4><p>在git中每次commit都是把信息保存到分支中，例如前面提到的master分支。<br>一开始，master是一条直线，git使用master指向最新的提交，再用HEAD指向master确定当前分支，以及当前分支的提交点，每次提交，master都会前进一步。如下图(示意图均来自<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">廖雪峰git教程</a>)
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/archives/75718ab4.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -336,7 +304,7 @@ git push origin :refs/tags/<tagname> 删除远程标签
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-01 08:26:28" itemprop="dateModified" datetime="2020-03-01T08:26:28Z">2020-03-01</time>
+                <time title="修改时间：2020-03-01 08:28:12" itemprop="dateModified" datetime="2020-03-01T08:28:12Z">2020-03-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -378,57 +346,15 @@ git push origin :refs/tags/<tagname> 删除远程标签
           <h4 id="什么是git？"><a href="#什么是git？" class="headerlink" title="什么是git？"></a>什么是git？</h4><blockquote>
 <p>git是一个分布式版本控制系统，用于敏捷高效的处理项目。</p>
 </blockquote>
-<h4 id="Git-安装配置"><a href="#Git-安装配置" class="headerlink" title="Git 安装配置"></a>Git 安装配置</h4><p>Git 目前支持 Linux/Unix、Solaris、Mac和 Windows 平台上运行。<br>Git 各平台安装包下载地址为：<a href="http://git-scm.com/downloads" target="_blank" rel="noopener">http://git-scm.com/downloads</a><br>安装什么的比较简单，windows下载安装文件一路next就好。linux根据安装工具不同还有不同的安装方式。<br>且 Git 的工作需要调用 curl，zlib，openssl，expat，libiconv 等库的代码，所以需要先安装这些依赖工具。</p>
-<p><font color=red>Debian/Ubuntu </font></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ apt-<span class="built_in">get</span> install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev</span><br><span class="line"></span><br><span class="line">$ apt-<span class="built_in">get</span> install git</span><br><span class="line"></span><br><span class="line">$ git --version</span><br><span class="line">git version <span class="number">1.8</span><span class="number">.1</span><span class="number">.2</span></span><br></pre></td></tr></table></figure>
-<p><font color=red>Centos/RedHat </font></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel</span><br><span class="line"></span><br><span class="line">$ yum -y install git-core</span><br><span class="line"></span><br><span class="line">$ git --version</span><br><span class="line">git version <span class="number">1.7</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
-<p>安装完成后配置自己GitHub信息。</p>
-<blockquote>
-<p>$ git config –global user.name “Your Name”<br>$ git config –global user.email “<a href="mailto:email@example.com" target="_blank" rel="noopener">email@example.com</a>“</p>
-</blockquote>
-<h4 id="gitHub-的使用"><a href="#gitHub-的使用" class="headerlink" title="gitHub 的使用"></a>gitHub 的使用</h4><p>在绑定GitHub账号后可以在本机使用git。</p>
-<h6 id="生成ssh"><a href="#生成ssh" class="headerlink" title="生成ssh"></a>生成ssh</h6><blockquote>
-<p>$ ssh-keygen -t rsa -C “<a href="mailto:email@example.com" target="_blank" rel="noopener">email@example.com</a>“<br>连续按三次回车<br>cd ~/.ssh 打开id_rsa.pub 复制信息到Github粘贴。<br><img src="https://ae01.alicdn.com/kf/U1f477c76cd984ed3a0f70f636d07716e1.png"></p>
-</blockquote>
-<p>进入需要上传的目录</p>
-<blockquote>
-<p>git init<br>git add “Filename”<br>git commit “Str”<br><img src="https://ae01.alicdn.com/kf/Ud865546e0a144258b5d029bde6b12335R.png"/></p>
-</blockquote>
-<h6 id="上传到Github"><a href="#上传到Github" class="headerlink" title="上传到Github"></a>上传到Github</h6><p>到GitHub复制仓库地址<br>执行指令关联仓库</p>
-<blockquote>
-<p>git remote add origin <a href="https://github.com/XXXXX/XXXXX.git" target="_blank" rel="noopener">https://github.com/XXXXX/XXXXX.git</a><br>git pull –rebase origin master<br>git push -u origin master<br>上传代码</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；</span><br><span class="line"></span><br><span class="line">关联后，使用命令git push -u origin master第一次推送master分支的所有内容；</span><br><span class="line"></span><br><span class="line">此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；</span><br><span class="line"></span><br><span class="line">分布式版本系统的最大好处之一是在本地工作完全不需要考虑远程库的存在，也就是有没有联网都可以正常工作，而SVN在没有联网的时候是拒绝干活的！当有网络的时候，再把本地提交推送一下就完成了同步，真是太方便了！</span><br></pre></td></tr></table></figure>
-<h4 id="git查看信息"><a href="#git查看信息" class="headerlink" title="git查看信息"></a>git查看信息</h4><blockquote>
-<p>git status 显示有哪些文件被修改<br>git diff 显示都改了些什么<br><img src="https://ae01.alicdn.com/kf/U6cec011d413e4410ac705fc5e1b8ed1en.png"/></p>
-</blockquote>
-<h4 id="文件回退"><a href="#文件回退" class="headerlink" title="文件回退"></a>文件回退</h4><blockquote>
-<p>git log 倒序显示提交信息<br>git reset –hard HEAD^ 文件回退到上一次commit前<br>git reset –hard HEAD~100 文件回退到100次commit前<br>git reset HEAD a.txt 将放到暂存区的修改撤销并恢复源文件为暂存区修改。<br>git checkout – a.txt 将源文件修改恢复到目前master版本。<br>以上两条连起来就是放到暂存区又不想要如何修改。</p>
-</blockquote>
-<img src="https://ae01.alicdn.com/kf/U6e3122e5f0564135b885687a46335d8bC.png"/>
-
-<p>如果回退后再次后悔而此时的HEAD已经不再指向”最新”的版本怎么办？<br>如果终端没有关闭找到要恢复的版本号，就是那一串超级长的数字，输入前几位就可以了。<br>如果终端关闭了需要根据commitstr 先找到版本号。<br><img src="https://ae01.alicdn.com/kf/U8273fe96b89946b4a8cb9b52bd7e69e8U.png"/><br><img src="https://ae01.alicdn.com/kf/U4ab2f65875f84b6d9cb903f990a7bdf3y.png"/></p>
-<h4 id="工作区-版本库-暂存区"><a href="#工作区-版本库-暂存区" class="headerlink" title="工作区 版本库 暂存区"></a>工作区 版本库 暂存区</h4><blockquote>
-<p>工作区：工作目录<br>版本库：.git/ 目录<br>暂存区:.git/stage或.git/index<br>master：这是我们最终的目标区 其中HEAD指向的就是这里</p>
-</blockquote>
-<p>git add 文件A //把文件A从工作目录暂存至暂存区<br>git commit //把文件从暂存区上传至master。<br><img src="https://ae01.alicdn.com/kf/Uf6eb53a7ada54f12802984e32a52776cs.png"/><br>更详细的信息可以查看：<a href="https://www.liaoxuefeng.com/wiki/896043488029600/897271968352576" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/896043488029600/897271968352576</a></p>
-<h4 id="如何撤销"><a href="#如何撤销" class="headerlink" title="如何撤销"></a>如何撤销</h4><blockquote>
-<p>git checkout – a.txt  </p>
-<blockquote>
-<ol>
-<li>如果还没有git add(暂存区为空)即已经commit但还没有add，把工作区文件修改全部撤销，恢复到版本库</li>
-<li>1 如果已经git add还没有commit（暂存区非空）把工作区文件恢复为暂存区内容。</li>
-<li>2 恢复为暂存区后可以重新操作也可以git reset –hard HEAD 恢复到版本号。</li>
-<li>git reset HEAD <file> 在git add 后与2.1的行为相同都是将源文件恢复到暂存区，不同的是3.会撤销git add 行为即清空暂存区——仅仅针对源文件，其他文件暂存区不变。<img src="https://ae01.alicdn.com/kf/U19b5dc05e75a43d28aa63052d2fa7636y.png"/>
-</li>
-</ol>
-</blockquote>
-</blockquote>
-<h4 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h4><blockquote>
-<p>删除后如果反悔 git checkout – filename<br>确定删除且需要删除版本库内文件 git rm filename,git commit -m “remove file”<br><img src="https://ae01.alicdn.com/kf/U138f046b4bc241aba511b2e0a7ebe048B.png"/></p>
-</blockquote>
-
+<h4 id="Git-安装配置"><a href="#Git-安装配置" class="headerlink" title="Git 安装配置"></a>Git 安装配置</h4><p>Git 目前支持 Linux/Unix、Solaris、Mac和 Windows 平台上运行。<br>Git 各平台安装包下载地址为：<a href="http://git-scm.com/downloads" target="_blank" rel="noopener">http://git-scm.com/downloads</a><br>安装什么的比较简单，windows下载安装文件一路next就好。linux根据安装工具不同还有不同的安装方式。
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/archives/74add858.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -478,7 +404,7 @@ git push origin :refs/tags/<tagname> 删除远程标签
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-29 00:53:43" itemprop="dateModified" datetime="2020-02-29T00:53:43Z">2020-02-29</time>
+                <time title="修改时间：2020-03-01 13:09:49" itemprop="dateModified" datetime="2020-03-01T13:09:49Z">2020-03-01</time>
               </span>
 
           
@@ -506,7 +432,45 @@ git push origin :refs/tags/<tagname> 删除远程标签
     <div class="post-body" itemprop="articleBody">
 
       
-          <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> data </span><br><span class="line">	data <span class="string">"+%Y-%m-%d"</span></span><br></pre></td></tr></table></figure>
+          <h3 id="查找指令"><a href="#查找指令" class="headerlink" title="查找指令"></a>查找指令</h3><h6 id="find指令-find-查找范围-选项-“str”"><a href="#find指令-find-查找范围-选项-“str”" class="headerlink" title="find指令 find [查找范围] [选项] “str”"></a>find指令 find [查找范围] [选项] “str”</h6><ol>
+<li><font color="blue" >find /root -name hello.txt </font>查找/root目录下hello.txt 文件</li>
+<li><font color="blue" >find /home -user pain</font> 查找/home目录下所有属于pain的文件</li>
+<li><font color="blue" >find / -size +20M </font>查找/ 根目录下所有大于20Mb的文件 +大于 -小于 不写 等于</li>
+</ol>
+<h6 id="locate指令-快速定位文件路径"><a href="#locate指令-快速定位文件路径" class="headerlink" title="locate指令 快速定位文件路径"></a>locate指令 快速定位文件路径</h6><ol>
+<li>locate a.txt 输出a.txt的路径 </li>
+<li>不知道为什么我的linux不能使用这条指令</li>
+</ol>
+<h5 id="grep指令-和-管道符号"><a href="#grep指令-和-管道符号" class="headerlink" title="grep指令 和 管道符号|"></a>grep指令 和 管道符号|</h5><ol>
+<li>grep 过滤查找 grep [选项] “str” 源文件</li>
+<li>grep -n 显示行号</li>
+<li>grep -i 忽略大小写</li>
+<li>grep -ni “yes” hello.txt 查找hello.txt中出现yes的行。<img src="https://ae01.alicdn.com/kf/Uf628b6ad0fe54e65ae7fe6b7b63e7616i.png"/></li>
+<li>| 将前一个命令的输出处理结果传递给后面的命令处理</li>
+<li>cat hello.txt | grep -ni yes 查找hello.txt出现yes的行</li>
+</ol>
+<h3 id="解压缩指令"><a href="#解压缩指令" class="headerlink" title="解压缩指令"></a>解压缩指令</h3><h6 id="gzip-filename-gunzip-filename"><a href="#gzip-filename-gunzip-filename" class="headerlink" title="gzip [filename] / gunzip [filename]"></a>gzip [filename] / gunzip [filename]</h6><ol>
+<li>gzip a.txt ==&gt;a.txt.gz 替换源文件</li>
+<li>gunzip a.txt.gz ==&gt;a.txt <img src="https://ae01.alicdn.com/kf/U9750ac78b40a4bdc9d04fefb63b3506e1.png">
+
+</li>
+</ol>
+<h6 id="zip-选项-xxx-zip-filename-unzip-选项-filename"><a href="#zip-选项-xxx-zip-filename-unzip-选项-filename" class="headerlink" title="zip [选项] xxx.zip [filename] /unzip [选项] [filename]"></a>zip [选项] xxx.zip [filename] /unzip [选项] [filename]</h6><ol>
+<li>zip -r file.zip /home/pain/test/ 将/home/pain/test/目录下所有文件压缩为file.zip</li>
+<li>unzip -d /home/pain/test2 file.zip 将file.zip解压到指定目录</li>
+</ol>
+<h6 id="tar-xxx-tar"><a href="#tar-xxx-tar" class="headerlink" title="tar [] xxx.tar"></a>tar [] xxx.tar</h6><ol>
+<li>-c 产生.tar 打包文件</li>
+<li>-v 显示详细信息</li>
+<li>-f 指定压缩后的文件名</li>
+<li>-z 打包同时压缩</li>
+<li>-x 解压.tar文件</li>
+</ol>
+<p>tar -zcvf a.tar.gz a1.txt a2.txt 把a1.txt，a2.txt 压缩为a.tar.gz<br>tar -zxvf a.tar.gz 将a.tar.gz 解压到当前目录<br>tar -zxvf a.tar.gz -C 指定目录 解压到指定目录</p>
+<h3 id="组管理"><a href="#组管理" class="headerlink" title="组管理"></a>组管理</h3><p>linux中<br>用户必须属于一个组<br>文件有 所有者 所在组 其他组 三种权限<br>假如文件由小明创建，则默认所有者为小明，所在组为小明所在组，其他组为除小明所在组之外的组。<br>ls -al 会显示出所有者和所在组<br>chown 用户名 文件名 修改文件所有者<br>chgrp 组名 文件名 修改文件所在组<br>chown 用户名：组名 文件名 即修改文件所有者也修改文件所在组<br><img src="https://ae01.alicdn.com/kf/U9e15d9d4e5b64e6dbe4d159415dea5adZ.png"/><br>usermod -g 组名 用户名 修改用户所在组<br>usermod -d 目录 用户名 修改用户初始登录目录</p>
+<h3 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h3><p><font color="purple">-</font><font color="red">rwx</font><font color="blue">rwx</font><font color="green">rwx</font><br><font color="red">文件所有者权限</font><br><font color="blue">文件所在组权限</font><br><font color="green">其他组权限</font><br>-：表示普通文件<br>d：目录<br>l：软连接<br>c:字符设备-鼠标，键盘<br>b：块文件-硬盘<br>r：读<br>w：写<br>x：执行<br><img src="https://ae01.alicdn.com/kf/Uf6e66e40fe1345b9a70d1f3811f38baeg.png"/><br><img src="https://ae01.alicdn.com/kf/U6f51b6e1315541c1af4b2f92a8a4de8aT.png"/></p>
+<h3 id="修改权限"><a href="#修改权限" class="headerlink" title="修改权限"></a>修改权限</h3><p>chmod<br>第一种方式 u g o a + - =<br>chmod u=rwx filename 设置user 权限为rwx<br>chomd u+x filename 数字user 权限 + x<br>chomd a-x filename ugo 权限-x<br><img src="https://ae01.alicdn.com/kf/Uaab320b7541745fda2759eeff3063a86l.png"/><br>第二种方式<br>chmod 751 文件名<br><img src="https://ae01.alicdn.com/kf/U4564c2d78a1e43d2b74a67b007483736b.png"/></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> data </span><br><span class="line">	data <span class="string">"+%Y-%m-%d"</span></span><br></pre></td></tr></table></figure>
 <img src="https://ae01.alicdn.com/kf/Ubc987854a7ec4407a89aef2e1f19a31dd.png"/>
       
     </div>
@@ -644,7 +608,7 @@ git push origin :refs/tags/<tagname> 删除远程标签
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/archives/a4965d14.html" class="post-title-link" itemprop="url">Linux复习1</a>
+            <a href="/archives/a4965d14.html" class="post-title-link" itemprop="url">Linux复习1--基本指令</a>
         </h1>
 
         <div class="post-meta">
@@ -661,7 +625,7 @@ git push origin :refs/tags/<tagname> 删除远程标签
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-24 07:38:08" itemprop="dateModified" datetime="2020-02-24T07:38:08Z">2020-02-24</time>
+                <time title="修改时间：2020-03-01 12:26:43" itemprop="dateModified" datetime="2020-03-01T12:26:43Z">2020-03-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">

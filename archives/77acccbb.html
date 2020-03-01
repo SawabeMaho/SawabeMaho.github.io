@@ -47,17 +47,24 @@
   };
 </script>
 
-  <meta name="description" content="121. data 	data &quot;+%Y-%m-%d&quot;">
+  <meta name="description" content="查找指令find指令 find [查找范围] [选项] “str” find &#x2F;root -name hello.txt 查找&#x2F;root目录下hello.txt 文件 find &#x2F;home -user pain 查找&#x2F;home目录下所有属于pain的文件 find &#x2F; -size +20M 查找&#x2F; 根目录下所有大于20Mb的文件 +大于 -小于 不写 等于  locate指令 快速定位文件路径 l">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux复习3">
 <meta property="og:url" content="http:&#x2F;&#x2F;maho.xyz&#x2F;archives&#x2F;77acccbb.html">
 <meta property="og:site_name" content="泽部真帆">
-<meta property="og:description" content="121. data 	data &quot;+%Y-%m-%d&quot;">
+<meta property="og:description" content="查找指令find指令 find [查找范围] [选项] “str” find &#x2F;root -name hello.txt 查找&#x2F;root目录下hello.txt 文件 find &#x2F;home -user pain 查找&#x2F;home目录下所有属于pain的文件 find &#x2F; -size +20M 查找&#x2F; 根目录下所有大于20Mb的文件 +大于 -小于 不写 等于  locate指令 快速定位文件路径 l">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Uf628b6ad0fe54e65ae7fe6b7b63e7616i.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U9750ac78b40a4bdc9d04fefb63b3506e1.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U9e15d9d4e5b64e6dbe4d159415dea5adZ.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Uf6e66e40fe1345b9a70d1f3811f38baeg.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U6f51b6e1315541c1af4b2f92a8a4de8aT.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Uaab320b7541745fda2759eeff3063a86l.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U4564c2d78a1e43d2b74a67b007483736b.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Ubc987854a7ec4407a89aef2e1f19a31dd.png">
-<meta property="og:updated_time" content="2020-02-29T00:53:43.419Z">
+<meta property="og:updated_time" content="2020-03-01T13:09:49.630Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Ubc987854a7ec4407a89aef2e1f19a31dd.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Uf628b6ad0fe54e65ae7fe6b7b63e7616i.png">
 
 <link rel="canonical" href="http://maho.xyz/archives/77acccbb.html">
 
@@ -215,7 +222,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-29 00:53:43" itemprop="dateModified" datetime="2020-02-29T00:53:43Z">2020-02-29</time>
+                <time title="修改时间：2020-03-01 13:09:49" itemprop="dateModified" datetime="2020-03-01T13:09:49Z">2020-03-01</time>
               </span>
 
           
@@ -243,7 +250,45 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> data </span><br><span class="line">	data <span class="string">"+%Y-%m-%d"</span></span><br></pre></td></tr></table></figure>
+        <h3 id="查找指令"><a href="#查找指令" class="headerlink" title="查找指令"></a>查找指令</h3><h6 id="find指令-find-查找范围-选项-“str”"><a href="#find指令-find-查找范围-选项-“str”" class="headerlink" title="find指令 find [查找范围] [选项] “str”"></a>find指令 find [查找范围] [选项] “str”</h6><ol>
+<li><font color="blue" >find /root -name hello.txt </font>查找/root目录下hello.txt 文件</li>
+<li><font color="blue" >find /home -user pain</font> 查找/home目录下所有属于pain的文件</li>
+<li><font color="blue" >find / -size +20M </font>查找/ 根目录下所有大于20Mb的文件 +大于 -小于 不写 等于</li>
+</ol>
+<h6 id="locate指令-快速定位文件路径"><a href="#locate指令-快速定位文件路径" class="headerlink" title="locate指令 快速定位文件路径"></a>locate指令 快速定位文件路径</h6><ol>
+<li>locate a.txt 输出a.txt的路径 </li>
+<li>不知道为什么我的linux不能使用这条指令</li>
+</ol>
+<h5 id="grep指令-和-管道符号"><a href="#grep指令-和-管道符号" class="headerlink" title="grep指令 和 管道符号|"></a>grep指令 和 管道符号|</h5><ol>
+<li>grep 过滤查找 grep [选项] “str” 源文件</li>
+<li>grep -n 显示行号</li>
+<li>grep -i 忽略大小写</li>
+<li>grep -ni “yes” hello.txt 查找hello.txt中出现yes的行。<img src="https://ae01.alicdn.com/kf/Uf628b6ad0fe54e65ae7fe6b7b63e7616i.png"/></li>
+<li>| 将前一个命令的输出处理结果传递给后面的命令处理</li>
+<li>cat hello.txt | grep -ni yes 查找hello.txt出现yes的行</li>
+</ol>
+<h3 id="解压缩指令"><a href="#解压缩指令" class="headerlink" title="解压缩指令"></a>解压缩指令</h3><h6 id="gzip-filename-gunzip-filename"><a href="#gzip-filename-gunzip-filename" class="headerlink" title="gzip [filename] / gunzip [filename]"></a>gzip [filename] / gunzip [filename]</h6><ol>
+<li>gzip a.txt ==&gt;a.txt.gz 替换源文件</li>
+<li>gunzip a.txt.gz ==&gt;a.txt <img src="https://ae01.alicdn.com/kf/U9750ac78b40a4bdc9d04fefb63b3506e1.png">
+
+</li>
+</ol>
+<h6 id="zip-选项-xxx-zip-filename-unzip-选项-filename"><a href="#zip-选项-xxx-zip-filename-unzip-选项-filename" class="headerlink" title="zip [选项] xxx.zip [filename] /unzip [选项] [filename]"></a>zip [选项] xxx.zip [filename] /unzip [选项] [filename]</h6><ol>
+<li>zip -r file.zip /home/pain/test/ 将/home/pain/test/目录下所有文件压缩为file.zip</li>
+<li>unzip -d /home/pain/test2 file.zip 将file.zip解压到指定目录</li>
+</ol>
+<h6 id="tar-xxx-tar"><a href="#tar-xxx-tar" class="headerlink" title="tar [] xxx.tar"></a>tar [] xxx.tar</h6><ol>
+<li>-c 产生.tar 打包文件</li>
+<li>-v 显示详细信息</li>
+<li>-f 指定压缩后的文件名</li>
+<li>-z 打包同时压缩</li>
+<li>-x 解压.tar文件</li>
+</ol>
+<p>tar -zcvf a.tar.gz a1.txt a2.txt 把a1.txt，a2.txt 压缩为a.tar.gz<br>tar -zxvf a.tar.gz 将a.tar.gz 解压到当前目录<br>tar -zxvf a.tar.gz -C 指定目录 解压到指定目录</p>
+<h3 id="组管理"><a href="#组管理" class="headerlink" title="组管理"></a>组管理</h3><p>linux中<br>用户必须属于一个组<br>文件有 所有者 所在组 其他组 三种权限<br>假如文件由小明创建，则默认所有者为小明，所在组为小明所在组，其他组为除小明所在组之外的组。<br>ls -al 会显示出所有者和所在组<br>chown 用户名 文件名 修改文件所有者<br>chgrp 组名 文件名 修改文件所在组<br>chown 用户名：组名 文件名 即修改文件所有者也修改文件所在组<br><img src="https://ae01.alicdn.com/kf/U9e15d9d4e5b64e6dbe4d159415dea5adZ.png"/><br>usermod -g 组名 用户名 修改用户所在组<br>usermod -d 目录 用户名 修改用户初始登录目录</p>
+<h3 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h3><p><font color="purple">-</font><font color="red">rwx</font><font color="blue">rwx</font><font color="green">rwx</font><br><font color="red">文件所有者权限</font><br><font color="blue">文件所在组权限</font><br><font color="green">其他组权限</font><br>-：表示普通文件<br>d：目录<br>l：软连接<br>c:字符设备-鼠标，键盘<br>b：块文件-硬盘<br>r：读<br>w：写<br>x：执行<br><img src="https://ae01.alicdn.com/kf/Uf6e66e40fe1345b9a70d1f3811f38baeg.png"/><br><img src="https://ae01.alicdn.com/kf/U6f51b6e1315541c1af4b2f92a8a4de8aT.png"/></p>
+<h3 id="修改权限"><a href="#修改权限" class="headerlink" title="修改权限"></a>修改权限</h3><p>chmod<br>第一种方式 u g o a + - =<br>chmod u=rwx filename 设置user 权限为rwx<br>chomd u+x filename 数字user 权限 + x<br>chomd a-x filename ugo 权限-x<br><img src="https://ae01.alicdn.com/kf/Uaab320b7541745fda2759eeff3063a86l.png"/><br>第二种方式<br>chmod 751 文件名<br><img src="https://ae01.alicdn.com/kf/U4564c2d78a1e43d2b74a67b007483736b.png"/></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> data </span><br><span class="line">	data <span class="string">"+%Y-%m-%d"</span></span><br></pre></td></tr></table></figure>
 <img src="https://ae01.alicdn.com/kf/Ubc987854a7ec4407a89aef2e1f19a31dd.png"/>
     </div>
 
@@ -321,6 +366,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#查找指令"><span class="nav-number">1.</span> <span class="nav-text">查找指令</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#find指令-find-查找范围-选项-“str”"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">find指令 find [查找范围] [选项] “str”</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#locate指令-快速定位文件路径"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">locate指令 快速定位文件路径</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#grep指令-和-管道符号"><span class="nav-number">1.0.1.</span> <span class="nav-text">grep指令 和 管道符号|</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解压缩指令"><span class="nav-number">2.</span> <span class="nav-text">解压缩指令</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#gzip-filename-gunzip-filename"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">gzip [filename] / gunzip [filename]</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#zip-选项-xxx-zip-filename-unzip-选项-filename"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">zip [选项] xxx.zip [filename] /unzip [选项] [filename]</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#tar-xxx-tar"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">tar [] xxx.tar</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组管理"><span class="nav-number">3.</span> <span class="nav-text">组管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#权限管理"><span class="nav-number">4.</span> <span class="nav-text">权限管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改权限"><span class="nav-number">5.</span> <span class="nav-text">修改权限</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -50,7 +50,7 @@
   <meta name="description" content="Linux目录结构linux的核心思想：万物皆文件。 1234567891011121314&#x2F;	根目录，所有目录挂载在根目录下&#x2F;bin	常用指令&#x2F;boot	引导文件。&#x2F;dev	管理设备&#x2F;media	挂载DVD,USB设备&#x2F;etc	配置文件&#x2F;home	普通用户文件&#x2F;lib	其他程序动态链接库&#x2F;opt	安装额外软件目录&#x2F;root	root用户文件&#x2F;tmp	临时交换区&#x2F;usr	类似与programfil">
 <meta name="keywords" content="Linux,复习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux复习1">
+<meta property="og:title" content="Linux复习1--基本指令">
 <meta property="og:url" content="http:&#x2F;&#x2F;maho.xyz&#x2F;archives&#x2F;a4965d14.html">
 <meta property="og:site_name" content="泽部真帆">
 <meta property="og:description" content="Linux目录结构linux的核心思想：万物皆文件。 1234567891011121314&#x2F;	根目录，所有目录挂载在根目录下&#x2F;bin	常用指令&#x2F;boot	引导文件。&#x2F;dev	管理设备&#x2F;media	挂载DVD,USB设备&#x2F;etc	配置文件&#x2F;home	普通用户文件&#x2F;lib	其他程序动态链接库&#x2F;opt	安装额外软件目录&#x2F;root	root用户文件&#x2F;tmp	临时交换区&#x2F;usr	类似与programfil">
@@ -61,7 +61,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Ua9a5b53a70e94862a98fe553d8f11d740.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U5f3f1bc50a754b98ad577242e7c53765U.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Uc9b473fe55c54241ab496b27378f9a513.png">
-<meta property="og:updated_time" content="2020-02-24T07:38:08.931Z">
+<meta property="og:updated_time" content="2020-03-01T12:26:43.718Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U28aaecb7609749fd83a6b6939d57caa8z.png">
 
@@ -79,7 +79,7 @@
   };
 </script>
 
-  <title>Linux复习1 | 泽部真帆</title>
+  <title>Linux复习1--基本指令 | 泽部真帆</title>
   
 
 
@@ -204,7 +204,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Linux复习1
+          Linux复习1--基本指令
         </h1>
 
         <div class="post-meta">
@@ -221,7 +221,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-24 07:38:08" itemprop="dateModified" datetime="2020-02-24T07:38:08Z">2020-02-24</time>
+                <time title="修改时间：2020-03-01 12:26:43" itemprop="dateModified" datetime="2020-03-01T12:26:43Z">2020-03-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -282,7 +282,7 @@
 <hr>
 <p>命令行模式下：</p>
 <ul>
-<li>setnu 添加行号</li>
+<li>set nu 添加行号</li>
 <li>set nonu 取消行号<img src="https://ae01.alicdn.com/kf/U28aaecb7609749fd83a6b6939d57caa8z.png"/>
 
 </li>
@@ -315,7 +315,10 @@
 <li>useradd [选项] 用户名</li>
 <li>useradd -d /home/目录X 用户名 将强制是用户名的家目录为目录X</li>
 <li>passwd 用户名 给用户添加/修改密码<img src="https://ae01.alicdn.com/kf/U5d7543a5819d4e2b9572308aa76b2fa1Z.png"/>
-####  删除用户</li>
+
+</li>
+</ul>
+<h4 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h4><ul>
 <li>userdel 用户名 删除用户并保留家目录</li>
 <li>userdel -r 用户名 删除用户并删除家目录<img src="https://ae01.alicdn.com/kf/Ua9a5b53a70e94862a98fe553d8f11d740.png"/>
 
@@ -332,12 +335,10 @@
 <li>groupdel 组名 删除组</li>
 <li>useradd -g groupname username 添加用户并将用户归入group。</li>
 <li>usermod -g groupname username 修改用户操作组<img src="https://ae01.alicdn.com/kf/Uc9b473fe55c54241ab496b27378f9a513.png">
-### 组信息
-/etc/passwd 用户配置文件
-/etc/group 组配置文件
-/etc/shadow 口令配置文件加密
+
 </li>
 </ul>
+<h3 id="组信息"><a href="#组信息" class="headerlink" title="组信息"></a>组信息</h3><p>/etc/passwd 用户配置文件<br>/etc/group 组配置文件<br>/etc/shadow 口令配置文件加密</p>
 
     </div>
 
@@ -353,7 +354,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://maho.xyz/archives/a4965d14.html" title="Linux复习1">http://maho.xyz/archives/a4965d14.html</a>
+    <a href="http://maho.xyz/archives/a4965d14.html" title="Linux复习1--基本指令">http://maho.xyz/archives/a4965d14.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -419,7 +420,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux目录结构"><span class="nav-number">1.</span> <span class="nav-text">Linux目录结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三种模式"><span class="nav-number">2.</span> <span class="nav-text">三种模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快捷键："><span class="nav-number">3.</span> <span class="nav-text">快捷键：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加用户"><span class="nav-number">4.</span> <span class="nav-text">添加用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看用户信息"><span class="nav-number">5.</span> <span class="nav-text">查看用户信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切换用户"><span class="nav-number">6.</span> <span class="nav-text">切换用户</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组操作"><span class="nav-number"></span> <span class="nav-text">组操作</span></a></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux目录结构"><span class="nav-number">1.</span> <span class="nav-text">Linux目录结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三种模式"><span class="nav-number">2.</span> <span class="nav-text">三种模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快捷键："><span class="nav-number">3.</span> <span class="nav-text">快捷键：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加用户"><span class="nav-number">4.</span> <span class="nav-text">添加用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除用户"><span class="nav-number">5.</span> <span class="nav-text">删除用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看用户信息"><span class="nav-number">6.</span> <span class="nav-text">查看用户信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切换用户"><span class="nav-number">7.</span> <span class="nav-text">切换用户</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组操作"><span class="nav-number"></span> <span class="nav-text">组操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组信息"><span class="nav-number"></span> <span class="nav-text">组信息</span></a></div>
       </div>
       <!--/noindex-->
 
