@@ -182,6 +182,129 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/75718ab4.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Sawabe Maho">
+      <meta itemprop="description" content="欢迎光临">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽部真帆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/archives/75718ab4.html" class="post-title-link" itemprop="url">Git使用学习笔记2</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-01 09:18:58 / 修改时间：08:26:16" itemprop="dateCreated datePublished" datetime="2020-03-01T09:18:58Z">2020-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/archives/75718ab4.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/archives/75718ab4.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="什么是分支"><a href="#什么是分支" class="headerlink" title="什么是分支"></a>什么是分支</h4><p>在git中每次commit都是把信息保存到分支中，例如前面提到的master分支。<br>一开始，master是一条直线，git使用master指向最新的提交，再用HEAD指向master确定当前分支，以及当前分支的提交点，每次提交，master都会前进一步。如下图(示意图均来自<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">廖雪峰git教程</a>)<br><img src="https://ae01.alicdn.com/kf/Ue9cf49f331134c1f9fd408024369edfep.png" title="图自廖雪峰git教程"/><br>当我们创建新的分支时，例如dev分支，git后新建一个指针dev，指向master的相同提交，如果切换到dev分支，再把HEAD指向dev。<br><img src="https://ae01.alicdn.com/kf/Ua744cc9dcfdc445fbfbf99e233284723f.png"/><br>从现在开始，在dev分支的提交不在对master做修改，而是dev每次前进一步，同时HEAD指向dev。<br><img src="https://ae01.alicdn.com/kf/Ue9333b67e5524fd7a97a7b6cfac7fb78b.png"/><br>如果要把master合并，只需要把master指向dev就可以了。<br><img src="https://ae01.alicdn.com/kf/U51495e63ad0944118db2a6e40d2d40281.png"/><br>此时删除分支也没有什么影响了。<br><img src="https://ae01.alicdn.com/kf/U17e1b55ddffc469d808689a961ace8beb.png"/></p>
+<blockquote>
+<p>创建分支</p>
+<blockquote>
+<p><font color="blue"> git branch dev</font>  创建dev分支<br><font color="blue">git checkout dev</font> 切换到dev分支<br><font color="Green">git switch dev</font> 切换到dev分支<br><font color="blue">git checkout -b dev</font> 创建并切换到dev分支<br><font color="blue">git switch -c dev</font> 创建并切换到dev分支<br>尽量使用switch。</p>
+</blockquote>
+<p>然后按照正常使用方式使用就可以了。<br>如何合并分支呢？</p>
+<blockquote>
+<p><font color="blue">git checkout maste</font>r 切换回master分支<br><font color="blue">git merge dev</font> 把dev分支合并到master<br><font color="blue">git branch -d dev</font> 删除dev分支</p>
+</blockquote>
+</blockquote>
+<img src="https://ae01.alicdn.com/kf/U245093b3821f42a8953117f5d74d93191.png"/>
+##### 总结
+<img src="https://ae01.alicdn.com/kf/Ufe51713c5ce34b8184bc436ba2af6f76f.png"/>
+#### 解决冲突
+如果在f1分支修改后提交，且master也修改后提交，此时会发生冲突。
+<img src="https://ae01.alicdn.com/kf/Ucdfd1ea89a5d43f9a711e1c570b90ce1r.png"/>
+解决冲突的办法时修改冲突内容为需要的内容，然后再次commit，此时master会超前一步，也就是说分支已经没有用了，可以把master合并到f1,再在f1修改，也可以直接删除f1，重建分支。
+<img src="https://ae01.alicdn.com/kf/U21597ac11f9b4c09868bc3cd1de5bf80h.png"/>
+<font color="purple">用git log --graph命令可以看到分支合并图。</font>
+##### 分支管理策略
+在合并分支时，默认使用快速合并，在历史中看不出来怎么合并的
+如果禁止快速合并，git会保存合并历史
+使用git merge --no-ff -m "str" dev
+这样在git log graph 查看历史时会看到合并轨迹，否则不显示合并轨迹。
+##### 保护现场
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">如果在dev分支工作到一半要改一个master分支的bug，首先需要保护现场。</span><br><span class="line"><span class="number">1.</span> 保护现场 git stash</span><br><span class="line"><span class="number">2.</span> 回到master git checkout master</span><br><span class="line"><span class="number">3.</span> 新建一个分支 git checkout -b debug<span class="number">-001</span></span><br><span class="line"><span class="number">4.</span> 修复bug 然后提交</span><br><span class="line"><span class="number">5.</span> 回到master合并debug分支 git merge debug<span class="number">-001</span></span><br><span class="line"><span class="number">6.</span> 删除debug<span class="number">-001</span> git branch -d debug<span class="number">-001</span></span><br><span class="line"><span class="number">7.</span> 回到dev git checkout dev</span><br><span class="line"><span class="number">8.</span> <span class="number">1.1</span>  恢复现场 git stash apply</span><br><span class="line"><span class="number">8.</span> <span class="number">1.2</span>  删除现场 git stash drop</span><br><span class="line"><span class="number">8.</span> <span class="number">2.</span> 直接恢复并删除现场 git stash pop</span><br><span class="line"><span class="number">9.</span> 如果多次保存现场可以先使用git stash <span class="built_in">list</span> 查看现场</span><br><span class="line"><span class="number">10.</span> 然后恢复 git stash applay stash@&#123;<span class="number">0</span>&#125;</span><br><span class="line"><span class="number">11.</span> 注意到dev也是从master修复bug前复制的，肯定也需要修改，但不能使用merge来修复，我们要使用git cheer-pick <span class="number">4</span>的commit版本号来将bug的提交复制过来</span><br></pre></td></tr></table></figure>
+##### 删除分支
+如果分支已经合并 git branch -d dev 删除分支
+如果分支没有合并 git branch -D dev 强制删除分支
+##### 添加标签
+由于commit id太难记，我们可以给版本起一个别名，就是标签。
+git tag v1.0 给当前HEAD最近一次commit 加标签为v1.0
+git tag v0.9 "fjjf55" 给commitid 为fjjf55的版本加标签为v0.9
+git tag -a v0.7 -m "说明" 给标签添加说明
+git tag 可以查看所有标签
+git tag -d v0.7 删除标签
+git push origin <tagname> 推送本地标签
+git push origin --tags 推送所有未推送过的本地标签
+git push origin :refs/tags/<tagname> 删除远程标签
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/74add858.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -196,7 +319,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/archives/74add858.html" class="post-title-link" itemprop="url">Git使用学习指南</a>
+            <a href="/archives/74add858.html" class="post-title-link" itemprop="url">Git使用学习笔记1</a>
         </h1>
 
         <div class="post-meta">
@@ -205,10 +328,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-02-29 08:49:47 / 修改时间：11:09:43" itemprop="dateCreated datePublished" datetime="2020-02-29T08:49:47Z">2020-02-29</time>
+              <time title="创建时间：2020-02-29 08:49:47" itemprop="dateCreated datePublished" datetime="2020-02-29T08:49:47Z">2020-02-29</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-01 08:26:28" itemprop="dateModified" datetime="2020-03-01T08:26:28Z">2020-03-01</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -428,7 +557,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-28 12:52:26" itemprop="dateModified" datetime="2020-02-28T12:52:26Z">2020-02-28</time>
+                <time title="修改时间：2020-03-01 08:26:34" itemprop="dateModified" datetime="2020-03-01T08:26:34Z">2020-03-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -478,105 +607,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/archives/abfc2d.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/a4965d14.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Sawabe Maho">
-      <meta itemprop="description" content="欢迎光临">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泽部真帆">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/archives/a4965d14.html" class="post-title-link" itemprop="url">Linux复习1</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-02-23 12:44:10" itemprop="dateCreated datePublished" datetime="2020-02-23T12:44:10Z">2020-02-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-28 12:55:38" itemprop="dateModified" datetime="2020-02-28T12:55:38Z">2020-02-28</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/archives/a4965d14.html#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/archives/a4965d14.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="Linux目录结构"><a href="#Linux目录结构" class="headerlink" title="Linux目录结构"></a>Linux目录结构</h4><p>linux的核心思想：万物皆文件。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/	根目录，所有目录挂载在根目录下</span><br><span class="line">/bin	常用指令</span><br><span class="line">/boot	引导文件。</span><br><span class="line">/dev	管理设备</span><br><span class="line">/media	挂载DVD,USB设备</span><br><span class="line">/etc	配置文件</span><br><span class="line">/<span class="built_in">home</span>	普通用户文件</span><br><span class="line">/lib	其他程序动态链接库</span><br><span class="line">/opt	安装额外软件目录</span><br><span class="line">/root	root用户文件</span><br><span class="line">/tmp	临时交换区</span><br><span class="line">/usr	类似与programfiles</span><br><span class="line">/mnt	类似于百度云挂载在我的电脑</span><br><span class="line">/var	不断变化的文件——日志</span><br></pre></td></tr></table></figure>
-<p>vi/vim使用指南。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/archives/a4965d14.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

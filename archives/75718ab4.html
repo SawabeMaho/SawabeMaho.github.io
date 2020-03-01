@@ -47,25 +47,28 @@
   };
 </script>
 
-  <meta name="description" content="Linux目录结构linux的核心思想：万物皆文件。 1234567891011121314&#x2F;	根目录，所有目录挂载在根目录下&#x2F;bin	常用指令&#x2F;boot	引导文件。&#x2F;dev	管理设备&#x2F;media	挂载DVD,USB设备&#x2F;etc	配置文件&#x2F;home	普通用户文件&#x2F;lib	其他程序动态链接库&#x2F;opt	安装额外软件目录&#x2F;root	root用户文件&#x2F;tmp	临时交换区&#x2F;usr	类似与programfil">
-<meta name="keywords" content="Linux,复习">
+  <meta name="description" content="什么是分支在git中每次commit都是把信息保存到分支中，例如前面提到的master分支。一开始，master是一条直线，git使用master指向最新的提交，再用HEAD指向master确定当前分支，以及当前分支的提交点，每次提交，master都会前进一步。如下图(示意图均来自廖雪峰git教程)当我们创建新的分支时，例如dev分支，git后新建一个指针dev，指向master的相同提交，如果切">
+<meta name="keywords" content="git,学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux复习1">
-<meta property="og:url" content="http:&#x2F;&#x2F;maho.xyz&#x2F;archives&#x2F;a4965d14.html">
+<meta property="og:title" content="Git使用学习笔记2">
+<meta property="og:url" content="http:&#x2F;&#x2F;maho.xyz&#x2F;archives&#x2F;75718ab4.html">
 <meta property="og:site_name" content="泽部真帆">
-<meta property="og:description" content="Linux目录结构linux的核心思想：万物皆文件。 1234567891011121314&#x2F;	根目录，所有目录挂载在根目录下&#x2F;bin	常用指令&#x2F;boot	引导文件。&#x2F;dev	管理设备&#x2F;media	挂载DVD,USB设备&#x2F;etc	配置文件&#x2F;home	普通用户文件&#x2F;lib	其他程序动态链接库&#x2F;opt	安装额外软件目录&#x2F;root	root用户文件&#x2F;tmp	临时交换区&#x2F;usr	类似与programfil">
+<meta property="og:description" content="什么是分支在git中每次commit都是把信息保存到分支中，例如前面提到的master分支。一开始，master是一条直线，git使用master指向最新的提交，再用HEAD指向master确定当前分支，以及当前分支的提交点，每次提交，master都会前进一步。如下图(示意图均来自廖雪峰git教程)当我们创建新的分支时，例如dev分支，git后新建一个指针dev，指向master的相同提交，如果切">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U28aaecb7609749fd83a6b6939d57caa8z.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Ua31355849a8f4c62a572fbf0a704df1fl.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U5d7543a5819d4e2b9572308aa76b2fa1Z.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Ua9a5b53a70e94862a98fe553d8f11d740.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U5f3f1bc50a754b98ad577242e7c53765U.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Uc9b473fe55c54241ab496b27378f9a513.png">
-<meta property="og:updated_time" content="2020-02-24T07:38:08.931Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Ue9cf49f331134c1f9fd408024369edfep.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Ua744cc9dcfdc445fbfbf99e233284723f.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Ue9333b67e5524fd7a97a7b6cfac7fb78b.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U51495e63ad0944118db2a6e40d2d40281.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U17e1b55ddffc469d808689a961ace8beb.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U245093b3821f42a8953117f5d74d93191.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Ufe51713c5ce34b8184bc436ba2af6f76f.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Ucdfd1ea89a5d43f9a711e1c570b90ce1r.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U21597ac11f9b4c09868bc3cd1de5bf80h.png">
+<meta property="og:updated_time" content="2020-03-01T08:26:16.459Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U28aaecb7609749fd83a6b6939d57caa8z.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Ue9cf49f331134c1f9fd408024369edfep.png">
 
-<link rel="canonical" href="http://maho.xyz/archives/a4965d14.html">
+<link rel="canonical" href="http://maho.xyz/archives/75718ab4.html">
 
 
 <script id="page-configurations">
@@ -79,7 +82,7 @@
   };
 </script>
 
-  <title>Linux复习1 | 泽部真帆</title>
+  <title>Git使用学习笔记2 | 泽部真帆</title>
   
 
 
@@ -191,7 +194,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/a4965d14.html">
+    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/75718ab4.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -204,7 +207,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Linux复习1
+          Git使用学习笔记2
         </h1>
 
         <div class="post-meta">
@@ -213,24 +216,18 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-02-23 12:44:10" itemprop="dateCreated datePublished" datetime="2020-02-23T12:44:10Z">2020-02-23</time>
+              <time title="创建时间：2020-03-01 09:18:58 / 修改时间：08:26:16" itemprop="dateCreated datePublished" datetime="2020-03-01T09:18:58Z">2020-03-01</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-24 07:38:08" itemprop="dateModified" datetime="2020-02-24T07:38:08Z">2020-02-24</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
                   </a>
                 </span>
             </span>
@@ -244,8 +241,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/archives/a4965d14.html#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/archives/a4965d14.html" itemprop="commentCount"></span>
+    <a title="valine" href="/archives/75718ab4.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/archives/75718ab4.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -260,84 +257,46 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="Linux目录结构"><a href="#Linux目录结构" class="headerlink" title="Linux目录结构"></a>Linux目录结构</h4><p>linux的核心思想：万物皆文件。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/	根目录，所有目录挂载在根目录下</span><br><span class="line">/bin	常用指令</span><br><span class="line">/boot	引导文件。</span><br><span class="line">/dev	管理设备</span><br><span class="line">/media	挂载DVD,USB设备</span><br><span class="line">/etc	配置文件</span><br><span class="line">/<span class="built_in">home</span>	普通用户文件</span><br><span class="line">/lib	其他程序动态链接库</span><br><span class="line">/opt	安装额外软件目录</span><br><span class="line">/root	root用户文件</span><br><span class="line">/tmp	临时交换区</span><br><span class="line">/usr	类似与programfiles</span><br><span class="line">/mnt	类似于百度云挂载在我的电脑</span><br><span class="line">/var	不断变化的文件——日志</span><br></pre></td></tr></table></figure>
-<p>vi/vim使用指南。<a id="more"></a></p>
-<h4 id="三种模式"><a href="#三种模式" class="headerlink" title="三种模式"></a>三种模式</h4><ul>
-<li>正常模式：    打开一个文档后的默认模式，可以使用上下左右。</li>
-<li>插入模式：    插入模式按下i后的模式。</li>
-<li>命令行模式：    插入模式按下ESC后回到正常模式，正常模式下按下： 后 可以wq，q。<h4 id="快捷键："><a href="#快捷键：" class="headerlink" title="快捷键："></a>快捷键：</h4></li>
-</ul>
-<hr>
-<p>正常模式下：</p>
-<ul>
-<li>yy：    复制当前行，5yy 复制当前及下共5行</li>
-<li>dd：    删除当前行，5dd </li>
-<li>/单词：     查找单词</li>
-<li>gg:    首行行首</li>
-<li>G:    尾行行首</li>
-<li>u：    撤销操作，类似word的上一步。</li>
-<li>20 shift+g 到第20行行首</li>
-</ul>
-<hr>
-<p>命令行模式下：</p>
-<ul>
-<li>setnu 添加行号</li>
-<li>set nonu 取消行号<img src="https://ae01.alicdn.com/kf/U28aaecb7609749fd83a6b6939d57caa8z.png"/>
-
-</li>
-</ul>
-<p>关机： </p>
-<ul>
-<li><p>shutdown 关机</p>
-<ul>
-<li>shutdown -h now    立即关机</li>
-<li>shutdown -h 1    1分钟后关机</li>
-<li>shutdown -r now 立即重启</li>
-</ul>
-</li>
-<li><p>half 关机</p>
-</li>
-<li><p>reboot 重启</p>
-</li>
-<li><p>syn 把内存的数据写入磁盘，建议关机前先syn。</p>
-</li>
-<li><p>logout 注销(图像下无效)</p>
-</li>
-</ul>
-<hr>
-<h4 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h4><ol>
-<li>Linux是多用户多任务操作系统，任何一个要使用系统资源的用户，首先要向系统管理员申请一个账号，然后以账号身份进入操作系统。</li>
-<li>Linux用户至少属于一个组。</li>
-<li>每个用户都对应一个/home/用户名文件夹。即使用当前身份进入系统后的默认文件夹。<img src="https://ae01.alicdn.com/kf/Ua31355849a8f4c62a572fbf0a704df1fl.png"/></li>
-</ol>
-<ul>
-<li>useradd [选项] 用户名</li>
-<li>useradd -d /home/目录X 用户名 将强制是用户名的家目录为目录X</li>
-<li>passwd 用户名 给用户添加/修改密码<img src="https://ae01.alicdn.com/kf/U5d7543a5819d4e2b9572308aa76b2fa1Z.png"/>
-####  删除用户</li>
-<li>userdel 用户名 删除用户并保留家目录</li>
-<li>userdel -r 用户名 删除用户并删除家目录<img src="https://ae01.alicdn.com/kf/Ua9a5b53a70e94862a98fe553d8f11d740.png"/>
-
-</li>
-</ul>
-<h4 id="查看用户信息"><a href="#查看用户信息" class="headerlink" title="查看用户信息"></a>查看用户信息</h4><img src="https://ae01.alicdn.com/kf/U5f3f1bc50a754b98ad577242e7c53765U.png"/>
-
-<h4 id="切换用户"><a href="#切换用户" class="headerlink" title="切换用户"></a>切换用户</h4><ul>
-<li>su - 用户名 (exit退出切换)</li>
-</ul>
-<hr>
-<h3 id="组操作"><a href="#组操作" class="headerlink" title="组操作"></a>组操作</h3><ul>
-<li>groupadd 组名 添加组</li>
-<li>groupdel 组名 删除组</li>
-<li>useradd -g groupname username 添加用户并将用户归入group。</li>
-<li>usermod -g groupname username 修改用户操作组<img src="https://ae01.alicdn.com/kf/Uc9b473fe55c54241ab496b27378f9a513.png">
-### 组信息
-/etc/passwd 用户配置文件
-/etc/group 组配置文件
-/etc/shadow 口令配置文件加密
-</li>
-</ul>
+        <h4 id="什么是分支"><a href="#什么是分支" class="headerlink" title="什么是分支"></a>什么是分支</h4><p>在git中每次commit都是把信息保存到分支中，例如前面提到的master分支。<br>一开始，master是一条直线，git使用master指向最新的提交，再用HEAD指向master确定当前分支，以及当前分支的提交点，每次提交，master都会前进一步。如下图(示意图均来自<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">廖雪峰git教程</a>)<br><img src="https://ae01.alicdn.com/kf/Ue9cf49f331134c1f9fd408024369edfep.png" title="图自廖雪峰git教程"/><br>当我们创建新的分支时，例如dev分支，git后新建一个指针dev，指向master的相同提交，如果切换到dev分支，再把HEAD指向dev。<br><img src="https://ae01.alicdn.com/kf/Ua744cc9dcfdc445fbfbf99e233284723f.png"/><br>从现在开始，在dev分支的提交不在对master做修改，而是dev每次前进一步，同时HEAD指向dev。<br><img src="https://ae01.alicdn.com/kf/Ue9333b67e5524fd7a97a7b6cfac7fb78b.png"/><br>如果要把master合并，只需要把master指向dev就可以了。<br><img src="https://ae01.alicdn.com/kf/U51495e63ad0944118db2a6e40d2d40281.png"/><br>此时删除分支也没有什么影响了。<br><img src="https://ae01.alicdn.com/kf/U17e1b55ddffc469d808689a961ace8beb.png"/></p>
+<blockquote>
+<p>创建分支</p>
+<blockquote>
+<p><font color="blue"> git branch dev</font>  创建dev分支<br><font color="blue">git checkout dev</font> 切换到dev分支<br><font color="Green">git switch dev</font> 切换到dev分支<br><font color="blue">git checkout -b dev</font> 创建并切换到dev分支<br><font color="blue">git switch -c dev</font> 创建并切换到dev分支<br>尽量使用switch。</p>
+</blockquote>
+<p>然后按照正常使用方式使用就可以了。<br>如何合并分支呢？</p>
+<blockquote>
+<p><font color="blue">git checkout maste</font>r 切换回master分支<br><font color="blue">git merge dev</font> 把dev分支合并到master<br><font color="blue">git branch -d dev</font> 删除dev分支</p>
+</blockquote>
+</blockquote>
+<img src="https://ae01.alicdn.com/kf/U245093b3821f42a8953117f5d74d93191.png"/>
+##### 总结
+<img src="https://ae01.alicdn.com/kf/Ufe51713c5ce34b8184bc436ba2af6f76f.png"/>
+#### 解决冲突
+如果在f1分支修改后提交，且master也修改后提交，此时会发生冲突。
+<img src="https://ae01.alicdn.com/kf/Ucdfd1ea89a5d43f9a711e1c570b90ce1r.png"/>
+解决冲突的办法时修改冲突内容为需要的内容，然后再次commit，此时master会超前一步，也就是说分支已经没有用了，可以把master合并到f1,再在f1修改，也可以直接删除f1，重建分支。
+<img src="https://ae01.alicdn.com/kf/U21597ac11f9b4c09868bc3cd1de5bf80h.png"/>
+<font color="purple">用git log --graph命令可以看到分支合并图。</font>
+##### 分支管理策略
+在合并分支时，默认使用快速合并，在历史中看不出来怎么合并的
+如果禁止快速合并，git会保存合并历史
+使用git merge --no-ff -m "str" dev
+这样在git log graph 查看历史时会看到合并轨迹，否则不显示合并轨迹。
+##### 保护现场
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">如果在dev分支工作到一半要改一个master分支的bug，首先需要保护现场。</span><br><span class="line"><span class="number">1.</span> 保护现场 git stash</span><br><span class="line"><span class="number">2.</span> 回到master git checkout master</span><br><span class="line"><span class="number">3.</span> 新建一个分支 git checkout -b debug<span class="number">-001</span></span><br><span class="line"><span class="number">4.</span> 修复bug 然后提交</span><br><span class="line"><span class="number">5.</span> 回到master合并debug分支 git merge debug<span class="number">-001</span></span><br><span class="line"><span class="number">6.</span> 删除debug<span class="number">-001</span> git branch -d debug<span class="number">-001</span></span><br><span class="line"><span class="number">7.</span> 回到dev git checkout dev</span><br><span class="line"><span class="number">8.</span> <span class="number">1.1</span>  恢复现场 git stash apply</span><br><span class="line"><span class="number">8.</span> <span class="number">1.2</span>  删除现场 git stash drop</span><br><span class="line"><span class="number">8.</span> <span class="number">2.</span> 直接恢复并删除现场 git stash pop</span><br><span class="line"><span class="number">9.</span> 如果多次保存现场可以先使用git stash <span class="built_in">list</span> 查看现场</span><br><span class="line"><span class="number">10.</span> 然后恢复 git stash applay stash@&#123;<span class="number">0</span>&#125;</span><br><span class="line"><span class="number">11.</span> 注意到dev也是从master修复bug前复制的，肯定也需要修改，但不能使用merge来修复，我们要使用git cheer-pick <span class="number">4</span>的commit版本号来将bug的提交复制过来</span><br></pre></td></tr></table></figure>
+##### 删除分支
+如果分支已经合并 git branch -d dev 删除分支
+如果分支没有合并 git branch -D dev 强制删除分支
+##### 添加标签
+由于commit id太难记，我们可以给版本起一个别名，就是标签。
+git tag v1.0 给当前HEAD最近一次commit 加标签为v1.0
+git tag v0.9 "fjjf55" 给commitid 为fjjf55的版本加标签为v0.9
+git tag -a v0.7 -m "说明" 给标签添加说明
+git tag 可以查看所有标签
+git tag -d v0.7 删除标签
+git push origin <tagname> 推送本地标签
+git push origin --tags 推送所有未推送过的本地标签
+git push origin :refs/tags/<tagname> 删除远程标签
 
     </div>
 
@@ -353,7 +312,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://maho.xyz/archives/a4965d14.html" title="Linux复习1">http://maho.xyz/archives/a4965d14.html</a>
+    <a href="http://maho.xyz/archives/75718ab4.html" title="Git使用学习笔记2">http://maho.xyz/archives/75718ab4.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -364,8 +323,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Linux/" rel="tag"># Linux</a>
-              <a href="/tags/%E5%A4%8D%E4%B9%A0/" rel="tag"># 复习</a>
+              <a href="/tags/git/" rel="tag"># git</a>
+              <a href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag"># 学习</a>
           </div>
 
         
@@ -374,13 +333,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/archives/bd138a95.html" rel="prev" title="Web——CSS快速入门">
-      <i class="fa fa-chevron-left"></i> Web——CSS快速入门
+    <a href="/archives/74add858.html" rel="prev" title="Git使用学习笔记1">
+      <i class="fa fa-chevron-left"></i> Git使用学习笔记1
     </a></div>
-      <div class="post-nav-item">
-    <a href="/archives/abfc2d.html" rel="next" title="Linux复习2——文件目录类指令">
-      Linux复习2——文件目录类指令 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -419,7 +375,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux目录结构"><span class="nav-number">1.</span> <span class="nav-text">Linux目录结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三种模式"><span class="nav-number">2.</span> <span class="nav-text">三种模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快捷键："><span class="nav-number">3.</span> <span class="nav-text">快捷键：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加用户"><span class="nav-number">4.</span> <span class="nav-text">添加用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看用户信息"><span class="nav-number">5.</span> <span class="nav-text">查看用户信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切换用户"><span class="nav-number">6.</span> <span class="nav-text">切换用户</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组操作"><span class="nav-number"></span> <span class="nav-text">组操作</span></a></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是分支"><span class="nav-number">1.</span> <span class="nav-text">什么是分支</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
