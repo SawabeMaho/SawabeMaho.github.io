@@ -50,27 +50,27 @@
   <meta name="description" content="欢迎光临">
 <meta property="og:type" content="website">
 <meta property="og:title" content="泽部真帆">
-<meta property="og:url" content="http:&#x2F;&#x2F;maho.xyz&#x2F;tags&#x2F;%E9%93%BE%E8%A1%A8&#x2F;index.html">
+<meta property="og:url" content="http:&#x2F;&#x2F;maho.xyz&#x2F;page&#x2F;4&#x2F;index.html">
 <meta property="og:site_name" content="泽部真帆">
 <meta property="og:description" content="欢迎光临">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://maho.xyz/tags/%E9%93%BE%E8%A1%A8/">
+<link rel="canonical" href="http://maho.xyz/page/4/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
+    isHome: true,
     isPost: false,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>标签: 链表 | 泽部真帆</title>
+  <title>泽部真帆</title>
   
 
 
@@ -182,49 +182,99 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+        
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">链表
-          <small>标签</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/cd0dbbaf.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Sawabe Maho">
+      <meta itemprop="description" content="欢迎光临">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽部真帆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/archives/cd0dbbaf.html" class="post-title-link" itemprop="url">算法入门——最短编辑路径、最长公共子串、最长公共子序列</a>
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-07 21:24:42" itemprop="dateCreated datePublished" datetime="2019-11-07T21:24:42Z">2019-11-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-10 06:45:52" itemprop="dateModified" datetime="2019-12-10T06:45:52Z">2019-12-10</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/archives/cd0dbbaf.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/archives/cd0dbbaf.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
+          <h1 id="算法入门-一-最短编辑路径、最长公共子串、最长公共子序列"><a href="#算法入门-一-最短编辑路径、最长公共子串、最长公共子序列" class="headerlink" title="算法入门(一)  最短编辑路径、最长公共子串、最长公共子序列"></a>算法入门(一)  最短编辑路径、最长公共子串、最长公共子序列</h1><h4 id="最近开始找工作，刷了很多算法，有很多算法已经很多次遇到了，就先写下来以防忘记。"><a href="#最近开始找工作，刷了很多算法，有很多算法已经很多次遇到了，就先写下来以防忘记。" class="headerlink" title="最近开始找工作，刷了很多算法，有很多算法已经很多次遇到了，就先写下来以防忘记。"></a>最近开始找工作，刷了很多算法，有很多算法已经很多次遇到了，就先写下来以防忘记。</h4><h4 id="这三个都属于典型的动态规划问题，算法原理基本类似，只要记住基本计算过程以及状态方程就可以了，一开始刷题遇到过最长公共字串虽然算法记住了，但是当时没有归类，几天后笔试遇到最短编辑路径一脸懵逼，看完算法发现两者十分类似，最后才发现这三类属于同一种问题。"><a href="#这三个都属于典型的动态规划问题，算法原理基本类似，只要记住基本计算过程以及状态方程就可以了，一开始刷题遇到过最长公共字串虽然算法记住了，但是当时没有归类，几天后笔试遇到最短编辑路径一脸懵逼，看完算法发现两者十分类似，最后才发现这三类属于同一种问题。" class="headerlink" title="这三个都属于典型的动态规划问题，算法原理基本类似，只要记住基本计算过程以及状态方程就可以了，一开始刷题遇到过最长公共字串虽然算法记住了，但是当时没有归类，几天后笔试遇到最短编辑路径一脸懵逼，看完算法发现两者十分类似，最后才发现这三类属于同一种问题。"></a>这三个都属于典型的动态规划问题，算法原理基本类似，只要记住基本计算过程以及状态方程就可以了，一开始刷题遇到过最长公共字串虽然算法记住了，但是当时没有归类，几天后笔试遇到最短编辑路径一脸懵逼，看完算法发现两者十分类似，最后才发现这三类属于同一种问题。</h4><h4 id="以下代码中状态方程已经给定，条件按互斥处理"><a href="#以下代码中状态方程已经给定，条件按互斥处理" class="headerlink" title="以下代码中状态方程已经给定，条件按互斥处理"></a>以下代码中状态方程已经给定，条件按互斥处理</h4>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/archives/cd0dbbaf.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-23T21:09:57Z"
-              content="2019-11-23">
-          11-23
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/archives/85d3e15a.html" itemprop="url">
-            <span itemprop="name">C++刷题——链表</span>
-          </a>
-      </h2>
-
-    </header>
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
   </article>
+  
+  
+  
 
-    </div>
   </div>
-  
-  
-  
 
   
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
 
 
 
