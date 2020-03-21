@@ -187,6 +187,93 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/5e4270d0.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Sawabe Maho">
+      <meta itemprop="description" content="欢迎光临">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽部真帆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/archives/5e4270d0.html" class="post-title-link" itemprop="url">Java常用API与数据结构</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-20 19:04:50" itemprop="dateCreated datePublished" datetime="2020-03-20T19:04:50Z">2020-03-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-21 04:04:58" itemprop="dateModified" datetime="2020-03-21T04:04:58Z">2020-03-21</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/archives/5e4270d0.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/archives/5e4270d0.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h4><p>Object类是所有类的祖先类，我们认为一个类如果没有继承，默认父类为Object类。</p>
+<h5 id="对象-toString"><a href="#对象-toString" class="headerlink" title="对象.toString()"></a>对象.toString()</h5><p>Object类中有一个toString方法，默认是打印对象的地址。
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/archives/5e4270d0.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/48957eb.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -210,10 +297,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-03-20 14:28:58 / 修改时间：10:41:23" itemprop="dateCreated datePublished" datetime="2020-03-20T14:28:58Z">2020-03-20</time>
+              <time title="创建时间：2020-03-20 14:28:58" itemprop="dateCreated datePublished" datetime="2020-03-20T14:28:58Z">2020-03-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-21 03:27:58" itemprop="dateModified" datetime="2020-03-21T03:27:58Z">2020-03-21</time>
+              </span>
 
           
   
@@ -242,57 +335,14 @@
       
           <p>面向对象的概念所有语言都一样。<br>三要素：<br>封装：便于权限管理<br>继承：增加代码复用<br>多态:通过父类的引用调用子类对象。<br>在JAVA中有四个权限：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">		      <span class="function"><span class="keyword">public</span>   <span class="title">protected</span>   <span class="params">(deafult)</span>  	 <span class="keyword">private</span></span></span><br><span class="line"><span class="function">同一个类			 √      √		√		√</span></span><br><span class="line"><span class="function">同一个包下的子类	 	 √	√		√		×</span></span><br><span class="line"><span class="function">不同包下的子类		 √	×		×		×</span></span><br><span class="line"><span class="function">不同包非子类		 √	×		×		×</span></span><br></pre></td></tr></table></figure>
-<h4 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h4><p>所谓封装就是把属性和方法结合为一个类，我们把类中的变量称为”成员变量”或”成员属性”，把类中的函数称为”成员函数”或”成员方法”,其中成员变量可以是基本类型(4类8种)也可以是引用类型(字符串，数组，自定义类，接口，lambda)。</p>
-<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p>所谓继承就是通过extends关键字使得子类具有父类除private权限外的所有属性和方法。<br>遵循is-a原则 例：cat（子类） is a animal（父类）<br>Java只能单继承所以不会发生C++中菱形继承的问题。<br>需要注意的是java可以多继承接口(接口就是一个统一的规范)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123; <span class="comment">//父类Animal</span></span><br><span class="line">    <span class="keyword">private</span> String name;  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Animal</span><span class="params">(String myName, <span class="keyword">int</span> myid)</span> </span>&#123; </span><br><span class="line">        name = myName; </span><br><span class="line">        id = myid;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123; </span><br><span class="line">        System.out.println(name+<span class="string">"正在吃"</span>); </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(name+<span class="string">"正在睡"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">introduction</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        System.out.println(<span class="string">"大家好！我是"</span>         + id + <span class="string">"号"</span> + name + <span class="string">"."</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Cat</span><span class="params">(String name,<span class="keyword">int</span> age)</span></span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(name,age)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="重写和重载"><a href="#重写和重载" class="headerlink" title="重写和重载"></a>重写和重载</h5><p>所谓重写是子类重新实现父类的方法，外壳不变，内部改变。<br>所谓重载是同一个作用域下相同方法名，不同的参数列表实现不同效果。<br>我们知道子类可以继承父类的方法，但是子类同样可以重写父类的方法。</p>
-<p>重写的规则：<br>参数列表必须完全相同<br>返回值必须相同&lt;允许不同但必须是父类的子类(父类return Object，子类returb Steing)&gt;<br>final声明的方法不允许重写<br>构造方法不能重写<br>如果不能继承这个方法则这个方法不能重写<br>重载的规则：<br>参数列表必须不同<br>不关心返回值<br>作用域相同</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Animal</span><span class="params">(String name, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;&#125;;<span class="comment">//父类的方法，注意到这里没有写方法体，是认为没有必要那么我们可以写成抽象方法()</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">()</span></span>&#123;&#125;;<span class="comment">//父类的方法</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Cat</span><span class="params">(String name, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(name, age);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;<span class="comment">//子类重写父类方法</span></span><br><span class="line">        System.out.println(<span class="string">"Cat love eat fish"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">()</span> </span>&#123;<span class="comment">//子类重写父类方法</span></span><br><span class="line">        System.out.println(<span class="string">"咕噜咕噜"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://s1.ax1x.com/2020/03/20/8gMmWR.jpg" alt="8gMmWR.jpg"></p>
-<p>注意到父类中的方法没有方法体，我们还可以将它写为抽象方法,抽象方法需要加一个abstract关键字，要注意有抽象方法的类一定是一个抽象类，而一个抽象类不一定有抽象方法(例如我们可以把两个抽象方法去掉，此时Animal)任然是一个抽象类。<br>抽象类不能实例化一个对象，只有派生出的非抽象类才能实例化对象，如果子类没有完全重写父类的抽象方法，子类仍是一个抽象类不能实例化对象。<br>构造方法不能被声明为抽象方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public abstract class Animal &#123;</span><br><span class="line">    public String name;</span><br><span class="line">    public int age;</span><br><span class="line"></span><br><span class="line">    public Animal(String name, int age) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public abstract  void eat();</span><br><span class="line">    public abstract void sleep();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h5><p>除了通过extends继承一个父类外，还可以通过implements继承接口。<br>接口可以多继承==接口可以继承多个接口，类可以继承多个接口。</p>
-<p>一般认为java中interface可以有</p>
-<blockquote>
-<p>常量<br>抽象方法<br>———后面三个是后续加入的<br>默认方法<br>静态方法<br>私有方法</p>
-</blockquote>
-<h6 id="接口和类的区别"><a href="#接口和类的区别" class="headerlink" title="接口和类的区别"></a>接口和类的区别</h6><p>接口不能实例化对象<br>接口没有构造方法<br>接口只能包含常量<br>接口只是被实现了，不是被继承了<br>接口可以多继承</p>
-<h6 id="接口和抽象类的区别"><a href="#接口和抽象类的区别" class="headerlink" title="接口和抽象类的区别"></a>接口和抽象类的区别</h6><p>接口只能包含常量<br>接口不能包含静态代码段<br>接口可以多继承<br>接口中的方法都是共有的<br><img src="https://s1.ax1x.com/2020/03/20/8g0mfx.jpg" alt="8g0mfx.jpg"><br><img src="https://s1.ax1x.com/2020/03/20/8gsZDO.jpg" alt="8gsZDO.jpg"><br>以下引自菜鸟教程笔记，我觉得说的很好。</p>
-<ol>
-<li>abstract class 在 Java 语言中表示的是一种继承关系，一个类只能使用一次继承关系。但是，一个类却可以实现多个 interface。</li>
-<li>在 abstract class 中可以有自己的数据成员，也可以有非 abstarct 的成员方法，而在 interface 中，只能够有静态的不能被修改的数据成员（也就是必须是 static final 的，不过在 interface 中一般不定义数据成员），所有的成员方法都是 abstract 的。</li>
-<li>abstract class 和 interface 所反映出的设计理念不同。其实 abstract class 表示的是 “is-a” 关系，interface 表示的是 “has-a” 关系。</li>
-<li>实现抽象类和接口的类必须实现其中的所有方法。抽象类中可以有非抽象方法。接口中则不能有实现方法。</li>
-<li>接口中定义的变量默认是 public static final 型，且必须给其初值，所以实现类中不能重新定义，也不能改变其值。</li>
-<li>抽象类中的变量默认是 friendly 型，其值可以在子类中重新定义，也可以重新赋值。</li>
-<li>接口中的方法默认都是 public,abstract 类型的。<br>结论: abstract class 和 interface 是 Java 语言中的两种定义抽象类的方式，它们之间有很大的相似性。但是对于它们的选择却又往往反映出对于问题领域中的概 念本质的理解、对于设计意图的反映是否正确、合理，因为它们表现了概念间的不同的关系（虽然都能够实现需求的功能）。这其实也是语言的一种的惯用法，希望读者朋友能够细细体会。</li>
-</ol>
-<h6 id="标记接口"><a href="#标记接口" class="headerlink" title="标记接口"></a>标记接口</h6><p>最常用的继承接口是没有包含任何方法的接口。</p>
-<p>标记接口是没有任何方法和属性的接口.它仅仅表明继承它的类属于一个特定的类型,供其他代码来测试允许做一些事情。</p>
-<p>标记接口作用：简单形象的说就是给某个对象打个标（盖个戳），使对象拥有某个或某些特权。</p>
-<h4 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h4><p>所谓多态实质是通过父类的引用指向子类对象方法。<br>当使用多态方式调用方法时，首先检查父类中是否有该方法，如果没有，则编译错误；如果有，再去调用子类的同名方法。所以不可能出现父类没有大方法被调用。</p>
-<p>多态存在的三个必要条件</p>
-<ul>
-<li>继承</li>
-<li>重写</li>
-<li>父类引用指向子类对象<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//转型分为向上转型,向下转型 </span></span><br><span class="line">Animal c1 = <span class="keyword">new</span> Cat();<span class="comment">//这就是向上转型</span></span><br><span class="line">c1 = (Cat)c1;<span class="comment">//向下转型,但不能把Dog转换为Cat</span></span><br><span class="line"><span class="comment">//可以通过instanceof判断是否是一个类</span></span><br><span class="line"><span class="keyword">if</span>(c1 instnceof Cat)&#123;</span><br><span class="line">c1 = (Cat)c1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p><img src="https://s1.ax1x.com/2020/03/20/8gWWmq.jpg" alt="8gWWmq.jpg"></p>
-<h4 id="虚函数与抽象类"><a href="#虚函数与抽象类" class="headerlink" title="虚函数与抽象类"></a>虚函数与抽象类</h4><p>虚函数是C++中提供的一种关键字，虚函数可以被重写并通过父类的指针调用子类对象，而JAVA默认可以通过父类调用被重写的方法。<br>同C++相同的是抽象类，如果C++类不写函数体就是一个纯虚函数，而JAVA中正称被abstract修饰的无函数体方法为抽象方法，航油纯虚函数或抽象方法的类称之为抽象类。<br>抽象类不能实例化对象，只能被继承并实现所有抽象方法后才能通过子类实例化对象。</p>
-<h4 id="Java-包-package"><a href="#Java-包-package" class="headerlink" title="Java 包(package)"></a>Java 包(package)</h4><p>为了更好地组织类，Java 提供了包机制，用于区别类名的命名空间。</p>
-<p>######包的作用</p>
-<ol>
-<li><p>把功能相似或相关的类或接口组织在同一个包中，方便类的查找和使用。</p>
-</li>
-<li><p>如同文件夹一样，包也采用了树形目录的存储方式。同一个包中的类名字是不同的，不同的包中的类的名字是可以相同的，当同时调用两个不同包中相同类名的类时，应该加上包名加以区别。因此，包可以避免名字冲突。</p>
-</li>
-<li><p>包也限定了访问权限，拥有包访问权限的类才能访问某个包中的类。</p>
-</li>
-</ol>
-<p>Java 使用包（package）这种机制是为了防止命名冲突，访问控制，提供搜索和定位类（class）、接口、枚举（enumerations）和注释（annotation）等。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/archives/48957eb.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1009,106 +1059,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/74add858.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Sawabe Maho">
-      <meta itemprop="description" content="欢迎光临">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泽部真帆">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/archives/74add858.html" class="post-title-link" itemprop="url">Git使用学习笔记1</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-02-29 08:49:47" itemprop="dateCreated datePublished" datetime="2020-02-29T08:49:47Z">2020-02-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-01 08:28:12" itemprop="dateModified" datetime="2020-03-01T08:28:12Z">2020-03-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Git/" itemprop="url" rel="index">
-                    <span itemprop="name">Git</span>
-                  </a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/archives/74add858.html#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/archives/74add858.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="什么是git？"><a href="#什么是git？" class="headerlink" title="什么是git？"></a>什么是git？</h4><blockquote>
-<p>git是一个分布式版本控制系统，用于敏捷高效的处理项目。</p>
-</blockquote>
-<h4 id="Git-安装配置"><a href="#Git-安装配置" class="headerlink" title="Git 安装配置"></a>Git 安装配置</h4><p>Git 目前支持 Linux/Unix、Solaris、Mac和 Windows 平台上运行。<br>Git 各平台安装包下载地址为：<a href="http://git-scm.com/downloads" target="_blank" rel="noopener">http://git-scm.com/downloads</a><br>安装什么的比较简单，windows下载安装文件一路next就好。linux根据安装工具不同还有不同的安装方式。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/archives/74add858.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1159,7 +1109,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-count">37</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
