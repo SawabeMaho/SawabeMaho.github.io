@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/title.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/title.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="泽部真帆" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://maho.xyz').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="快速的跟着视频过了一遍java跟Android，很快就会忘记，现在系统梳理一下。 JAVA基础语法标识符 标识符只能由A-Z,a-z,$ ,_,0-9组成且不能是数字开头">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA深入理解">
+<meta property="og:url" content="http:&#x2F;&#x2F;maho.xyz&#x2F;archives&#x2F;2f7c4d66.html">
+<meta property="og:site_name" content="泽部真帆">
+<meta property="og:description" content="快速的跟着视频过了一遍java跟Android，很快就会忘记，现在系统梳理一下。 JAVA基础语法标识符 标识符只能由A-Z,a-z,$ ,_,0-9组成且不能是数字开头">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-29T06:06:42.763Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://maho.xyz/archives/2f7c4d66.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>JAVA深入理解 | 泽部真帆</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">泽部真帆</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">萌之上,即为荡漾</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/SawabeMaho" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/2f7c4d66.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Sawabe Maho">
+      <meta itemprop="description" content="欢迎光临">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽部真帆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JAVA深入理解
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-28 14:32:21" itemprop="dateCreated datePublished" datetime="2020-03-28T14:32:21Z">2020-03-28</time>
+            </span>
+          
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-29 06:06:42" itemprop="dateModified" datetime="2020-03-29T06:06:42Z">2020-03-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/archives/2f7c4d66.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/archives/2f7c4d66.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>快速的跟着视频过了一遍java跟Android，很快就会忘记，现在系统梳理一下。</p>
+<h4 id="JAVA基础语法"><a href="#JAVA基础语法" class="headerlink" title="JAVA基础语法"></a>JAVA基础语法</h4><h5 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h5><ol>
+<li>标识符只能由A-Z,a-z,$ ,_,0-9组成且不能是数字开头<a id="more"></a></li>
+<li>关键字不能做标识符</li>
+<li>标识符区分大小写<h5 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h5>访问控制权限：public,protected,(default),private </li>
+</ol>
+<p>整个世界都打包成一块，同时划分为四个层次: 联合国（public）【其他包】、国家（protected）【继承子孙】、洲际（default）【同一包】、个人（private）【当前类】。——摘自菜鸟教程笔记，</p>
+<p>类型修饰：final(常量)，abstract(抽象)，static(静态)，synchonized（同步）<br>为了实现一些其他的功能，Java 也提供了许多非访问修饰符。<br>static 修饰符，用来修饰类方法和类变量。</p>
+<p>final 修饰符，用来修饰类、方法和变量，final 修饰的类不能够被继承，修饰的方法不能被继承类重新定义，修饰的变量为常量，是不可修改的。</p>
+<p>abstract 修饰符，用来创建抽象类和抽象方法。抽象方法 abstract void abm(); //抽象方法</p>
+<p>synchronized 和 volatile 修饰符，主要用于线程的编程。<br>/<strong><strong><strong><strong>**</strong></strong></strong></strong>下面两个基本很少用<strong><strong><strong><strong>****</strong></strong></strong></strong>/<br>volatile 修饰符<br>volatile 修饰的成员变量在每次被线程访问时，都强制从共享内存中重新读取该成员变量的值。而且，当成员变量发生变化时，会强制线程将变化值回写到共享内存。这样在任何时刻，两个不同的线程总是看到某个成员变量的同一个值。</p>
+<p>transient 修饰符<br>序列化的对象包含被 transient 修饰的实例变量时，java 虚拟机(JVM)跳过该特定的变量。</p>
+<h5 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h5><p>java中主要有以下几个类型的变量<br>局部变量：</p>
+<ol>
+<li>局部变量定义在方法中，直接{}包裹内代码块内也是局部变量</li>
+<li>局部变量在方法或代码块执行时创建，执行结束后立刻销毁。</li>
+<li>访问修饰符不能修饰局部变量</li>
+<li>局部变量在栈上，例如main中 A a = new A();a就是一个局部变量，当main执行完毕立刻销毁。</li>
+<li>局部变量没有默认值，必须初始化。</li>
+</ol>
+<p>类变量(静态变量)：随着类的加载而存在，随着类的消失而消失。</p>
+<ol>
+<li>类变量也叫静态变量，以static关键字声明，但必须在方法外</li>
+<li>所有类实例共享同一份static变量</li>
+<li>静态变量一般与final共用，其他很少使用。</li>
+<li>第一次被访问时创建，在程序结束时销毁。</li>
+<li>有默认值</li>
+<li>可以通过classname.variablename 访问</li>
+</ol>
+<p>成员变量:随着对象的创建而存在，随着对象的回收而释放。</p>
+<ol>
+<li>成员变量声明在一个类中，但在方法，语句块之外。</li>
+<li>当一个类被实例化后，成员变量的值就跟着确定。</li>
+<li>成员变量可以声明在使用之后，编译器会把成员变量声明提前。</li>
+<li>访问修饰符可以修饰实例变量</li>
+<li>实例变量对于类内是可见的，如果为私有，必须设置set get方法。</li>
+<li>实例变量具有默认值，数值为0，布尔为false，引用为null<h5 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h5></li>
+</ol>
+<p>一个类继承另一个类的属性和方法，其中继承者称为子类，被继承者为父类。</p>
+<h4 id="java面向对象概述"><a href="#java面向对象概述" class="headerlink" title="java面向对象概述"></a>java面向对象概述</h4><p>java在类中有三种变量,与C++不同的是JAVA的main()也需要写到类里边，成为类的公有方法且有一个固定的写法psvm，public static void main(String[] args)<br>三种变量：<br>局部变量：在方法中定义的变量，作用域在定义处开始，}处结束。<br>成员变量：在类内定义的变量，作用域是整个类内(会被同名局部变量覆盖)<br>类变量：加了static修饰符的成员变量，作用域是程序加载，注意局部变量不能加static修饰变成类变量。</p>
+<h5 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h5><p>类中至少需要一个构造方法，如果没有显示写构造方法，那么编译器会提供一个默认无参构造。</p>
+<h5 id="源文件-java"><a href="#源文件-java" class="headerlink" title="源文件.java"></a>源文件.java</h5><p>一个源文件只能有一个public类<br>一个源文件可以有多个非public类<br>源文件的名称应该和public类的类名保持一致。<br>如果一个类定义在某个包中，需要先声明package packagename(一定要在首行)表面属于某个包。<br>import 放到package之后，类定义之前。</p>
+<h4 id="数据类型-四类八种"><a href="#数据类型-四类八种" class="headerlink" title="数据类型 四类八种"></a>数据类型 四类八种</h4><p>整型 byte：1字节，short：2字节，int：4字节，long：8字节<br>浮点型 float：4字节 double：8字节（浮点型用科学计数法表示，float能表示数字远大于long）<br>字符型 char 2字节，能够表示中文<br>布尔型 boolean 1字节</p>
+<h4 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h4><p>除了上述四类八种外，java引入了引用类型，引用指向一个对象，指向对象的变量是引用变量，一旦一个变量指向一个对象，不能改变对象类型，不能Dog a，Cat a,<br>java完全放弃了C++中的指针。</p>
+<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><p>常量有final修饰或123 0x111 ‘A’这样的字面常量。</p>
+<h4 id="自动类型转换"><a href="#自动类型转换" class="headerlink" title="自动类型转换"></a>自动类型转换</h4><p>byte，short，char-&gt;int-&gt;long-&gt;float-&gt;double<br>反向必须强转。</p>
+<h4 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h4><p>JAVA的基本数据类型四类八种没有对应的操作方法，JAVA为八种基本数据类型引入了包装类，包装类提供了一些方法能够共包装类对象调用。<br>不用特意去记，把包装类当作基本数据类型并且实现了一些方法就行了，编译器提供自动装箱拆箱。</p>
+<p>常用方法：<br>Number:<br>x.typeValue();<br>x.comparaTo(y);//判断大小<br>x.equals(y);//判断相等<br>Type x = Type.valueOf(y);//返回指定包装类<br>x.toString()<br>Class.toString(class);//转化为字符串<br>static int parseInt(String s)</p>
+<p>static int parseInt(String s, int radix)<br>Integer x = 5;<br>//sout = System.out.println<br>sout(x.byteValue());//5<br>sout(x.floatValue());//5.0<br>Character</p>
+<ol>
+<li>Character.isLetter(‘c’) //是否是一个字母</li>
+<li>Character.isDigit() //是否是一个数字字符</li>
+<li>Character.isWhitespace() //是否是一个空白字符</li>
+<li>Character.isUpperCase() //是否是大写字母</li>
+<li>Character.isLowerCase() //是否是小写字母</li>
+<li>Character.toUpperCase() //指定字母的大写形式</li>
+<li>Character.toLowerCase() //指定字母的小写形式</li>
+<li>Character.toString() //返回字符的字符串形式，字符串的长度仅为1</li>
+</ol>
+<h4 id="String常用方法"><a href="#String常用方法" class="headerlink" title="String常用方法"></a>String常用方法</h4><p>s1.compareTo(s2)； //0相等。<br>s1.equals(s2);true 相等<br>s1.split(“ “);分割为字符串数组<br>// 从第四个字符位置开始往后继续查找,返回aaa第一次出现的位置<br>string.indexOf(“aaa”,3);<br>long start = System.currentTimeMillis( );//开始时间</p>
+<p>long end = System.currentTimeMillis( );//结束时间<br>long diff = end - start;//时间间隔。</p>
+<h4 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 封装，权限管理，数据检查</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Pet</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> Age)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(Age&lt;<span class="number">0</span>)&#123;</span><br><span class="line">			System.out.println(<span class="string">"年龄必须大于0"</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.age = Age;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">getAge</span><span class="params">(<span class="keyword">int</span> Age)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> age;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">feed</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 继承，子类继承父类的属性和方法，可以减少代码量</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Pet</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">feed</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"喂猫猫吃鱼"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Pet</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">feed</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"喂狗狗吃肉"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 多态，女朋友要一个宠物，问她要啥，说随便，小猫小狗都可以</span></span><br><span class="line"><span class="comment">* 但是喂养宠物必须使用不同的食物，子类重写父类的方法</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">gift</span><span class="params">(Pet p)</span></span>&#123;</span><br><span class="line">	p.setAge(<span class="number">1</span>);</span><br><span class="line">	p.feed();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><p>接口时java中的一个特殊类型，java类继承只能单继承，而接口可以多继承。<br>类继承遵循is-a原则，Cat is a Animal，你不能让Cat在与Anima同级别的类上再次继承，说猫既是动物又是植物。C++里边是可以多继承的。</p>
+<p>而接口继承遵循has-a原则，Cat has a method to Catch。<br>类用来继承属性和行为。<br>接口用来继承行为。</p>
+<p>一般我们认为接口中只有抽象方法和常量，虽然后续引入了一些静态方法，默认方法之类的，但是用的最多的还是抽象方法。<br>接口不能实例化对象，没有构造方法，必须被继承，继承后的类称接口的实现类，可以通过实现类来实例化对象(抽象方法必须全部实现)，或者使用匿名内部类实现接口并实例化。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Sawabe Maho
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://maho.xyz/archives/2f7c4d66.html" title="JAVA深入理解">http://maho.xyz/archives/2f7c4d66.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/archives/98455aa0.html" rel="prev" title="Android复习——UI组件">
+      <i class="fa fa-chevron-left"></i> Android复习——UI组件
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/archives/fb456bc.html" rel="next" title="JAVA--数据结构">
+      JAVA--数据结构 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="comments"></div>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#JAVA基础语法"><span class="nav-number">1.</span> <span class="nav-text">JAVA基础语法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#标识符"><span class="nav-number">1.1.</span> <span class="nav-text">标识符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修饰符"><span class="nav-number">1.2.</span> <span class="nav-text">修饰符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#变量"><span class="nav-number">1.3.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#继承"><span class="nav-number">1.4.</span> <span class="nav-text">继承</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java面向对象概述"><span class="nav-number">2.</span> <span class="nav-text">java面向对象概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#构造方法"><span class="nav-number">2.1.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#源文件-java"><span class="nav-number">2.2.</span> <span class="nav-text">源文件.java</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据类型-四类八种"><span class="nav-number">3.</span> <span class="nav-text">数据类型 四类八种</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引用类型"><span class="nav-number">4.</span> <span class="nav-text">引用类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常量"><span class="nav-number">5.</span> <span class="nav-text">常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自动类型转换"><span class="nav-number">6.</span> <span class="nav-text">自动类型转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#包装类"><span class="nav-number">7.</span> <span class="nav-text">包装类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#String常用方法"><span class="nav-number">8.</span> <span class="nav-text">String常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#面向对象"><span class="nav-number">9.</span> <span class="nav-text">面向对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口"><span class="nav-number">10.</span> <span class="nav-text">接口</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Sawabe Maho"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Sawabe Maho</p>
+  <div class="site-description" itemprop="description">欢迎光临</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/SawabeMaho" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;SawabeMaho" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/5684401747" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;5684401747" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/75828259" title="BiliBili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;75828259" rel="noopener" target="_blank"><i class="fa fa-fw fa-bilibili"></i>BiliBili</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sawabe Maho</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.includes(item);
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'CSxPOCT4khq3GK3zfMoi7Uud-gzGzoHsz',
+    appKey: 'WxXi1BhXmIOGctgD8OCP2Sop',
+    placeholder: "O(∩_∩)O，说两句吧！！！",
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname,
+    recordIP: false,
+    serverURLs: ''
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>
