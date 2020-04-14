@@ -47,16 +47,17 @@
   };
 </script>
 
-  <meta name="description" content="折腾了一个寒假，总算把CycleGAN做成功了，目前在本地部署了卡通表情生成，后续会上线Android版。B站演示地址先来看一下几款模型 UAGTIT">
+  <meta name="description" content="折腾了一个寒假，总算把CycleGAN做成功了，一开始我对CycleGAN真的可以实现无监督的人脸转二次元是强烈怀疑的，因为在自己电脑上跑了好久都没有出结果，后来在google的免费GPU服务器上用Tesla T4跑了5个多小时就成功了。果然深度学习就是显卡商为了卖显卡发明出来的吧？目前在本地基于Python环境搭建了GUI版的应用，也开发了一款Android的app实现对本地照片进行二次元人脸转">
 <meta name="keywords" content="GAN,Anime">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于GAN的卡通表情生成">
+<meta property="og:title" content="基于GAN的真实人脸转二次元">
 <meta property="og:url" content="http:&#x2F;&#x2F;maho.xyz&#x2F;archives&#x2F;31333b9d.html">
 <meta property="og:site_name" content="泽部真帆">
-<meta property="og:description" content="折腾了一个寒假，总算把CycleGAN做成功了，目前在本地部署了卡通表情生成，后续会上线Android版。B站演示地址先来看一下几款模型 UAGTIT">
+<meta property="og:description" content="折腾了一个寒假，总算把CycleGAN做成功了，一开始我对CycleGAN真的可以实现无监督的人脸转二次元是强烈怀疑的，因为在自己电脑上跑了好久都没有出结果，后来在google的免费GPU服务器上用Tesla T4跑了5个多小时就成功了。果然深度学习就是显卡商为了卖显卡发明出来的吧？目前在本地基于Python环境搭建了GUI版的应用，也开发了一款Android的app实现对本地照片进行二次元人脸转">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U339cd7f12ccf42e6ae821bb29bcc5570Z.jpg">
-<meta property="og:updated_time" content="2020-03-29T06:05:10.953Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;H4f3af24ad08f4839857200428e0a1e546.png">
+<meta property="og:updated_time" content="2020-04-14T04:25:59.817Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;U339cd7f12ccf42e6ae821bb29bcc5570Z.jpg">
 
@@ -74,7 +75,7 @@
   };
 </script>
 
-  <title>基于GAN的卡通表情生成 | 泽部真帆</title>
+  <title>基于GAN的真实人脸转二次元 | 泽部真帆</title>
   
 
 
@@ -205,7 +206,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          基于GAN的卡通表情生成
+          基于GAN的真实人脸转二次元
         </h1>
 
         <div class="post-meta">
@@ -227,7 +228,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-29 06:05:10" itemprop="dateModified" datetime="2020-03-29T06:05:10Z">2020-03-29</time>
+                <time title="修改时间：2020-04-14 04:25:59" itemprop="dateModified" datetime="2020-04-14T04:25:59Z">2020-04-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -266,7 +267,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>折腾了一个寒假，总算把CycleGAN做成功了，目前在本地部署了卡通表情生成，后续会上线Android版。<br><a href="https://www.bilibili.com/video/BV14741127Tr" target="_blank" rel="noopener">B站演示地址</a><br>先来看一下几款模型</p>
+        <p>折腾了一个寒假，总算把CycleGAN做成功了，一开始我对CycleGAN真的可以实现无监督的人脸转二次元是强烈怀疑的，因为在自己电脑上跑了好久都没有出结果，后来在google的免费GPU服务器上用Tesla T4跑了5个多小时就成功了。果然深度学习就是显卡商为了卖显卡发明出来的吧？<br>目前在本地基于Python环境搭建了GUI版的应用，也开发了一款Android的app实现对本地照片进行二次元人脸转换，同时在服务器上部署了一款服务端应用。由于技术有限，目前项目还存在许多不完善的地方，先放出演示视频跟网页版地址。<br><a href="https://www.bilibili.com/video/BV14741127Tr" target="_blank" rel="noopener">B站演示地址</a><br><a href="http://103.40.247.239/" target="_blank" rel="noopener">网页版</a><br>先来看一下几款模型</p>
 <h4 id="UAGTIT"><a href="#UAGTIT" class="headerlink" title="UAGTIT"></a>UAGTIT</h4><img src = "https://ae01.alicdn.com/kf/U7359d3c490d3425f82bf2d136fd77718c.jpg" title="UAGTIT">
 <a id="more"></a>
 首先是UAGTIT，表现非常好，由于个人在脚本中采用了opencv的官方人脸识别的库且训练模型时喂入数据时杂乱的，所以抗干扰能力很强，生成效果很nice。
@@ -284,9 +285,9 @@
 <source id="mp4" src="http://39.97.232.181/vedio/xjb.mp4" type="video/mp4">
 </video>
 
-<p>Android版本将在后面的博客中更新，相关代码见Github,由于目前论文还没有通过审核，大概在7~8月份上线。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Android上面也行，但是目前遇到了一点点困难，在android上确实是可以运行CycleGAN模型，返回的Tensor也是3x128x128的图片要求，但是在Android上怎么把一个tensor转化为图片目前好像没有这种方法。通过文本框得到这个tensor数据在电脑上直接读入review一下，在用opencv写入图片，确实成功转化了，但是对Android的一些库不太了解，在官方的api文档中也没有找到提供的java方法，先暂缓一下Android方面的部署，看一下在PC端的部署。</p>
-
+<h4 id="Android版"><a href="#Android版" class="headerlink" title="Android版"></a>Android版</h4><p>Android版使用了facebook官方提供的pytorch库，把模型放入Android的assets目录下，调用model.load();需要注意的是assets目录下的文件只能通过context.getAssets().open(assetName)方式来获取，不会在R.java中注册。<br>比较麻烦的是虽然官方提供了从bitmap到tensor的api，但是目前官方的demo都是cnn方面的分类，没有实现返回结果tensor到bitmap，<br>所以需要自己实现，看了很多博客才搞明白怎么把Tensor转化为bitmap。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="keyword">float</span>[] scores = outputTensor.getDataAsFloatArray();<span class="comment">//注意这里的tensor是-1~1的，需要转化到0~255</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> lens = scores.length;</span><br><span class="line"><span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[lens];</span><br><span class="line"><span class="keyword">int</span>[] img = <span class="keyword">new</span> <span class="keyword">int</span>[lens/<span class="number">3</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; scores.length; i++) &#123;</span><br><span class="line">result[i]=(<span class="keyword">int</span>)(scores[i]*<span class="number">128</span>+<span class="number">128</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> alpha r,g,b</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> count1,count2,count3;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;Math.sqrt(lens/<span class="number">3</span>);i++)&#123;</span><br><span class="line">	alpha = <span class="number">255</span>&lt;&lt;(<span class="number">4</span>*<span class="number">2</span>*<span class="number">3</span>);</span><br><span class="line">	r = result[count1++]&lt;&lt;(<span class="number">4</span>*<span class="number">2</span>*<span class="number">2</span>);</span><br><span class="line">	g = result[count2++]&lt;&lt;(<span class="number">4</span>*<span class="number">2</span>*<span class="number">1</span>);</span><br><span class="line">	b = result[count3++];</span><br><span class="line">	</span><br><span class="line">	img[i] = alpha+r+g+b;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Bitmap bm = Bitmap.createBitmap(img,w,h,Bitmap.Config.ARGB_8888);</span><br></pre></td></tr></table></figure>
+<img src="https://ae01.alicdn.com/kf/H4f3af24ad08f4839857200428e0a1e546.png">
     </div>
 
     
@@ -301,7 +302,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://maho.xyz/archives/31333b9d.html" title="基于GAN的卡通表情生成">http://maho.xyz/archives/31333b9d.html</a>
+    <a href="http://maho.xyz/archives/31333b9d.html" title="基于GAN的真实人脸转二次元">http://maho.xyz/archives/31333b9d.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -367,7 +368,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#UAGTIT"><span class="nav-number">1.</span> <span class="nav-text">UAGTIT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CycleGAN"><span class="nav-number">2.</span> <span class="nav-text">CycleGAN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相机版"><span class="nav-number">3.</span> <span class="nav-text">相机版</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#UAGTIT"><span class="nav-number">1.</span> <span class="nav-text">UAGTIT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CycleGAN"><span class="nav-number">2.</span> <span class="nav-text">CycleGAN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相机版"><span class="nav-number">3.</span> <span class="nav-text">相机版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android版"><span class="nav-number">4.</span> <span class="nav-text">Android版</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -47,14 +47,14 @@
   };
 </script>
 
-  <meta name="description" content="杂项1——动画 Android有哪几种动画 * View动画&#x2F;补间动画：对View进行平移、缩放、选择和透明度的变化。 * 逐帧动画：按照一定顺序播放一组预先定义好的图片，类似于GIF * 属性动画：对该类进行动画操作，真正改变了对象的属性。补间动画与属性动画的区别？ * 补间动画：只产生了一个动画效果，其真实的坐标并没有发生改变（只是改变了View的显示效果而已，并不会真正的改变View的属性）">
+  <meta name="description" content="杂项1——动画 Android有哪几种动画 * View动画&#x2F;补间动画：对View进行平移、缩放、选择和透明度的变化。 * 逐帧动画：按照一定顺序播放一组预先定义好的图片，类似于GIF * 属性动画：对该类进行动画操作，真正改变了对象的属性。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android——杂项">
 <meta property="og:url" content="http:&#x2F;&#x2F;maho.xyz&#x2F;archives&#x2F;56622960.html">
 <meta property="og:site_name" content="泽部真帆">
-<meta property="og:description" content="杂项1——动画 Android有哪几种动画 * View动画&#x2F;补间动画：对View进行平移、缩放、选择和透明度的变化。 * 逐帧动画：按照一定顺序播放一组预先定义好的图片，类似于GIF * 属性动画：对该类进行动画操作，真正改变了对象的属性。补间动画与属性动画的区别？ * 补间动画：只产生了一个动画效果，其真实的坐标并没有发生改变（只是改变了View的显示效果而已，并不会真正的改变View的属性）">
+<meta property="og:description" content="杂项1——动画 Android有哪几种动画 * View动画&#x2F;补间动画：对View进行平移、缩放、选择和透明度的变化。 * 逐帧动画：按照一定顺序播放一组预先定义好的图片，类似于GIF * 属性动画：对该类进行动画操作，真正改变了对象的属性。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-12T13:37:55.327Z">
+<meta property="og:updated_time" content="2020-04-14T03:46:10.886Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://maho.xyz/archives/56622960.html">
@@ -211,11 +211,17 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-04-12 18:14:19 / 修改时间：13:37:55" itemprop="dateCreated datePublished" datetime="2020-04-12T18:14:19Z">2020-04-12</time>
+              <time title="创建时间：2020-04-12 18:14:19" itemprop="dateCreated datePublished" datetime="2020-04-12T18:14:19Z">2020-04-12</time>
             </span>
           
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-14 03:46:10" itemprop="dateModified" datetime="2020-04-14T03:46:10Z">2020-04-14</time>
+              </span>
 
           
   
@@ -246,7 +252,8 @@
 <li><p>Android有哪几种动画</p>
 <pre><code>* View动画/补间动画：对View进行平移、缩放、选择和透明度的变化。
 * 逐帧动画：按照一定顺序播放一组预先定义好的图片，类似于GIF
-* 属性动画：对该类进行动画操作，真正改变了对象的属性。</code></pre><p>补间动画与属性动画的区别？</p>
+* 属性动画：对该类进行动画操作，真正改变了对象的属性。</code></pre><a id="more"></a>
+<p>补间动画与属性动画的区别？</p>
 <pre><code>* 补间动画：只产生了一个动画效果，其真实的坐标并没有发生改变（只是改变了View的显示效果而已，并不会真正的改变View的属性）。
 * View做在做动画的时候，它并没有真正的移动它的位置，而是根据动画时间的插值，计算出一个Matrix，然后不停的invalidate。
 * 在onDraw中的Canvas上使用这个计算出来的Matrix去draw这个View的内容。
