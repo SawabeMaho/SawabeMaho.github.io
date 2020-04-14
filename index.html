@@ -292,6 +292,400 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/6c0a3c44.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Sawabe Maho">
+      <meta itemprop="description" content="欢迎光临">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽部真帆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/archives/6c0a3c44.html" class="post-title-link" itemprop="url">JAVAWeb——会话</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-13 08:34:23 / 修改时间：12:20:44" itemprop="dateCreated datePublished" datetime="2020-04-13T08:34:23Z">2020-04-13</time>
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/archives/6c0a3c44.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/archives/6c0a3c44.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="会话是什么？"><a href="#会话是什么？" class="headerlink" title="会话是什么？"></a>会话是什么？</h4><p>一次会话包含多次请求和响应</p>
+<pre><code>* 浏览器第一次给服务器发送请求，会话建立，直到一方断开为止</code></pre><p>会话的功能：</p>
+<pre><code>* 共享数据，在本地多次添加购物车后点击立即结算会把前面多次的点击结果共享。</code></pre><p>方式：</p>
+<pre><code>* 客户端：Cookie
+* 服务端：Session</code></pre><h5 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h5><ol>
+<li><p>概念：客户端会话技术，将数据保存到客户端</p>
+<pre><code>* 服务端1创建Cookie，绑定数据(new Cookie(String name,String value))
+* 服务端1发送Cookie给客户端(resp.adCookie(Cookie cookie));原理response Header setCookie()
+* 客户端收到Cookie后自动保存
+* 服务端2收到客户端请求(Cookir[] request.getCookies())request Header Cookie()</code></pre></li>
+<li><p>细节</p>
+<ol>
+<li><p>如何发送多个Cookie：多次创建并add。</p>
+</li>
+<li><p>cookie保存多久：默认浏览器关闭即销毁</p>
+</li>
+<li><p>如何持久化</p>
+<ul>
+<li>setMaxAge(int seconds)</li>
+<li>正数：将cookie数据存入硬盘，持久化存储n秒</li>
+<li>零：立即删除</li>
+<li>负数：默认</li>
+</ul>
+</li>
+<li><p>如何存储中文数据</p>
+<ul>
+<li>Tomcat8支持中文</li>
+<li>Tomcat8之前需要编码解码</li>
+</ul>
+</li>
+<li><p>cookie的获取范围多大</p>
+<ul>
+<li>默认情况下cookie不会共享。</li>
+<li>response中设置cookie.setPath为路径下所有项目共享。</li>
+<li>response中设置cookie。setDomain为统一一级域名下所有项目共享。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>cookie的特点</p>
+<pre><code>* cookie存储数据在客户端
+* 对cookie大小有限制(4KB)
+* 对同一个域名下的cookie数量有限制(20个)</code></pre></li>
+<li><p>cookie的作用</p>
+<pre><code>* 存储一些不太敏感的信息。
+* 在不登陆的情况下，完成服务器对客户端身份识别。</code></pre></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 使用cookie记录上次访问时间</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> xyz.maho.serverlet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.Cookie;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> javax.xml.crypto.Data;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.net.URLDecoder;</span><br><span class="line"><span class="keyword">import</span> java.net.URLEncoder;</span><br><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/srvletdemo"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Servletdemo</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        Cookie[] cookies = request.getCookies();</span><br><span class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(cookies!=<span class="keyword">null</span> &amp;&amp; cookies.length&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(Cookie cookie:cookies)&#123;</span><br><span class="line">                String name = cookie.getName();</span><br><span class="line">                <span class="keyword">if</span>(<span class="string">"lastTime"</span>.equals(name))&#123;</span><br><span class="line">                    <span class="comment">//</span></span><br><span class="line">                    flag = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                    String value = cookie.getValue();</span><br><span class="line">                    value = URLDecoder.decode(value,<span class="string">"utf-8"</span>);</span><br><span class="line">                    response.getWriter().write(<span class="string">"欢迎回来,您上次登录的时间为:"</span>+value);</span><br><span class="line"></span><br><span class="line">                    Date date = <span class="keyword">new</span> Date();</span><br><span class="line">                    SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy/MM/dd/-HH:mm:ss"</span>);</span><br><span class="line">                    String str_date = sdf.format(date);</span><br><span class="line">                    str_date = URLEncoder.encode(str_date,<span class="string">"utf-8"</span>);</span><br><span class="line">                    cookie.setValue(str_date);</span><br><span class="line">                    cookie.setMaxAge(<span class="number">60</span>*<span class="number">60</span>*<span class="number">24</span>*<span class="number">1</span>);</span><br><span class="line">                    response.addCookie(cookie);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag)&#123;</span><br><span class="line"></span><br><span class="line">            Date date = <span class="keyword">new</span> Date();</span><br><span class="line">            SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy/MM/dd/-HH:mm:ss"</span>);</span><br><span class="line">            String str_date = sdf.format(date);</span><br><span class="line">            str_date = URLEncoder.encode(str_date,<span class="string">"utf-8"</span>);</span><br><span class="line">            Cookie cookie = <span class="keyword">new</span> Cookie(<span class="string">"lastTime"</span>,str_date);</span><br><span class="line">            cookie.setMaxAge(<span class="number">60</span>*<span class="number">60</span>*<span class="number">24</span>*<span class="number">1</span>);</span><br><span class="line">            response.addCookie(cookie);</span><br><span class="line">            response.getWriter().write(<span class="string">"亲爱的用户,欢迎首次登录"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        doPost(request,response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="JSP浅览"><a href="#JSP浅览" class="headerlink" title="JSP浅览"></a>JSP浅览</h4><h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><ol>
+<li><p>Java Server Pages:java服务器页面</p>
+<pre><code>* 可以理解为一个特殊的页面,其中既可以定义指定html标签,又可以定义java代码
+* 用于简化书写.</code></pre><p>jsp本质是就是一个Serverlet</p>
+<img src="https://ae01.alicdn.com/kf/Ha83abebbe9b840c0b3f8a7c292c63e5ae.png">
+</li>
+<li><p>定义java脚本的三种方式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;% javacode %&gt;</span><br><span class="line">&lt;%! 定义类变量,方法 %&gt; </span><br><span class="line">&lt;%= i %&gt; <span class="comment">//输出i的值,相当于out.print(i)</span></span><br></pre></td></tr></table></figure></li>
+<li><p>JSP三种内置对象</p>
+<pre><code>* 在JSP页面不需要获取个创建,可以直接使用的对象
+* 共有9个
+* 常用:request,response,out(类似于response.getWriter(),但是response会先于out输出,无论out在前在后)</code></pre><img src="https://ae01.alicdn.com/kf/Hd6359789d0f948978f53da3d7426452ar.png">
+<img src="http://39.97.232.181:8080/Day3_war/demo2">
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/56622960.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Sawabe Maho">
+      <meta itemprop="description" content="欢迎光临">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽部真帆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/archives/56622960.html" class="post-title-link" itemprop="url">Android——杂项</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-12 18:14:19 / 修改时间：13:37:55" itemprop="dateCreated datePublished" datetime="2020-04-12T18:14:19Z">2020-04-12</time>
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/archives/56622960.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/archives/56622960.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="杂项1——动画"><a href="#杂项1——动画" class="headerlink" title="杂项1——动画"></a>杂项1——动画</h4><ol>
+<li><p>Android有哪几种动画</p>
+<pre><code>* View动画/补间动画：对View进行平移、缩放、选择和透明度的变化。
+* 逐帧动画：按照一定顺序播放一组预先定义好的图片，类似于GIF
+* 属性动画：对该类进行动画操作，真正改变了对象的属性。</code></pre><p>补间动画与属性动画的区别？</p>
+<pre><code>* 补间动画：只产生了一个动画效果，其真实的坐标并没有发生改变（只是改变了View的显示效果而已，并不会真正的改变View的属性）。
+* View做在做动画的时候，它并没有真正的移动它的位置，而是根据动画时间的插值，计算出一个Matrix，然后不停的invalidate。
+* 在onDraw中的Canvas上使用这个计算出来的Matrix去draw这个View的内容。
+* 但是onLayout中还是原来的位置，所以点击事件只能点击到原来的位置才能触发。
+
+* 属性动画：通过反射技术来获取和执行属性的get，set方法真正的改变了对象位置的属性值。</code></pre><p>属性动画的插值器和估值器的作用。</p>
+<pre><code>* 插值器：根据时间流逝的百分比计算出属性值改变的百分比。确定动画效果的变化模式——匀速变化，加速变化，补间动画和属性动画均可使用。
+* 估值器：根据当前属性改变的百分比计算出改变后的属性值。</code></pre></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/9af05194.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Sawabe Maho">
+      <meta itemprop="description" content="欢迎光临">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽部真帆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/archives/9af05194.html" class="post-title-link" itemprop="url">Android——View</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-12 13:41:45 / 修改时间：09:56:12" itemprop="dateCreated datePublished" datetime="2020-04-12T13:41:45Z">2020-04-12</time>
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/archives/9af05194.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/archives/9af05194.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="View"><a href="#View" class="headerlink" title="View"></a>View</h3><h4 id="MotionEvent"><a href="#MotionEvent" class="headerlink" title="MotionEvent"></a>MotionEvent</h4><p>MotionEvent是手指触摸屏幕所产生的一系列事件包含：</p>
+<pre><code>* ACTION_DOWM:手指刚刚接触屏幕
+* ACTION_MOVE:手指在屏幕上滑动
+* ACTION_UP:手指在屏幕上松开
+* ACTION_CANCEL:手指保持按下且离开当前空间。</code></pre>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/archives/9af05194.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/8b7bbeda.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Sawabe Maho">
+      <meta itemprop="description" content="欢迎光临">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽部真帆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/archives/8b7bbeda.html" class="post-title-link" itemprop="url">Android——IPC</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-12 08:24:48 / 修改时间：05:48:07" itemprop="dateCreated datePublished" datetime="2020-04-12T08:24:48Z">2020-04-12</time>
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/archives/8b7bbeda.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/archives/8b7bbeda.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="IPC概述"><a href="#IPC概述" class="headerlink" title="IPC概述"></a>IPC概述</h4><p>IPC(Inter-Process Communication)进程间通信，提供了各种进程间通信的方法。在Linux C编程中有几种方法
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/archives/8b7bbeda.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/2ac09b35.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -415,7 +809,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-12 00:20:22" itemprop="dateModified" datetime="2020-04-12T00:20:22Z">2020-04-12</time>
+                <time title="修改时间：2020-04-14 03:41:29" itemprop="dateModified" datetime="2020-04-14T03:41:29Z">2020-04-14</time>
               </span>
 
           
@@ -729,378 +1123,6 @@
   
   
 
-        
-  
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/fe6b2c9c.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Sawabe Maho">
-      <meta itemprop="description" content="欢迎光临">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泽部真帆">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/archives/fe6b2c9c.html" class="post-title-link" itemprop="url">JAVA--网络编程</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-29 15:41:47" itemprop="dateCreated datePublished" datetime="2020-03-29T15:41:47Z">2020-03-29</time>
-            </span>
-          
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-12 00:22:24" itemprop="dateModified" datetime="2020-04-12T00:22:24Z">2020-04-12</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/archives/fe6b2c9c.html#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/archives/fe6b2c9c.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>IP地址：网络设备的唯一标识 IPV4 0.0.0.0 - 255.255.255.255<br>端口号：找到网络设备后通过端口号找到唯一确定的进程。0 - 65532(0-1024被系统占有)<br>协议：
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/archives/fe6b2c9c.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/fb456bc.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Sawabe Maho">
-      <meta itemprop="description" content="欢迎光临">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泽部真帆">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/archives/fb456bc.html" class="post-title-link" itemprop="url">JAVA--数据结构</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-29 14:34:38" itemprop="dateCreated datePublished" datetime="2020-03-29T14:34:38Z">2020-03-29</time>
-            </span>
-          
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-12 00:22:32" itemprop="dateModified" datetime="2020-04-12T00:22:32Z">2020-04-12</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/archives/fb456bc.html#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/archives/fb456bc.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>JAVA中也有一些与C++中类似的数据结构vector，stack，Dictionary等，但后来主要使用Collection来进行数据操作，Collection提供数据结构，Collections提供方法进行操作。Collection是一系列接口的最顶点。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/archives/fb456bc.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/2f7c4d66.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Sawabe Maho">
-      <meta itemprop="description" content="欢迎光临">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泽部真帆">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/archives/2f7c4d66.html" class="post-title-link" itemprop="url">JAVA深入理解</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-28 14:32:21" itemprop="dateCreated datePublished" datetime="2020-03-28T14:32:21Z">2020-03-28</time>
-            </span>
-          
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-29 06:06:42" itemprop="dateModified" datetime="2020-03-29T06:06:42Z">2020-03-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVA/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVA</span>
-                  </a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/archives/2f7c4d66.html#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/archives/2f7c4d66.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>快速的跟着视频过了一遍java跟Android，很快就会忘记，现在系统梳理一下。</p>
-<h4 id="JAVA基础语法"><a href="#JAVA基础语法" class="headerlink" title="JAVA基础语法"></a>JAVA基础语法</h4><h5 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h5><ol>
-<li>标识符只能由A-Z,a-z,$ ,_,0-9组成且不能是数字开头
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/archives/2f7c4d66.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/98455aa0.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Sawabe Maho">
-      <meta itemprop="description" content="欢迎光临">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泽部真帆">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/archives/98455aa0.html" class="post-title-link" itemprop="url">Android复习——UI组件</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-24 17:59:25" itemprop="dateCreated datePublished" datetime="2020-03-24T17:59:25Z">2020-03-24</time>
-            </span>
-          
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-12 00:22:54" itemprop="dateModified" datetime="2020-04-12T00:22:54Z">2020-04-12</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/archives/98455aa0.html#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/archives/98455aa0.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>UI组件有三类：<br>文本类：</p>
-<ul>
-<li>TextView</li>
-<li>EditText<br>按钮类</li>
-<li>Button 是TextView的子类 需要重写onClickListener()中的onClick(View v)方法或者自己写一个参数为View的方法并指定其按钮android：onClick=”myClick”</li>
-<li>ImageButton 图片按钮</li>
-<li>RadioButton 单选按钮</li>
-<li>CheckBox 复选框
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/archives/98455aa0.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1151,7 +1173,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -54,8 +54,12 @@
 <meta property="og:site_name" content="泽部真帆">
 <meta property="og:description" content="HTTP：超文本传输协议特点 基于TCP&#x2F;IP 默认端口80 基于请求&#x2F;响应模型，一次请求一次响应 无状态，各个请求相互独立 0 每次响应都需要建立新的连接 1 复用连接">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-12T00:20:22.958Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;H301a39c2708b44638378c2b455238429N.png
+">
+<meta property="og:updated_time" content="2020-04-14T03:41:29.223Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;H301a39c2708b44638378c2b455238429N.png
+">
 
 <link rel="canonical" href="http://maho.xyz/archives/undefined.html">
 
@@ -220,7 +224,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-12 00:20:22" itemprop="dateModified" datetime="2020-04-12T00:20:22Z">2020-04-12</time>
+                <time title="修改时间：2020-04-14 03:41:29" itemprop="dateModified" datetime="2020-04-14T03:41:29Z">2020-04-14</time>
               </span>
 
           
@@ -286,6 +290,27 @@ POST
 <li>服务器在做出响应前，会从response对象中取出响应消息。</li>
 </ol>
 <p>request对象和response对象由服务器创建，在程序中使用。<br>request对象用来获取请求消息，response对象设置响应消息。</p>
+<h4 id="response"><a href="#response" class="headerlink" title="response"></a>response</h4><ol>
+<li><p>响应行</p>
+<pre><code>* 组成:协议/版本 响应状态码 响应状态码的描述
+* 1xx 服务器接受客户端消息,但没有接受完成,等待一段时间后询问客户端
+* 2xx 成功 200 ok
+* 3xx 重定向 302 我干不了,你去找xxx,304 访问缓存
+* 4xx 客户端错误 404 请求路径没有对应资源  405 请求方式没有对应方法,dopost或doget没有写.
+* 5xx 服务端错误 500 服务器出现异常</code></pre></li>
+<li><p>响应头</p>
+<pre><code>* Content-Type:本次响应的数据格式和编码
+* Content-disposition:以什么形式打开响应信息.</code></pre></li>
+<li><p>响应空行</p>
+</li>
+<li><p>响应体</p>
+<pre><code>* 返回的数据</code></pre><p>案例验证码:<br><img src="https://ae01.alicdn.com/kf/H301a39c2708b44638378c2b455238429N.png
+"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> xyz.maho;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.imageio.ImageIO;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> java.awt.*;</span><br><span class="line"><span class="keyword">import</span> java.awt.image.BufferedImage;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/demo"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Servlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> width = <span class="number">100</span>;</span><br><span class="line">        <span class="keyword">int</span> height = <span class="number">50</span>;</span><br><span class="line">        BufferedImage image = <span class="keyword">new</span> BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);</span><br><span class="line"></span><br><span class="line">        Graphics g = image.getGraphics();</span><br><span class="line">        g.setColor(Color.pink);</span><br><span class="line">        g.fillRect(<span class="number">0</span>,<span class="number">0</span>,width,height);</span><br><span class="line"></span><br><span class="line">        g.setColor(Color.BLUE);</span><br><span class="line">        g.drawRect(<span class="number">0</span>,<span class="number">0</span>,width-<span class="number">1</span>,height-<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">20</span>;</span><br><span class="line">        String str = <span class="string">"ABCDEFGHIJKLMNOPQRSTUVWXYZ"</span>;</span><br><span class="line">        Random r = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i1 = <span class="number">0</span>; i1 &lt; <span class="number">4</span>; i1++) &#123;</span><br><span class="line">            <span class="keyword">int</span> index = r.nextInt(str.length());</span><br><span class="line">            <span class="keyword">char</span> ch = str.charAt(index);</span><br><span class="line">            g.drawString(ch+<span class="string">""</span>,width/<span class="number">5</span>*i1+<span class="number">10</span>,height/<span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        g.setColor(Color.GREEN);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i1 = <span class="number">0</span>; i1 &lt; <span class="number">10</span>; i1++) &#123;</span><br><span class="line">            <span class="keyword">int</span> x1 = r.nextInt(width);</span><br><span class="line">            <span class="keyword">int</span> x2 = r.nextInt(width);</span><br><span class="line">            <span class="keyword">int</span> y1 = r.nextInt(height);</span><br><span class="line">            <span class="keyword">int</span> y2 = r.nextInt(height);</span><br><span class="line">            g.drawLine(x1,y1,x2,y2);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ImageIO.write(image,<span class="string">"jpg"</span>,response.getOutputStream());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        doPost(request,response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>如果需要单击切换,需要个图片添加一个超链接.</p>
 
     </div>
 
@@ -363,7 +388,7 @@ POST
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP：超文本传输协议"><span class="nav-number">1.</span> <span class="nav-text">HTTP：超文本传输协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#特点"><span class="nav-number">1.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据格式。"><span class="nav-number">1.2.</span> <span class="nav-text">数据格式。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Request"><span class="nav-number">1.3.</span> <span class="nav-text">Request</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP：超文本传输协议"><span class="nav-number">1.</span> <span class="nav-text">HTTP：超文本传输协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#特点"><span class="nav-number">1.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据格式。"><span class="nav-number">1.2.</span> <span class="nav-text">数据格式。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Request"><span class="nav-number">1.3.</span> <span class="nav-text">Request</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#response"><span class="nav-number">2.</span> <span class="nav-text">response</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -379,7 +404,7 @@ POST
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

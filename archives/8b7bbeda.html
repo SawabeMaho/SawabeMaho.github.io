@@ -47,17 +47,21 @@
   };
 </script>
 
-  <meta name="description" content="JavaScript入门 JavaScript中分支结构基本与C++一致，if if-else if -else但形式有严格的要求">
+  <meta name="description" content="IPC概述IPC(Inter-Process Communication)进程间通信，提供了各种进程间通信的方法。在Linux C编程中有几种方法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端入门(二)">
-<meta property="og:url" content="http:&#x2F;&#x2F;maho.xyz&#x2F;archives&#x2F;5dd8b956.html">
+<meta property="og:title" content="Android——IPC">
+<meta property="og:url" content="http:&#x2F;&#x2F;maho.xyz&#x2F;archives&#x2F;8b7bbeda.html">
 <meta property="og:site_name" content="泽部真帆">
-<meta property="og:description" content="JavaScript入门 JavaScript中分支结构基本与C++一致，if if-else if -else但形式有严格的要求">
+<meta property="og:description" content="IPC概述IPC(Inter-Process Communication)进程间通信，提供了各种进程间通信的方法。在Linux C编程中有几种方法">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-10T06:45:52.590Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;H5e0d937a35df483687b76ce9303c9a35O.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;H5275407b38e64602b61447bd1e27ef01S.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;H083c00f048b848cc9be9352c5f34a94fA.jpg">
+<meta property="og:updated_time" content="2020-04-12T05:48:07.323Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;H5e0d937a35df483687b76ce9303c9a35O.jpg">
 
-<link rel="canonical" href="http://maho.xyz/archives/5dd8b956.html">
+<link rel="canonical" href="http://maho.xyz/archives/8b7bbeda.html">
 
 
 <script id="page-configurations">
@@ -71,7 +75,7 @@
   };
 </script>
 
-  <title>前端入门(二) | 泽部真帆</title>
+  <title>Android——IPC | 泽部真帆</title>
   
 
 
@@ -189,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/5dd8b956.html">
+    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/8b7bbeda.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -202,7 +206,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          前端入门(二)
+          Android——IPC
         </h1>
 
         <div class="post-meta">
@@ -211,17 +215,11 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2019-11-18 19:57:25" itemprop="dateCreated datePublished" datetime="2019-11-18T19:57:25Z">2019-11-18</time>
+              <time title="创建时间：2020-04-12 08:24:48 / 修改时间：05:48:07" itemprop="dateCreated datePublished" datetime="2020-04-12T08:24:48Z">2020-04-12</time>
             </span>
           
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-10 06:45:52" itemprop="dateModified" datetime="2019-12-10T06:45:52Z">2019-12-10</time>
-              </span>
 
           
   
@@ -232,8 +230,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/archives/5dd8b956.html#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/archives/5dd8b956.html" itemprop="commentCount"></span>
+    <a title="valine" href="/archives/8b7bbeda.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/archives/8b7bbeda.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -248,24 +246,103 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 style="text-align:center">JavaScript入门</h3>
-<h6>JavaScript中分支结构基本与C++一致，if if-else if -else但形式有严格的要求</h6>
+        <h4 id="IPC概述"><a href="#IPC概述" class="headerlink" title="IPC概述"></a>IPC概述</h4><p>IPC(Inter-Process Communication)进程间通信，提供了各种进程间通信的方法。在Linux C编程中有几种方法<a id="more"></a></p>
+<pre><code>* 半双工Unix管道
+* FIFOs(命名管道)
+* 消息队列
+* 信号量
+* 共享内存
+* 网络Socket</code></pre><p>虽然Android底层核心是Linux内核，但Android并没有完全继承Linux的IPC，AndroidIPC基于Binder机制。</p>
+<h4 id="IPC基础"><a href="#IPC基础" class="headerlink" title="IPC基础"></a>IPC基础</h4><h5 id="多进程模式"><a href="#多进程模式" class="headerlink" title="多进程模式"></a>多进程模式</h5><ol>
+<li>进程与线程<br>程序是文件系统上存储的数据——QQ.exe。<br>进程是程序调入到内存后的活动状态——双击QQ.exe QQ进程就启动了。<br>线程是程序进程中的组成部分——在QQ进程中可以聊天，下载文件。<br>一个进程可以包含多个线程。<br>主线程：UI操作<br>子线程：耗时任务<br>主线程不能进行耗时任务，否则会导致应用程序无响应(ANR：Application Not Responding)<br>子线程不能进行UI操作，但可以通过消息传递在主线程中完成对UI的更新。</li>
+</ol>
+<h5 id="如何开启多进程"><a href="#如何开启多进程" class="headerlink" title="如何开启多进程"></a>如何开启多进程</h5><ol>
+<li>通过JNI在native层fork一个新的进程-很少这么用。</li>
+<li>在Menifest中给四大组件指定android:process属性。<ol>
+<li>默认进程，省略包名android:process:”:test”，表示进程名为com.example.myapp:test，属于私有进程，其他进程的组件不能跟他在同一进程。</li>
+<li>全局进程，完整包名android:process:”com.example.myapp:test1”，属于全局进程，其他应用可以通过shareUID的方式和使用同一个进程。<pre><code>* UID和ShareUID
+* Android系统为每个应用分配一个唯一的UID，具有相同UID的进程属于同一个应用，可以共享数据。
+* 两个应用提供ShareUID可以在一个进程中共享数据：要求ShareUID相同且签名也相同。</code></pre></li>
+<li>为什么需要IPC？<br> 由于Android为每个应用分配了独立的虚拟机，属于不同虚拟机的进程只要提供内存进行共享数据都会失败。</li>
+<li>多进程造成的影响？<ol>
+<li>静态变量和单例模式失效——独立虚拟机</li>
+<li>线程同步机制失效——独立虚拟机</li>
+<li>SharedPreference可靠性下降。——不支持并发读写。</li>
+<li>Application多次创建——独立虚拟机。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h5 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h5><p>什么是序列化，将一个对象转换为可存储可传输的状态，序列化后的对象可以在网络上进行传输。<br>一般用于提供Intent和Binder等传输类对象时，完成对象的序列化过程。<br>实现方式：</p>
+<ol>
+<li><p>JAVA提供的Serializable接口</p>
+</li>
+<li><p>Android特有的Parcelabele接口</p>
+<pre><code>* 差异分析：
+* Serializable接口：JAVA提供的接口，原理是将一个对象转化为可存储可传输的状态。
+* 优点是使用简单，缺点是存在IO操作，效率比较低，一般用于将对象存储到存储设备或者将对象序列化后进行网络传输。
+
+* parceable接口：Android提供的一个接口，原理是将一个对象进行分解，分解后的每个部分都是可以传递的数据类型。
+* 缺点是使用比较麻烦，一般用于将内存中的数据序列化。</code></pre><p>静态成员不参与序列化。</p>
+</li>
+</ol>
+<h4 id="什么时候使用进程间通信"><a href="#什么时候使用进程间通信" class="headerlink" title="什么时候使用进程间通信"></a>什么时候使用进程间通信</h4><ol>
+<li>某个模块需要一个单独的进程</li>
+<li>提供多进程获取多份内存空间。</li>
+<li>当前应用需要其他应用进行数据交换。<br>Android的进程架构是标准C/S模型。每一个Android进程都是独立的，且由两部分组成，一部分是用户空间，另一部分是内核空间。<img src="https://ae01.alicdn.com/kf/H5e0d937a35df483687b76ce9303c9a35O.jpg">
 
 
-<a id="more"></a>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(a&gt;b)&#123;<span class="comment">//花括号必须放到这里</span></span><br><span class="line">	swap(a,b);</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//-----------------------------------------------------------</span></span><br><span class="line"><span class="keyword">if</span>(a&gt;b)&#123;<span class="comment">//花括号必须放到这里</span></span><br><span class="line"></span><br><span class="line">	循环体<span class="number">1</span>；</span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;<span class="comment">//花括号必须放到这里</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	循环体<span class="number">2</span>；</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//-------------------------------------------------------------</span></span><br><span class="line"><span class="keyword">if</span>(a&gt;b)&#123;<span class="comment">//花括号必须放到这里</span></span><br><span class="line"></span><br><span class="line">	循环体<span class="number">1</span>；</span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>&#123;<span class="comment">//花括号必须放到这里</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	循环体<span class="number">2</span>；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="Binder机制"><a href="#Binder机制" class="headerlink" title="Binder机制"></a>Binder机制</h4><p>概念：</p>
+<pre><code>* 从API来看：是一个类，实现了Ibinder接口
+* 从IPC来看：是Android的一种跨进程通信方式
+* 从Framework来看：是ServiceManager连接各种Manager和响应ManagerService的桥梁。
+* 从应用层面看：是Client和Service进行通信的媒介。客户端可以提供它获取服务端提供的服务。</code></pre><p>Android基于linux内核，但是却自己优化了进程间通信的机制，Android主要使用Binder机制。优点是：传输效率高，因为binder只进行一次内存拷贝。<br>消息队列，Socket，管道都需要先从进程A的缓存区拷贝到内存后再从内存拷贝到进程B的缓存区，而Binder直接把数据拷贝到内存，同时进程B把自己的缓存区映射到内存，只进行一次拷贝，虽然共享内存不进行数据拷贝，但使用非常麻烦。</p>
+<pre><code>* Binder的优点：
+* 实现了C/S结构，Server端与Client端相对独立，稳定性好。
+* 安全性高：传统Linux IPC无法获得对方进程的可靠UID/PID,从而无法鉴别对方身份，Binder为每个进程分配了UID/PID且在通信时会进行校验。</code></pre><h5 id="Binder实现"><a href="#Binder实现" class="headerlink" title="Binder实现"></a>Binder实现</h5><p>Binder框架定义四个角色：Client，Server，ServiceManager和Binder驱动。</p>
+<pre><code>* Server向ServiceManager发出请求注册服务
+* Client向ServiceManager发出请求要求服务
+* Client使用Server提供的服务
+* Binder驱动实现ioctl</code></pre><img src="https://ae01.alicdn.com/kf/H5275407b38e64602b61447bd1e27ef01S.jpg">
 
-<h6 id="循环也基本保持一致有while，do-while-for"><a href="#循环也基本保持一致有while，do-while-for" class="headerlink" title="循环也基本保持一致有while，do{}while,for;"></a>循环也基本保持一致有while，do{}while,for;</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//---------------------------------------------------------------</span></span><br><span class="line"><span class="keyword">var</span> i=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(i&lt;<span class="number">5</span>)&#123;</span><br><span class="line">	conlose.log(i);</span><br><span class="line">	i++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//---------------------------------------------------------------</span></span><br><span class="line"><span class="keyword">var</span> i=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">	conlose.log(i);</span><br><span class="line">	i++;</span><br><span class="line">&#125;<span class="keyword">while</span>(i&lt;<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
-<p>JavaScript中数组与Python中的列表类似，都可以是混合的；</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">123</span>,<span class="string">"Hello"</span>,<span class="literal">true</span>,<span class="literal">null</span>,<span class="literal">undefined</span>,<span class="keyword">new</span> <span class="built_in">Object</span>()]</span><br><span class="line">conlose.log(arr);</span><br></pre></td></tr></table></figure>
-<h3 style="text-align:center">函数</h3>
-<h4>函数声明</h4>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数声明</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">argument</span>)</span>&#123;</span><br><span class="line">	conlose.log(<span class="string">"这是一个命名函数"</span>)；</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//函数调用</span></span><br><span class="line">f1();</span><br></pre></td></tr></table></figure>
-<h4>函数表达式</h4>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数声明</span></span><br><span class="line"><span class="keyword">var</span> f2=<span class="function"><span class="keyword">function</span> (<span class="params">argument</span>)</span>&#123;</span><br><span class="line">	conlose.log(<span class="string">"这是一个函数表达式"</span>)；</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//函数调用</span></span><br><span class="line">f2();</span><br></pre></td></tr></table></figure>
-<h4>函数自调用</h4>
+<pre><code>* 作用：
+* client：请求服务
+* Server：提供服务
+* ServiceManager：将Binder名字转换为Client端对该Binder的引用，使得Client可以通过Binder名字就可以获得Server中Binder的实体引用。
+* Binder驱动：提供标准文件操作</code></pre><img src="https://ae01.alicdn.com/kf/H083c00f048b848cc9be9352c5f34a94fA.jpg">
 
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数调用</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">argument</span>)</span>&#123;</span><br><span class="line">	conlose.log(<span class="string">"这是一个自调用函数"</span>)；</span><br><span class="line">&#125;)();</span><br><span class="line"><span class="comment">/*这是一个命名函数</span></span><br><span class="line"><span class="comment">*这是一个函数表达式</span></span><br><span class="line"><span class="comment">*这是一个自调用函数</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="Android-IPC方式"><a href="#Android-IPC方式" class="headerlink" title="Android IPC方式"></a>Android IPC方式</h3><ol>
+<li><p>Bundle</p>
+<pre><code>* Bundle
+* Bundle实现了Parcelabel接口，可以在不同进程间进行数据传递
+* 一般用于Activity，Service和Recevier直接通过Intent。putExtra()传递Bundle数据。</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line">Bundle bundle = <span class="keyword">new</span> Bundle();</span><br><span class="line">bundle.putString(<span class="string">"xxx"</span>,<span class="string">"xxx"</span>);</span><br><span class="line">intent.putExtra(<span class="string">"data"</span>, bundle);</span><br></pre></td></tr></table></figure></li>
+<li><p>文件共享</p>
+<pre><code>* 文件共享
+* 两个进程通过读/写同一个文件来交换数据，例如A写B读
+* 适用于对数据要求不高的场合，必须妥善处理并发问题
+* 不建议使用SharedPreferences进行文件共享，原因是系统会进行优化进行缓存，多线程会导致数据不可靠。</code></pre></li>
+<li><p>Socket</p>
+<pre><code>* Socket
+* 与JAVA Socket一致，通过TCP进行可靠传输，UDP进行不可靠传输。
+* UDP使用 DatagramSocket类绑定IP+端口后可以进行通信，也不管也没有成功。 
+* TCP使用 Socket ServerSocket 服务端绑定IP+端口后，开始监听端口等待客户端连接(阻塞监听)，服务端发出请求服务端才进行服务。</code></pre></li>
+<li><p>AIDL</p>
+<pre><code>* (Android Interface Definition Language，Android接口定义语言)
+* 如果一个进程中要调用另一个进程中对象的方法，可使用AIDL生成可序列化参数，AIDL会生成一个服务端对象的代理类，通过它客户端间接实现调用服务端对象。
+* 使用方式：
+* 服务端创建aidl文件并创建一个Service，实现AIDL接口函数并暴露AIDL接口。
+* 客户端通过bindService绑定服务端Service，绑定成功后，将服务端返回的Binder对象转化为AIDl接口所属类型，进而调用响应AIDL中的方法。</code></pre></li>
+<li><p>Messager(AIDL)</p>
+<pre><code>* Message
+* 轻量级的IPC方案，通过它可在不同进程中传递Message对象。
+* 一般与Handler配合使用，例如在子线程中传递消息，请求更新UI。</code></pre></li>
+<li><p>ContentProvider(AIDL)</p>
+<pre><code>* Android四大组件之一，前面也有比较详细的介绍。</code></pre></li>
+</ol>
+
     </div>
 
     
@@ -280,7 +357,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://maho.xyz/archives/5dd8b956.html" title="前端入门(二)">http://maho.xyz/archives/5dd8b956.html</a>
+    <a href="http://maho.xyz/archives/8b7bbeda.html" title="Android——IPC">http://maho.xyz/archives/8b7bbeda.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -297,12 +374,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/archives/f2e92234.html" rel="prev" title="前端入门(一)">
-      <i class="fa fa-chevron-left"></i> 前端入门(一)
+    <a href="/archives/2ac09b35.html" rel="prev" title="JVM浅析学习笔记">
+      <i class="fa fa-chevron-left"></i> JVM浅析学习笔记
     </a></div>
       <div class="post-nav-item">
-    <a href="/archives/85d3e15a.html" rel="next" title="C++刷题——链表">
-      C++刷题——链表 <i class="fa fa-chevron-right"></i>
+    <a href="/archives/9af05194.html" rel="next" title="Android——View">
+      Android——View <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -342,7 +419,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">JavaScript入门</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#null"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">JavaScript中分支结构基本与C++一致，if if-else if -else但形式有严格的要求</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#循环也基本保持一致有while，do-while-for"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">循环也基本保持一致有while，do{}while,for;</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.1.</span> <span class="nav-text">函数声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.2.</span> <span class="nav-text">函数表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.3.</span> <span class="nav-text">函数自调用</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#IPC概述"><span class="nav-number">1.</span> <span class="nav-text">IPC概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IPC基础"><span class="nav-number">2.</span> <span class="nav-text">IPC基础</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#多进程模式"><span class="nav-number">2.1.</span> <span class="nav-text">多进程模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#如何开启多进程"><span class="nav-number">2.2.</span> <span class="nav-text">如何开启多进程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#序列化"><span class="nav-number">2.3.</span> <span class="nav-text">序列化</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么时候使用进程间通信"><span class="nav-number">3.</span> <span class="nav-text">什么时候使用进程间通信</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Binder机制"><span class="nav-number">4.</span> <span class="nav-text">Binder机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Binder实现"><span class="nav-number">4.1.</span> <span class="nav-text">Binder实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-IPC方式"><span class="nav-number"></span> <span class="nav-text">Android IPC方式</span></a></div>
       </div>
       <!--/noindex-->
 
