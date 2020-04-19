@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/title.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/title.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="泽部真帆" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://maho.xyz').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="老生常谈进程、程序、线程程序就是存储到硬盘上的代码资源。QQ.exe进程就是程序调入内存获得CPU、内存等资源。 QQ.exe调入内存获得资源线程就是进程中的某些独立的功能。 QQ.exe中的某个功能：下载，聊天，视频。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA——进程&amp;&amp;线程">
+<meta property="og:url" content="http:&#x2F;&#x2F;maho.xyz&#x2F;archives&#x2F;f288d9b0.html">
+<meta property="og:site_name" content="泽部真帆">
+<meta property="og:description" content="老生常谈进程、程序、线程程序就是存储到硬盘上的代码资源。QQ.exe进程就是程序调入内存获得CPU、内存等资源。 QQ.exe调入内存获得资源线程就是进程中的某些独立的功能。 QQ.exe中的某个功能：下载，聊天，视频。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;s1.ax1x.com&#x2F;2020&#x2F;04&#x2F;18&#x2F;JmYeit.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s1.ax1x.com&#x2F;2020&#x2F;04&#x2F;18&#x2F;JmwsTe.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;H4de3af0ae8a1457c96c59805262eeca0O.png">
+<meta property="og:updated_time" content="2020-04-19T08:47:58.481Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;s1.ax1x.com&#x2F;2020&#x2F;04&#x2F;18&#x2F;JmYeit.png">
+
+<link rel="canonical" href="http://maho.xyz/archives/f288d9b0.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>JAVA——进程&&线程 | 泽部真帆</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">泽部真帆</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">萌之上,即为荡漾</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/SawabeMaho" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://maho.xyz/archives/f288d9b0.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Sawabe Maho">
+      <meta itemprop="description" content="欢迎光临">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽部真帆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JAVA——进程&&线程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-18 11:27:11" itemprop="dateCreated datePublished" datetime="2020-04-18T11:27:11Z">2020-04-18</time>
+            </span>
+          
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-19 08:47:58" itemprop="dateModified" datetime="2020-04-19T08:47:58Z">2020-04-19</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/archives/f288d9b0.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/archives/f288d9b0.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="老生常谈进程、程序、线程"><a href="#老生常谈进程、程序、线程" class="headerlink" title="老生常谈进程、程序、线程"></a>老生常谈进程、程序、线程</h4><p>程序就是存储到硬盘上的代码资源。QQ.exe<br>进程就是程序调入内存获得CPU、内存等资源。 QQ.exe调入内存获得资源<br>线程就是进程中的某些独立的功能。 QQ.exe中的某个功能：下载，聊天，视频。<a id="more"></a></p>
+<h4 id="实现多线程的四种方法"><a href="#实现多线程的四种方法" class="headerlink" title="实现多线程的四种方法"></a>实现多线程的四种方法</h4><pre><code>* 1. 继承Thread重写run方法
+* 2. 实现Runable接口重写run方法
+* 3. 实现Callable接口，重写call方法，指定返回值泛型，创建FutureTask = new FutureTask(new MyCallable())
+* 4. 线程池</code></pre><h5 id="call"><a href="#call" class="headerlink" title="call"></a>call</h5><p>1 2 比较常见就不展开了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CallAbleImpl</span> <span class="keyword">implements</span> <span class="title">Callable</span> &lt;<span class="title">String</span>&gt;</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        FutureTask&lt;String&gt; ft = <span class="keyword">new</span> FutureTask&lt;String&gt;(<span class="keyword">new</span> CallAbleImpl());</span><br><span class="line">        <span class="keyword">new</span> Thread(ft).start();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            String result = ft.get();</span><br><span class="line">            System.out.println(result);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ExecutionException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(Thread.currentThread().getName()+<span class="string">":MyCallThread执行"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"MyCallThread执行完成"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* Thread-0:MyCallThread执行</span></span><br><span class="line"><span class="comment">* MyCallThread执行完成</span></span><br><span class="line"><span class="comment">* */</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h5><p><img src="https://s1.ax1x.com/2020/04/18/JmYeit.png" alt="JmYeit.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService executorService = Executors.newFixedThreadPool(<span class="number">10</span>);</span><br><span class="line">executorService.execute(()-&gt;&#123;</span><br><span class="line">System.out.println(Thread.currentThread().getName()+<span class="string">":线程执行了"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//pool-1-thread-1:线程执行了</span></span><br></pre></td></tr></table></figure>
+<h5 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h5><p><img src="https://s1.ax1x.com/2020/04/18/JmwsTe.png" alt="JmwsTe.png"><br>多线程会开辟新的栈空间，执行run方法。<br><img src="https://ae01.alicdn.com/kf/H4de3af0ae8a1457c96c59805262eeca0O.png"></p>
+<pre><code>* 新建态：通过new新建一个线程之后，该线程就处于新建状态，JVM为线程分配内存，初始化成员变量
+* 就绪态：线程对象.start()后，线程处于就绪态，JVM为线程创建方法栈和程序计数器，等大线程调度器第哦啊都
+* 运行态：就绪态获得CPU资源，开始执行run()方法，
+* 阻塞态：
+    * sleep()
+    * 阻塞1IO
+    * 试图获得同步锁
+    * wait()
+    * suspend()挂起；//不建议使用
+* 死亡：
+    * run或call执行完成
+    * 抛出异常或错误</code></pre><h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><pre><code>* 1. thread.setName();
+* 2. 重写构造方法，super(name);让父类给他起名。</code></pre><h4 id="继承Thread类和实现Runable接口有什么不同"><a href="#继承Thread类和实现Runable接口有什么不同" class="headerlink" title="继承Thread类和实现Runable接口有什么不同"></a>继承Thread类和实现Runable接口有什么不同</h4><pre><code>* 继承类 A = new 继承类(); A.start();
+* 接口实现类 B = new 接口实现类(); new Thread(B).start();</code></pre><font color="green">
+避免了单继承
+增强了程序扩展性
+</font>
+
+<h4 id="线程安全问题"><a href="#线程安全问题" class="headerlink" title="线程安全问题"></a>线程安全问题</h4><pre><code>    * 如果单线程和多线程运行结构一致就说明线程安全。
+如何解决线程安全问题？
+思考：为什么发生线程安全问题？
+多个线程共享同一个对象，会同时对同一个对象的变量进行操作，但是线程切换时会保存程序运行状态。
+由于保护现场，当共享数据被修改不能及时做出反应。
+
+解决方法：只要我持有对象时其他人没办法持有就好了(上锁)；
+
+    *1. 同步代码块(synchronized(obj)):锁的是obj
+    *2. 同步方法(synchronized)：锁的是调用方法的对象
+    *3. 同步锁(ReeneantLock)：使用更广泛，更灵活
+        * 重入锁：Lock lock = new ReentrantLock(true);//是否公平，true：公平锁，false：独占锁
+    *4. 特殊域变量(volatile)
+    *5. 局部变量(ThreadLocal)
+    *6. 阻塞队列(LinkedBlockingQueue)
+    *7. 原子变量(Atomic)</code></pre><h6 id="synchronized和ReeneantLock有什么区别？"><a href="#synchronized和ReeneantLock有什么区别？" class="headerlink" title="synchronized和ReeneantLock有什么区别？"></a>synchronized和ReeneantLock有什么区别？</h6><pre><code>* synchronized是JAVA内置的在JVM层面，ReeneantLock是一个类。
+* synchronized无法判断锁的状态，ReeneantLock可以判断是否加锁。
+* synchronized会自动释放锁，ReeneantLock需要手动释放
+* synchronized阻塞会一直等待，ReeneantLock不一定等待可能直接结束进程
+* s可重入，不可中断，非公平，Lock可重入，可判断，可公平。
+* s适合少量代码，Lock锁大量代码</code></pre><h5 id="死锁发生的四个条件"><a href="#死锁发生的四个条件" class="headerlink" title="死锁发生的四个条件"></a>死锁发生的四个条件</h5><pre><code>* 互斥：一个对象只能被一个进程锁住
+* 占有且等待：进程占有某个资源同时等待另一个资源
+* 不可剥夺：不会释放已占有资源
+* 循环等待：A等B，B等A.</code></pre><h5 id="防止死锁"><a href="#防止死锁" class="headerlink" title="防止死锁"></a>防止死锁</h5><pre><code>* 死锁预防：破坏死锁产生的四个条件
+    * 互斥没办法破坏
+    * 占有且等待：等待就释放
+    * 不可剥夺：设优先级
+    * 循环等待：顺序上锁
+* 死锁避免：//也是破坏四个条件
+    * 有序资源分配
+    * 银行家算法
+        * 比较request和available看能否分配
+        * 能分配就分配，不能分配就阻塞
+        * 分配后各资源数增减，进行安全检查
+        * 安全就分配，不安全就回滚。
+        * 安全检查怎么做：找到一个线程剩余的资源一定可以满足这个线程。
+    * 顺序加锁
+    * 限时加锁
+        * 限定时间内没有拿到锁就释放已有资源
+* 检测死锁
+    * 死锁检测超级麻烦，四个矩阵来判断，具体。。。
+* 解除死锁
+    * 杀死线程
+    * 抢占资源
+    * 备份回滚</code></pre><h5 id="线程通信"><a href="#线程通信" class="headerlink" title="线程通信"></a>线程通信</h5><pre><code>* 休眠唤醒机制
+    * Object的wait，notify，notifyAll
+    * Condition await，signal，signalAll
+* CountDownLatch：一等多
+* SyclicBarrier:多个线程到达某个状态一起执行
+* Semaphore：权限控制</code></pre><h5 id="多线程应用"><a href="#多线程应用" class="headerlink" title="多线程应用"></a>多线程应用</h5><pre><code>开启两个线程奇数线程打印技术，偶数线程打印偶数</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> xyz.maho.day04.code.demo20;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.locks.Condition;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.locks.ReentrantLock;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTest01</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ReentrantLock lock = <span class="keyword">new</span> ReentrantLock();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Condition condition =  lock.newCondition();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">odd</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">            lock.lock();</span><br><span class="line">            <span class="keyword">if</span>(i%<span class="number">2</span>==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    condition.await();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+<span class="string">":"</span>+i);</span><br><span class="line">            condition.signal();</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">even</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">            lock.lock();</span><br><span class="line">            <span class="keyword">if</span>(i%<span class="number">2</span>!=<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    condition.await();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+<span class="string">":"</span>+i);</span><br><span class="line">            condition.signal();</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">            even();</span><br><span class="line">        &#125;,<span class="string">"偶数"</span>).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">            odd();</span><br><span class="line">        &#125;,<span class="string">"奇数"</span>).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">偶数:0</span></span><br><span class="line"><span class="comment">奇数:1</span></span><br><span class="line"><span class="comment">偶数:2</span></span><br><span class="line"><span class="comment">奇数:3</span></span><br><span class="line"><span class="comment">偶数:4</span></span><br><span class="line"><span class="comment">奇数:5</span></span><br><span class="line"><span class="comment">偶数:6</span></span><br><span class="line"><span class="comment">奇数:7</span></span><br><span class="line"><span class="comment">偶数:8</span></span><br><span class="line"><span class="comment">奇数:9</span></span><br><span class="line"><span class="comment">偶数:10</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+
+<p>开启三个线程循环打印ABC</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.locks.Condition;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.locks.ReentrantLock;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTest01</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ReentrantLock lock = <span class="keyword">new</span> ReentrantLock();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Condition condition =  lock.newCondition();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">myPrint</span><span class="params">(String value,<span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(i&lt;<span class="number">30</span>)&#123;</span><br><span class="line">            lock.lock();</span><br><span class="line">            <span class="keyword">while</span>(i%<span class="number">3</span>!=num)&#123;<span class="comment">//注意这里是while</span></span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    condition.await();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(i&lt;<span class="number">30</span>) System.out.println(Thread.currentThread().getName()+<span class="string">":"</span>+value+<span class="string">":"</span>+i);</span><br><span class="line">            i++;</span><br><span class="line">            condition.signalAll();</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">            myPrint(<span class="string">"A"</span>,<span class="number">0</span>);</span><br><span class="line">        &#125;).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">            myPrint(<span class="string">"B"</span>,<span class="number">1</span>);</span><br><span class="line">        &#125;).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">            myPrint(<span class="string">"C"</span>,<span class="number">2</span>);</span><br><span class="line">        &#125;).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Sawabe Maho
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://maho.xyz/archives/f288d9b0.html" title="JAVA——进程&amp;&amp;线程">http://maho.xyz/archives/f288d9b0.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/archives/47a159c5.html" rel="prev" title="JAVA——内部类">
+      <i class="fa fa-chevron-left"></i> JAVA——内部类
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="comments"></div>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#老生常谈进程、程序、线程"><span class="nav-number">1.</span> <span class="nav-text">老生常谈进程、程序、线程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现多线程的四种方法"><span class="nav-number">2.</span> <span class="nav-text">实现多线程的四种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#call"><span class="nav-number">2.1.</span> <span class="nav-text">call</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#线程池"><span class="nav-number">2.2.</span> <span class="nav-text">线程池</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#线程状态"><span class="nav-number">2.3.</span> <span class="nav-text">线程状态</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用方法"><span class="nav-number">3.</span> <span class="nav-text">常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承Thread类和实现Runable接口有什么不同"><span class="nav-number">4.</span> <span class="nav-text">继承Thread类和实现Runable接口有什么不同</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程安全问题"><span class="nav-number">5.</span> <span class="nav-text">线程安全问题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#synchronized和ReeneantLock有什么区别？"><span class="nav-number">5.0.1.</span> <span class="nav-text">synchronized和ReeneantLock有什么区别？</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#死锁发生的四个条件"><span class="nav-number">5.1.</span> <span class="nav-text">死锁发生的四个条件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#防止死锁"><span class="nav-number">5.2.</span> <span class="nav-text">防止死锁</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#线程通信"><span class="nav-number">5.3.</span> <span class="nav-text">线程通信</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多线程应用"><span class="nav-number">5.4.</span> <span class="nav-text">多线程应用</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Sawabe Maho"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Sawabe Maho</p>
+  <div class="site-description" itemprop="description">欢迎光临</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/SawabeMaho" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;SawabeMaho" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/5684401747" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;5684401747" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/75828259" title="BiliBili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;75828259" rel="noopener" target="_blank"><i class="fa fa-fw fa-bilibili"></i>BiliBili</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sawabe Maho</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.includes(item);
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'CSxPOCT4khq3GK3zfMoi7Uud-gzGzoHsz',
+    appKey: 'WxXi1BhXmIOGctgD8OCP2Sop',
+    placeholder: "O(∩_∩)O，说两句吧！！！",
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname,
+    recordIP: false,
+    serverURLs: ''
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>
